@@ -7,7 +7,7 @@ const router = useRouter();
 
 <template>
   <section class="flex-col pt-10 flex items-center justify-center px-3">
-    <div class="w-full max-w-[1240px]">
+    <!-- <div class="w-full max-w-[1240px]">
       <div class="flex flex-col pb-4">
         <p class="font-bold text-2xl">Categorias</p>
       </div>
@@ -23,6 +23,6 @@ const router = useRouter();
           </div>
         </NuxtLink>
       </ul>
-    </div>
+    </div> -->
   </section>
 </template>

@@ -38,6 +38,65 @@ module.exports = {
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    // themes: ["light", "dark"],
+    themes: [
+      {
+        light: {
+          primary: "#2563eb",
+
+          secondary: "#9ca3af",
+          ".container-box": {
+            "background-color": "white",
+          },
+          ".icon-fill": {
+            fill: "#111827",
+          },
+          accent: "#22d3ee",
+
+          neutral: "#111827",
+
+          "base-100": "#f3f4f6",
+
+          info: "#0ea5e9",
+
+          success: "#22c55e",
+
+          warning: "#fde047",
+
+          error: "#ef4444",
+        },
+      },
+      {
+        dark: {
+          primary: "#2563eb",
+
+          secondary: "#9ca3af",
+          ".container-box": {
+            "background-color": "#1A222E",
+          },
+          ".icon-fill": {
+            fill: "white",
+          },
+
+          accent: "#22d3ee",
+
+          neutral: "#374151",
+
+          "base-100": "#111827",
+
+          info: "#0ea5e9",
+
+          success: "#22c55e",
+
+          warning: "#fde047",
+
+          error: "#ef4444",
+        },
+      },
+    ],
+    darkTheme: "light",
+  },
   nitro: {
     storage: {
       data: { driver: "vercelKV" },

@@ -46,7 +46,10 @@ const aboutus = [
       <div
         class="w-full grid grid-cols-4 gap-x-4 gap-y-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
       >
-        <article v-for="about in aboutus" class="card bg-base-100 shadow-xl">
+        <article
+          v-for="about in aboutus"
+          class="card container-box bg-base-100 shadow-xl"
+        >
           <img :src="about.image" class="w-full h-40 object-cover rounded-lg" />
           <div class="card-body flex flex-col items-start justify-end">
             <p class="card-title">{{ about.title }}</p>

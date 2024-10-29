@@ -2,72 +2,112 @@
 
 <template>
   <section
-    class="h-full min-h-[620px] flex items-center justify-center flex-col relative"
+    class="h-full flex items-center justify-center flex-col relative mt-32"
   >
-    <img
-      src="public/bg2.jpg"
-      class="col-span-1 max-h-[620px] w-full object-cover rounded-lg"
-    />
-    <section
-      class="presentation_container w-full h-full flex items-center justify-center top-0 absolute"
-    >
+    <div class="w-full h-full flex items-center justify-center">
       <div class="w-full max-w-[1240px]">
-        <article class="h-full flex flex-col justify-center">
-          <div class="flex flex-row items-end">
-            <svg
-              width="50"
-              height="50"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="mb-1 mr-2"
-            >
-              <path
-                d="M5 20.88C5 20.96 5.01 21 5.03 21H7.97C7.99 21 8 20.96 8 20.88V17L7.5 15.5L8 14V11L7.5 9.5L8 8V5L6.5 4.5L5 5V8L5.5 9.5L5 11V14L5.5 15.5L5 17V20.88ZM12 20.88C12 20.96 12.01 21 12.03 21H14.97C14.99 21 15 20.96 15 20.88V17L14.5 15.5L15 14V11L14.5 9.5L15 8V5L13.5 4.5L12 5V8L12.5 9.5L12 11V20.88ZM17.866 30H30V13.13C30 12.5 29.489 12 28.867 12H19.133C18.9844 11.9996 18.8371 12.0285 18.6996 12.0852C18.5622 12.1418 18.4373 12.2249 18.332 12.3299C18.2268 12.4349 18.1433 12.5596 18.0863 12.6969C18.0293 12.8342 18 12.9814 18 13.13V17L17.866 17.217V30Z"
-                fill="#D3D3D3"
-              />
-              <path
-                d="M2.21 20.91L9.455 17.28C9.705 17.16 9.995 17.34 9.995 17.61V20.4C9.995 20.68 10.285 20.86 10.535 20.73L18 17V30H15.967L13.495 28.463L11.023 30H8.94L6.439 28.463L3.937 30H2V21.23C2 21.1 2.08 20.97 2.21 20.91Z"
-                fill="#9B9B9B"
-              />
-              <path
-                d="M20 14.5C20 14.3674 20.0527 14.2402 20.1464 14.1464C20.2402 14.0527 20.3674 14 20.5 14H21.5C21.6326 14 21.7598 14.0527 21.8536 14.1464C21.9473 14.2402 22 14.3674 22 14.5V15.5C22 15.6326 21.9473 15.7598 21.8536 15.8536C21.7598 15.9473 21.6326 16 21.5 16H20.5C20.3674 16 20.2402 15.9473 20.1464 15.8536C20.0527 15.7598 20 15.6326 20 15.5V14.5ZM20 17.5C20 17.3674 20.0527 17.2402 20.1464 17.1464C20.2402 17.0527 20.3674 17 20.5 17H21.5C21.6326 17 21.7598 17.0527 21.8536 17.1464C21.9473 17.2402 22 17.3674 22 17.5V18.5C22 18.6326 21.9473 18.7598 21.8536 18.8536C21.7598 18.9473 21.6326 19 21.5 19H20.5C20.3674 19 20.2402 18.9473 20.1464 18.8536C20.0527 18.7598 20 18.6326 20 18.5V17.5ZM20 20.5C20 20.3674 20.0527 20.2402 20.1464 20.1464C20.2402 20.0527 20.3674 20 20.5 20H21.5C21.6326 20 21.7598 20.0527 21.8536 20.1464C21.9473 20.2402 22 20.3674 22 20.5V21.5C22 21.6326 21.9473 21.7598 21.8536 21.8536C21.7598 21.9473 21.6326 22 21.5 22H20.5C20.3674 22 20.2402 21.9473 20.1464 21.8536C20.0527 21.7598 20 21.6326 20 21.5V20.5ZM23 14.5C23 14.3674 23.0527 14.2402 23.1464 14.1464C23.2402 14.0527 23.3674 14 23.5 14H24.5C24.6326 14 24.7598 14.0527 24.8536 14.1464C24.9473 14.2402 25 14.3674 25 14.5V15.5C25 15.6326 24.9473 15.7598 24.8536 15.8536C24.7598 15.9473 24.6326 16 24.5 16H23.5C23.3674 16 23.2402 15.9473 23.1464 15.8536C23.0527 15.7598 23 15.6326 23 15.5V14.5ZM23 17.5C23 17.3674 23.0527 17.2402 23.1464 17.1464C23.2402 17.0527 23.3674 17 23.5 17H24.5C24.6326 17 24.7598 17.0527 24.8536 17.1464C24.9473 17.2402 25 17.3674 25 17.5V18.5C25 18.6326 24.9473 18.7598 24.8536 18.8536C24.7598 18.9473 24.6326 19 24.5 19H23.5C23.3674 19 23.2402 18.9473 23.1464 18.8536C23.0527 18.7598 23 18.6326 23 18.5V17.5ZM23 20.5C23 20.3674 23.0527 20.2402 23.1464 20.1464C23.2402 20.0527 23.3674 20 23.5 20H24.5C24.6326 20 24.7598 20.0527 24.8536 20.1464C24.9473 20.2402 25 20.3674 25 20.5V21.5C25 21.6326 24.9473 21.7598 24.8536 21.8536C24.7598 21.9473 24.6326 22 24.5 22H23.5C23.3674 22 23.2402 21.9473 23.1464 21.8536C23.0527 21.7598 23 21.6326 23 21.5V20.5ZM26 14.5C26 14.3674 26.0527 14.2402 26.1464 14.1464C26.2402 14.0527 26.3674 14 26.5 14H27.5C27.6326 14 27.7598 14.0527 27.8536 14.1464C27.9473 14.2402 28 14.3674 28 14.5V15.5C28 15.6326 27.9473 15.7598 27.8536 15.8536C27.7598 15.9473 27.6326 16 27.5 16H26.5C26.3674 16 26.2402 15.9473 26.1464 15.8536C26.0527 15.7598 26 15.6326 26 15.5V14.5ZM26 17.5C26 17.3674 26.0527 17.2402 26.1464 17.1464C26.2402 17.0527 26.3674 17 26.5 17H27.5C27.6326 17 27.7598 17.0527 27.8536 17.1464C27.9473 17.2402 28 17.3674 28 17.5V18.5C28 18.6326 27.9473 18.7598 27.8536 18.8536C27.7598 18.9473 27.6326 19 27.5 19H26.5C26.3674 19 26.2402 18.9473 26.1464 18.8536C26.0527 18.7598 26 18.6326 26 18.5V17.5ZM26 20.5C26 20.3674 26.0527 20.2402 26.1464 20.1464C26.2402 20.0527 26.3674 20 26.5 20H27.5C27.6326 20 27.7598 20.0527 27.8536 20.1464C27.9473 20.2402 28 20.3674 28 20.5V21.5C28 21.6326 27.9473 21.7598 27.8536 21.8536C27.7598 21.9473 27.6326 22 27.5 22H26.5C26.3674 22 26.2402 21.9473 26.1464 21.8536C26.0527 21.7598 26 21.6326 26 21.5V20.5Z"
-                fill="#83CBFF"
-              />
-              <path
-                d="M21 29.9999H27V26.3629C27 26.1629 26.83 25.9999 26.619 25.9999H21.38C21.3311 25.9985 21.2824 26.0067 21.2366 26.0242C21.1909 26.0417 21.1491 26.0681 21.1137 26.1019C21.0783 26.1356 21.0499 26.1761 21.0302 26.2209C21.0105 26.2657 20.9999 26.314 20.999 26.3629L21 29.9999ZM9 29.9999H4V27.3799C4 27.1699 4.17 26.9999 4.38 26.9999H8.62C8.83 26.9999 9 27.1699 9 27.3799V29.9999ZM16 29.9999H11V27.3799C11 27.1699 11.17 26.9999 11.38 26.9999H15.62C15.83 26.9999 16 27.1699 16 27.3799V29.9999Z"
-                fill="#1C1C1C"
-              />
-              <path
-                d="M8 2.51C8 2.23 7.77 2 7.49 2H5.51C5.23 2 5 2.23 5 2.51V5H8V2.51ZM8 14H5V17H8V14ZM5 8H8V11H5V8ZM15 2.51C15 2.23 14.77 2 14.49 2H12.51C12.23 2 12 2.23 12 2.51V5H15V2.51ZM15 8H12V11H15V8ZM12 14H15V17H12V14Z"
-                fill="#F8312F"
-              />
-            </svg>
-
-            <h1 class="font-extrabold text-4xl text-white">
-              Fabricamos los mejores <span class="text-white">vinilos</span
-              ><br />
+        <article class="h-full flex flex-col items-center gap-8 justify-center">
+          <div class="flex flex-col gap-6">
+            <h1 class="font-extrabold text-4xl text-center">
+              Fabricamos los mejores vinilos <br />
+              de gran
+              <span class="bg-primary text-white px-2"
+                >calidad y durabilidad</span
+              >.
             </h1>
+            <p class="text-xl text-center">
+              Descubre nuestra amplia gama de productos de alta calidad<br />
+              y genera una cotización personalizada a tu medida.
+            </p>
           </div>
-          <p class="font-extrabold text-4xl text-white">
-            de gran calidad y durabilidad.
-          </p>
-          <p class="text-lg text-white pt-2 pb-2 opacity-80">
-            Descubre nuestra amplia gama de productos de alta calidad<br />
-            y genera una cotización personalizada a tu medida.
-          </p>
-          <div class="flex flex-row gap-2">
-            <!-- <button class="btn bg-primary">Ver Productos</button> -->
-            <NuxtLink
-              to="/productos"
-              class="btn btn-neutral dark:btn-active dark:btn-neutral"
-            >
-              <p class="text-white">Ver Productos</p>
-            </NuxtLink>
+          <div class="stats shadow">
+            <div class="stat">
+              <div class="stat-figure text-secondary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="inline-block h-8 w-8 stroke-current"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="stat-title">Productos</div>
+              <div class="stat-value">216</div>
+              <div class="stat-desc">Desde enero hasta octubre</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-figure text-secondary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="inline-block h-8 w-8 stroke-current"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                  ></path>
+                </svg>
+              </div>
+              <div class="stat-title">Clientes</div>
+              <div class="stat-value">2K</div>
+              <div class="stat-desc">↗︎ 400 (22%)</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-figure text-secondary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="inline-block h-8 w-8 stroke-current"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+                  ></path>
+                </svg>
+              </div>
+              <div class="stat-title">Cotizaciones</div>
+              <div class="stat-value">12,500</div>
+              <div class="stat-desc">↗︎ 50 (14%)</div>
+            </div>
           </div>
+          <NuxtLink to="/productos" class="btn btn-neutral">
+            <p class="">Ver Productos</p>
+          </NuxtLink>
         </article>
       </div>
-    </section>
+    </div>
+    <div class="w-full max-w-[1240px] grid grid-cols-4 gap-8 mt-8">
+      <img
+        src="public/bg2.jpg"
+        class="max-h-[250px] h-full w-full object-cover rounded-lg"
+      />
+      <img
+        src="public/bg.jpg"
+        class="max-h-[250px] h-full w-full object-cover rounded-lg"
+      />
+      <img
+        src="public/extra/1-empty-loft-with-steps.jpg"
+        class="max-h-[250px] h-full w-full object-cover rounded-lg"
+      />
+      <img
+        src="public/extra/product/empaque_de_vinil.png"
+        class="max-h-[250px] h-full w-full object-cover rounded-lg"
+      />
+    </div>
   </section>
 </template>
 

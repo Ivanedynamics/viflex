@@ -14,7 +14,7 @@ const emit = defineEmits(["add_cart", "buynow"]);
 </script>
 
 <template>
-  <article class="card bg-base-100 shadow-xl">
+  <article class="card container-box shadow-xl">
     <figure class="w-full h-40 object-cover rounded-t-lg bg-gray-100 p-8">
       <img
         :src="
@@ -61,10 +61,7 @@ const emit = defineEmits(["add_cart", "buynow"]);
           +{{ props?.colors?.slice(5, props?.colors?.length)?.length }}
         </figure>
       </div>
-      <button
-        @click="() => emit('buynow')"
-        :class="'w-full text-sm flex flex-row justify-center items-center gap-2 bg-primary hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded'"
-      >
+      <button @click="() => emit('buynow')" class="btn btn-neutral">
         Ver Producto
       </button>
     </section>
