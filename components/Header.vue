@@ -7,6 +7,7 @@ const store = useCartStore();
 const { totalProductsInCart } = storeToRefs(store);
 
 const inputRef = ref("");
+const inputCheckedToggle = ref(false);
 
 const keyStore = "theme_page";
 const THEME = {
@@ -21,6 +22,7 @@ const handleSearch = (ev: Event) => {
 
 const handleDataTheme = (value: string) => {
   document.querySelector("html")?.setAttribute("data-theme", value);
+  inputCheckedToggle.value = value === "dark";
 };
 
 onBeforeMount(() => {
@@ -130,13 +132,13 @@ const toggleTheme = () => {
             </p>
           </div>
         </button>
-
         <label class="swap swap-rotate">
           <!-- this hidden checkbox controls the state -->
           <input
             type="checkbox"
             class="theme-controller"
             value="synthwave"
+            v-model="inputCheckedToggle"
             @change="toggleTheme"
           />
 
