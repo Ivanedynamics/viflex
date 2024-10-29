@@ -29,7 +29,9 @@ const listAspect = computed(() => {
     <section class="flex flex-col w-full h-full gap-2">
       <div class="h-full flex flex-col gap-2">
         <NuxtLink :to="`/productos/${product?.id}`">
-          <p class="font-bold text-sm capitalize-text hover:underline">
+          <p
+            class="font-bold text-sm capitalize-text hover:underline text-ellipsis line-clamp-2 h-full max-h-[40px]"
+          >
             {{ capitalizeText(product?.name) }}
           </p>
         </NuxtLink>
@@ -147,3 +149,14 @@ const listAspect = computed(() => {
     </section>
   </div>
 </template>
+
+<style scoped>
+.text-title_cart {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 3;
+  text-overflow: ellipsis;
+}
+</style>

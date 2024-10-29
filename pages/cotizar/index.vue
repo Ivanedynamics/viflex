@@ -75,15 +75,15 @@ const handleFormSubmit = () => {
 </script>
 
 <template>
-  <main class="w-full h-full flex items-center justify-center">
+  <main class="w-full h-full flex items-center justify-center px-4">
     <section
       class="max-w-[800px] w-full container-box shadow-lg mt-10 mb-10 rounded-lg h-fit"
     >
-      <div class="justify-start items-start flex-col grid grid-cols-4 mt-16">
-        <div class="w-full h-full flex items-center justify-center">
+      <div class="justify-start items-start flex-col mt-12">
+        <div class="w-full h-full flex flex-col items-center justify-center">
           <svg
-            width="120"
-            height="70"
+            width="150"
+            height="80"
             viewBox="0 0 571 192"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -239,15 +239,16 @@ const handleFormSubmit = () => {
               class="icon-fill"
             />
           </svg>
-        </div>
-
-        <div class="bg-primary w-full p-4 col-span-3 rounded-l-md">
-          <P class="font-bold text-xl uppercase text-white">cotización </P>
+          <P class="font-bold text-xl uppercase"> información DE cotización </P>
         </div>
       </div>
 
-      <div class="flex flex-col gap-12 p-8">
-        <section class="grid grid-cols-2 gap-8">
+      <div
+        class="flex flex-col gap-12 p-8 mobile_s:gap-6 mobile_s:p-4 tablet:p-6 laptop:p-8"
+      >
+        <section
+          class="grid grid-cols-2 gap-8 mobile_s:flex mobile_s:flex-col mobile_s:gap-3 tablet:grid-cols-2 tablet:grid"
+        >
           <article>
             <label class="form-control w-full">
               <div class="label">
@@ -372,7 +373,20 @@ const handleFormSubmit = () => {
           </label>
         </section>
         <section class="mt-4">
-          <table v-if="products?.length !== 0">
+          <ul class="flex flex-col overflow-y-scroll h-full gap-4">
+            <li v-for="p in products">
+              <CardCartModal
+                :key="p?.id"
+                :product="p?.product"
+                :quantity="p?.quantity"
+                :selection="p?.selection"
+                @decrease="() => store.decreaseProduct(p?.id)"
+                @increment="() => store.incrementProduct(p?.id)"
+                @delete="(e) => store.deleteProduct(p?.id)"
+              />
+            </li>
+          </ul>
+          <!-- <table v-if="products?.length !== 0">
             <tr>
               <th>Productos</th>
               <th>Presentación</th>
@@ -456,49 +470,27 @@ const handleFormSubmit = () => {
                 </button>
               </td>
             </tr>
-            <!-- <tr>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-            </tr> -->
-          </table>
-
-          <div
-            v-if="products?.length === 0"
-            role="alert"
-            class="alert alert-error"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 shrink-0 stroke-current"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <div class="w-full flex flex-row items-center justify-between">
-              <span>
-                Por favor, agrega al menos un producto antes de realizar la
-                cotización.</span
-              ><NuxtLink to="/productos" class="btn btn-neutral"
-                >Agregar Productos</NuxtLink
-              >
-            </div>
-          </div>
+          </table> -->
         </section>
+        <span
+          v-if="products?.length === 0"
+          class="text-red-600 font-bold text-xs mt-2"
+        >
+          Por favor, agrega al menos un producto antes de realizar la
+          cotización.</span
+        >
         <footer class="flex justify-end mt-4">
           <button
+            v-if="products?.length !== 0"
             :disabled="products?.length === 0"
             @click="handleFormSubmit"
             :class="`btn btn-neutral`"
           >
             Enviar Cotizacion
           </button>
+          <NuxtLink v-else to="/productos" class="btn btn-neutral"
+            >Agregar Productos
+          </NuxtLink>
         </footer>
       </div>
     </section>
