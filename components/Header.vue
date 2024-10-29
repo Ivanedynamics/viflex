@@ -46,7 +46,7 @@ const toggleTheme = () => {
 
 <template>
   <header
-    class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[80px] px-3"
+    class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[75px] px-3"
   >
     <div
       class="w-full max-w-[1240px] flex flex-row items-center justify-between tablet:px-4"

@@ -7,92 +7,143 @@ const props = defineProps<IProductCart>();
 const { product, quantity, selection } = toRefs(props);
 
 const emit = defineEmits(["increment", "decrease", "delete"]);
-// const quantity = computed(() => props?.quantity);
 
-const listAspect = [
-  {
-    id: 1,
-    label: "Presentación",
-    value: selection?.value?.presentacion?.value,
-  },
-  {
-    id: 2,
-    label: "Medida",
-    value: selection?.value?.medida?.name,
-  },
-  {
-    id: 3,
-    label: "Color",
-    value: selection?.value?.color?.nombre,
-  },
-];
+const listAspect = computed(() => {
+  return [
+    selection?.value?.presentacion?.value,
+    selection?.value?.medida?.name,
+    selection?.value?.color?.nombre,
+  ];
+});
 </script>
 
 <template>
-  <article class="h-full min-h-[100px] grid grid-cols-4 gap-4 grid-rows-1">
-    <figure class="w-full bg-gray-200 rounded-md h-[100px]">
+  <div class="h-full min-h-[100px] flex flex-row gap-2">
+    <div class="bg-gray-200 rounded-md w-[150px] h-[100px]">
       <img
         v-if="product?.images?.[0]?.image_url"
         :src="product?.images?.[0]?.image_url"
         class="w-full h-full object-contain mix-blend-darken select-none"
       />
-    </figure>
-    <section class="flex flex-col col-span-3 h-full gap-2">
+    </div>
+    <section class="flex flex-col w-full h-full gap-2">
       <div class="h-full flex flex-col gap-2">
         <NuxtLink :to="`/productos/${product?.id}`">
-          <p class="text font-bold text-md capitalize-text hover:underline">
+          <p class="font-bold text-sm capitalize-text hover:underline">
             {{ capitalizeText(product?.name) }}
           </p>
         </NuxtLink>
-        <ul class="flex flex-col gap-1">
-          <li v-for="item in listAspect">
-            <p class="text text-sm">
-              <strong>{{ item?.label }}:</strong>
-              {{ capitalizeText(item?.value) }}
-            </p>
-          </li>
-        </ul>
+
+        <p class="text-sm">
+          {{ capitalizeText(listAspect?.join?.(" • ") ?? "") }}
+        </p>
       </div>
       <div class="flex flex-row w-full justify-between">
         <div class="flex flex-row">
           <button
             @click="emit('decrease', props?.product?.id)"
-            :class="'text-sm flex flex-row justify-center items-center gap-2   hover:bg-gray-200 text-black font-semibold  py-2 px-4 border border-white hover:border-transparent rounded'"
+            class="w-10 h-10 flex items-center justify-center font-bold border rounded-md"
           >
-            -
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 12H18"
+                stroke="#292D32"
+                class="icon-fill"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </button>
-          <div
-            :class="'text-sm flex flex-row justify-center items-center gap-2   font-semibold  py-2 px-4'"
-          >
-            <p class="p-0 line-height-1 m-0">
-              {{ quantity }}
-            </p>
-          </div>
+
+          <p class="w-10 h-10 flex items-center justify-center font-bold">
+            {{ quantity }}
+          </p>
           <button
             @click="emit('increment', props?.product?.id)"
-            :class="'text-sm flex flex-row justify-center items-center gap-2   hover:bg-gray-200 text-black font-semibold  py-2 px-4 border border-white hover:border-transparent rounded'"
+            class="w-10 h-10 flex items-center justify-center font-bold border rounded-md"
           >
-            +
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 12H18"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon-fill"
+              />
+              <path
+                d="M12 18V6"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon-fill"
+              />
+            </svg>
           </button>
         </div>
         <button
           @click="emit('delete', props?.product?.id)"
-          :class="'text-sm flex flex-row justify-center items-center gap-2   hover:bg-gray-200 text-black font-semibold  p-2  border border-white hover:border-transparent rounded'"
+          class="btn btn-ghost"
         >
           <svg
-            width="20"
-            height="20"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M7 21C6.45 21 5.97933 20.8043 5.588 20.413C5.19667 20.0217 5.00067 19.5507 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8043 20.021 18.413 20.413C18.0217 20.805 17.5507 21.0007 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
-              fill="red"
+              d="M21 5.97998C17.67 5.64998 14.32 5.47998 10.98 5.47998C9 5.47998 7.02 5.57998 5.04 5.77998L3 5.97998"
+              stroke="red"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97"
+              stroke="red"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M18.85 9.14001L18.2 19.21C18.09 20.78 18 22 15.21 22H8.79002C6.00002 22 5.91002 20.78 5.80002 19.21L5.15002 9.14001"
+              stroke="red"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M10.33 16.5H13.66"
+              stroke="red"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9.5 12.5H14.5"
+              stroke="red"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             />
           </svg>
         </button>
       </div>
     </section>
-  </article>
+  </div>
 </template>

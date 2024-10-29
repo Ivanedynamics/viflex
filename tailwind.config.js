@@ -61,6 +61,7 @@ module.exports = {
           },
           ".icon-fill": {
             fill: "#111827",
+            stroke: "#111827",
           },
           ".footer_page": {
             "background-color": "#111827",
@@ -91,6 +92,7 @@ module.exports = {
           },
           ".icon-fill": {
             fill: "white",
+            stroke: "white",
           },
           ".footer_page": {
             "background-color": "#1f2937",
