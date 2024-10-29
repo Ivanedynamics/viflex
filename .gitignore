@@ -1,0 +1,52 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+./public/categories.json
+/public/categories.json
+.public/categories.json
+.public/colors.json
+.public/measures.json
+.public/presentacion.json
+.public/products.json
+.public/widths.json
+
+/server/assets
+./server/assets
+.server/assets
+
+./public/categories.json
+./public/colors.json
+./public/measures.json
+./public/presentacion.json
+./public/products.json
+./public/widths.json
+
+
+/public/categories.json
+/public/colors.json
+/public/measures.json
+/public/presentacion.json
+/public/products.json
+/public/widths.json
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+secrets.json
