@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
 export const connectDatabase = async () => {
-  const URL = "mongodb+srv://ivanedynamics:281mab3oxk@cluster0.mhmsj.mongodb.net/ as string;
+  const URL =
+    "mongodb+srv://ivanedynamics:281mab3oxk@cluster0.mhmsj.mongodb.net/ as string";
 
   try {
     await mongoose.connect(URL, {});
