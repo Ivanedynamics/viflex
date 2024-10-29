@@ -10,6 +10,25 @@ const handleBackgroundClose = () => {
     store.CloseModalCart();
   }, 300);
 };
+
+function showDialog() {
+  document.body.classList.add("no-scroll");
+  // Muestra el diálogo
+}
+
+function closeDialog() {
+  document.body.classList.remove("no-scroll");
+  // Oculta el diálogo
+}
+watch(showCart, (value) => {
+  if (value) {
+    console.log("agregandose");
+
+    showDialog();
+    return;
+  }
+  closeDialog();
+});
 </script>
 <template>
   <main
@@ -22,7 +41,7 @@ const handleBackgroundClose = () => {
   >
     <aside
       id="sidebar_app"
-      :class="`sidebar card card-compact bg-base-100 rounded-none  shadow-xl max-w-[440px] h-full w-full`"
+      :class="`sidebar card card-compact bg-base-100 rounded-none  shadow-xl max-w-[440px]  w-dvw h-dvh`"
       @click="
         (e) => {
           e.preventDefault();
@@ -99,7 +118,11 @@ const handleBackgroundClose = () => {
   </main>
 </template>
 
-<style scoped>
+<style>
+/* Clase para desactivar el scroll */
+.no-scroll {
+  overflow: hidden;
+}
 .sidebar {
   transition: transform 0.3s ease; /* Animación de movimiento */
 }
