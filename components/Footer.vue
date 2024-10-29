@@ -4,7 +4,7 @@ import { CONTACT_COFING } from "~/mocks/contact";
 
 <template>
   <footer
-    class="bg-dark z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[320px] px-3"
+    class="bg-dark z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[320px] px-3 mt-16"
   >
     <div
       class="w-full max-w-[1240px] flex flex-row items-start justify-start gap-10"

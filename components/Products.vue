@@ -27,13 +27,15 @@ const { data: products } = await useAsyncData<{
 
 <template>
   <section class="flex-col pt-5 flex items-center justify-center px-3">
-    <div class="w-full max-w-[1240px] grid grid-cols-4">
-      <FilterProducts />
+    <div class="w-full max-w-[1240px] grid grid-cols-4 relative gap-8">
+      <div class="relative h-full w-full">
+        <FilterProducts />
+      </div>
 
       <article class="col-span-3">
         <p class="font-bold text-2xl py-4">Resultados de la búsqueda</p>
         <div
-          class="w-full grid grid-cols-3 gap-x-4 gap-y-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
+          class="w-full grid grid-cols-3 gap-8 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
         >
           <Card
             v-for="product in products?.products"

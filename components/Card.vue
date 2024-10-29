@@ -14,31 +14,32 @@ const emit = defineEmits(["add_cart", "buynow"]);
 </script>
 
 <template>
-  <article
-    class="relative border w-full bg-white rounded-lg overflow-hidden h-fit"
-  >
-    <figure class="w-full h-[260px] bg-gray-200 p-8">
+  <article class="card bg-base-100 shadow-xl">
+    <figure class="w-full h-40 object-cover rounded-t-lg bg-gray-100 p-8">
       <img
         :src="
           props?.images?.[0]?.image_url ??
           'https://cemacogt.vtexassets.com/arquivos/ids/359230-800-800?v=638438976140270000&width=800&height=800&aspect=true'
         "
         alt=""
-        srcset=""
         class="w-full h-full object-contain mix-blend-darken"
       />
     </figure>
-    <section class="p-4 gap-2 flex flex-col justify-between">
-      <section>
-        <p class="font-bold text-md text-title">
-          {{ capitalizeText(props?.name) }}
-        </p>
-        <p class="font-normal text-sm">
-          {{ props?.description }}
-        </p>
-      </section>
+    <section class="card-body flex flex-col justify-between">
+      <p class="font-bold text-md text-title h-[50px]">
+        {{ capitalizeText(props?.name) }}
+      </p>
+      <p
+        v-if="props?.description?.trim()"
+        class="font-normal text-sm text-ellipsis line-clamp-3 h-[60px]"
+      >
+        {{ props?.description }}
+      </p>
+      <p v-else class="h-[60px] font-normal text-sm text-ellipsis line-clamp-3">
+        No hay descripcion disponible.
+      </p>
       <p class="text-xs">Disponible en:</p>
-      <div class="flex flex-row gap-2 flex-wrap">
+      <div class="flex flex-row gap-2 flex-wrap min-h-[25px]">
         <figure
           v-for="color in props?.colors?.slice(0, 5)"
           :style="{

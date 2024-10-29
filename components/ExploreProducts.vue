@@ -21,13 +21,9 @@ const router = useRouter();
           Encuentre los productos perfectos para sus necesidades.
         </p>
       </header>
-      <!-- <ul>
-        <li v-for="p in products">
-          {{ p.name }}
-        </li>
-      </ul> -->
+
       <div
-        class="w-full grid grid-cols-5 gap-x-4 gap-y-4 xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
+        class="w-full grid grid-cols-4 gap-8 xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
       >
         <template v-for="p in products?.products">
           <Card

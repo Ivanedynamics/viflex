@@ -57,11 +57,12 @@
             y genera una cotización personalizada a tu medida.
           </p>
           <div class="flex flex-row gap-2">
+            <!-- <button class="btn bg-primary">Ver Productos</button> -->
             <NuxtLink
               to="/productos"
-              class="bg-primary hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
+              class="btn btn-neutral dark:btn-active dark:btn-neutral"
             >
-              <p>Ver Productos</p>
+              <p class="text-white">Ver Productos</p>
             </NuxtLink>
           </div>
         </article>

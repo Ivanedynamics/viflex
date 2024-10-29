@@ -37,7 +37,7 @@ module.exports = {
       wide: "1536px", // Para pantallas anchas y ultra-widescreen
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
   nitro: {
     storage: {
       data: { driver: "vercelKV" },

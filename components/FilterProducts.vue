@@ -1,11 +1,11 @@
 <template>
-  <div class="p-2">
-    <ul class="list-none gap-2 flex flex-col align-items-start justify-start">
-      <li>
-        <FilterSearchQuery />
-      </li>
-      <li><FilterProductType /></li>
-      <li><FilterProductColor /></li>
-    </ul>
-  </div>
+  <section class="p-2 sticky top-[100px]">
+    <div
+      class="list-none flex flex-col align-items-start justify-start card bg-base-100 shadow-xl"
+    >
+      <FilterSearchQuery />
+      <FilterProductType />
+      <FilterProductColor />
+    </div>
+  </section>
 </template>

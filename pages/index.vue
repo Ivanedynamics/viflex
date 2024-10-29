@@ -6,5 +6,5 @@
   <Categories />
   <MostRecentProducts />
   <!-- <ExploreProducts /> -->
-  <Contact />
+  <!-- <Contact /> -->
 </template>

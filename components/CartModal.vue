@@ -22,7 +22,7 @@ const handleBackgroundClose = () => {
   >
     <aside
       id="sidebar_app"
-      :class="`sidebar bg-white max-w-[440px] h-full w-full p-5`"
+      :class="`sidebar card card-compact bg-base-100  shadow-xl max-w-[440px] h-full w-full p-5`"
       @click="
         (e) => {
           e.preventDefault();
@@ -76,7 +76,7 @@ const handleBackgroundClose = () => {
             class="text-sm flex flex-row justify-center items-center gap-2 bg-secondary w-full hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
             @click="handleBackgroundClose"
           >
-            Seguir comprando
+            Seguir cotizando
           </button>
           <NuxtLink
             @click="handleBackgroundClose"
@@ -101,7 +101,7 @@ const handleBackgroundClose = () => {
                 fill="white"
               />
             </svg>
-            Ir a cotizar
+            Cotizar
           </NuxtLink>
         </section>
       </section>

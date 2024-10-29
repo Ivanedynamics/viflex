@@ -95,8 +95,8 @@ const [colorId] = defineField("colorId");
 
 <template>
   <main class="flex-col pt-5 flex items-center justify-center px-3 mb-20">
-    <div class="w-full max-w-[1240px] grid grid-cols-4 gap-2 grid-rows-1">
-      <section class="col-1 col-span-2 gap-2">
+    <div class="w-full max-w-[1240px] grid grid-cols-5 gap-2 grid-rows-1">
+      <section class="col-1 col-span-3 gap-2">
         <div
           :class="`sticky top-24 w-full gap-2 grid ${
             Number(product?.images?.length) > 1
@@ -145,13 +145,13 @@ const [colorId] = defineField("colorId");
 
       <section class="col-3 col-span-2 p-2 flex flex-col gap-4">
         <div class="flex flex-col gap-2">
-          <p
+          <!-- <p
             class="text-gray-400 font-bold"
             v-for="c in product?.clave"
             :key="`clave-product-${c}`"
           >
             #{{ c }}
-          </p>
+          </p> -->
           <p class="font-bold text-2xl">{{ capitalizeText(product?.name) }}</p>
           <p>
             {{ product?.descripcion }}
@@ -162,7 +162,7 @@ const [colorId] = defineField("colorId");
           :href="`https://wa.me/${
             CONTACT_COFING.whatsapp?.format
           }?text=${encodeURIComponent(message)}`"
-          class="bg-[#25d366] w-fit p-2 px-4 flex flex-row gap-2 items-center rounded-sm"
+          class="btn bg-[#25d366] w-fit p-2 px-4 flex flex-row gap-2 items-center rounded-sm"
         >
           <svg
             width="24"
@@ -179,23 +179,23 @@ const [colorId] = defineField("colorId");
           <p class="font-bold text-black">Consulta por WhatsApp</p>
         </a>
 
-        <section
-          class="border p-3 rounded-lg flex flex-col max-w-[320px] gap-4 mt-5"
-        >
+        <section class="card bg-base-100 w-96 shadow-xl card-body">
           <p class="font-bold text-lg">Agregar al cotizador</p>
           <article class="w-full flex flex-col">
-            <label for="presentation" class="text-sm font-bold"
-              >Presentacion</label
-            >
-            <div class="border p-2 rounded-lg">
-              <select id="presentation" class="w-full" v-model="presentationId">
-                <option disabled value="">Selecciona una opción</option>
-
-                <option v-for="p in product?.presentacion" :value="p.id">
-                  {{ capitalizeText(p.value) }}
-                </option>
-              </select>
+            <div class="label">
+              <span class="label-text">Presentacion</span>
             </div>
+            <select
+              class="select select-bordered w-full max-w-xs"
+              id="presentation"
+              v-model="presentationId"
+            >
+              <option disabled value="">Selecciona una opción</option>
+
+              <option v-for="p in product?.presentacion" :value="p.id">
+                {{ capitalizeText(p.value) }}
+              </option>
+            </select>
             <span
               v-if="errors.presentationId"
               class="text-red-500 font-bold text-xs py-2"
@@ -203,15 +203,19 @@ const [colorId] = defineField("colorId");
             >
           </article>
           <div class="w-full flex flex-col">
-            <label for="measure" class="text-sm font-bold">Medidas</label>
-            <div class="border p-2 rounded-lg">
-              <select id="measure" class="w-full" v-model="measureId">
-                <option disabled value="">Selecciona una opción</option>
-                <option v-for="p in product?.measures" :value="p.id">
-                  {{ capitalizeText(p?.name) }}
-                </option>
-              </select>
+            <div class="label">
+              <span class="label-text">Medidas</span>
             </div>
+            <select
+              id="measure"
+              class="select select-bordered w-full max-w-xs"
+              v-model="measureId"
+            >
+              <option disabled value="">Selecciona una opción</option>
+              <option v-for="p in product?.measures" :value="p.id">
+                {{ capitalizeText(p?.name) }}
+              </option>
+            </select>
             <span
               v-if="errors.measureId"
               class="text-red-500 font-bold text-xs py-2"
@@ -219,16 +223,20 @@ const [colorId] = defineField("colorId");
             >
           </div>
           <div class="w-full flex flex-col">
-            <label for="colors" class="text-sm font-bold">Colores</label>
-            <div class="border p-2 rounded-lg">
-              <select id="colors" class="w-full" v-model="colorId">
-                <option disabled value="">Selecciona una opción</option>
-
-                <option v-for="p in product?.colores" :value="p.id">
-                  {{ capitalizeText(p?.nombre) }}
-                </option>
-              </select>
+            <div class="label">
+              <span class="label-text">Colores</span>
             </div>
+            <select
+              id="colors"
+              class="select select-bordered w-full max-w-xs"
+              v-model="colorId"
+            >
+              <option disabled value="">Selecciona una opción</option>
+
+              <option v-for="p in product?.colores" :value="p.id">
+                {{ capitalizeText(p?.nombre) }}
+              </option>
+            </select>
             <span
               v-if="errors.colorId"
               class="text-red-500 font-bold text-xs py-2"
