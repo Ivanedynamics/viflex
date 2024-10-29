@@ -7,7 +7,7 @@
     <div class="w-full h-full flex items-center justify-center">
       <div class="w-full max-w-[1240px]">
         <article class="h-full flex flex-col items-center gap-8 justify-center">
-          <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-6 mobile_s:gap-2 laptop:gap-6">
             <h1
               class="font-extrabold text-4xl text-center mobile_s:text-[1.2rem] mobile_m:text-[1.5rem] mobile_l:text-[1.7rem] tablet:text-[2.3rem] laptop:text-[2.5rem]"
             >
@@ -18,7 +18,7 @@
               >.
             </h1>
             <p
-              class="text-xl text-center mobile_s:text-sm tablet:text-lg laptop:text-xl"
+              class="text-xl text-center mobile_s:text-[14px] tablet:text-lg laptop:text-xl"
             >
               Descubre nuestra amplia gama de productos de alta calidad<br />
               y genera una cotización personalizada a tu medida.
@@ -44,7 +44,7 @@
                 </svg>
               </div>
               <div class="stat-title">Productos</div>
-              <div class="stat-value">216</div>
+              <div class="stat-value mobile_l:text-lg laptop:text-2xl">216</div>
               <div class="stat-desc">Desde enero hasta octubre</div>
             </div>
 
@@ -65,7 +65,7 @@
                 </svg>
               </div>
               <div class="stat-title">Clientes</div>
-              <div class="stat-value">2K</div>
+              <div class="stat-value mobile_l:text-lg laptop:text-2xl">2K</div>
               <div class="stat-desc">↗︎ 400 (22%)</div>
             </div>
 
@@ -86,7 +86,9 @@
                 </svg>
               </div>
               <div class="stat-title">Cotizaciones</div>
-              <div class="stat-value">12,500</div>
+              <div class="stat-value mobile_l:text-lg laptop:text-2xl">
+                12,500
+              </div>
               <div class="stat-desc">↗︎ 50 (14%)</div>
             </div>
           </div>

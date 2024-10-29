@@ -16,8 +16,10 @@ const router = useRouter();
   >
     <div class="w-full max-w-[1240px] flex flex-col gap-4">
       <header>
-        <h2 class="font-bold text-2xl">Nuestros productos más recientes</h2>
-        <p class="opacity-70 text-lg">
+        <h2 class="font-bold text-2xl mobile_s:text-lg mobile_l:text-2xl">
+          Nuestros productos más recientes
+        </h2>
+        <p class="opacity-70 text-lg mobile_s:text-sm mobile_l:text-[16px]">
           Encuentre los productos perfectos para sus necesidades.
         </p>
       </header>
