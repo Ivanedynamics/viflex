@@ -44,7 +44,7 @@
                 </svg>
               </div>
               <div class="stat-title">Productos</div>
-              <div class="stat-value mobile_l:text-lg laptop:text-2xl">216</div>
+              <div class="stat-value mobile_s:text-lg laptop:text-2xl">216</div>
               <div class="stat-desc">Desde enero hasta octubre</div>
             </div>
 
@@ -65,7 +65,7 @@
                 </svg>
               </div>
               <div class="stat-title">Clientes</div>
-              <div class="stat-value mobile_l:text-lg laptop:text-2xl">2K</div>
+              <div class="stat-value mobile_s:text-lg laptop:text-2xl">2K</div>
               <div class="stat-desc">↗︎ 400 (22%)</div>
             </div>
 
@@ -86,7 +86,7 @@
                 </svg>
               </div>
               <div class="stat-title">Cotizaciones</div>
-              <div class="stat-value mobile_l:text-lg laptop:text-2xl">
+              <div class="stat-value mobile_s:text-lg laptop:text-2xl">
                 12,500
               </div>
               <div class="stat-desc">↗︎ 50 (14%)</div>
