@@ -8,7 +8,7 @@ const sections = [
   {
     id: 2,
     label: "Oficina Central",
-    description: `Soldadores 1703 INT #24 y #25, La Alianza, 64103 Monterrey, N.L., México`,
+    description: `Soldadores 1703 INT #24 y #25, La Alianza, 64103 Monterrey, N.L. México`,
   },
 ];
 </script>
