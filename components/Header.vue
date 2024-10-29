@@ -21,7 +21,7 @@ const handleSearch = (ev: Event) => {
     <div
       class="w-full max-w-[1240px] flex flex-row items-center justify-between"
     >
-      <div class="flex flex-row items-center">
+      <div class="flex flex-row items-center gap-8">
         <LogoLink />
 
         <ul class="flex flex-row gap-4 items-center justify-center p-0 m-0">
