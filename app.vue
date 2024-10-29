@@ -93,3 +93,9 @@ const message = computed(() => {
   </main>
   <CartModal />
 </template>
+
+<style>
+/* .no-scroll {
+  overflow: hidden;
+} */
+</style>

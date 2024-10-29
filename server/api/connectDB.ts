@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
 export const connectDatabase = async () => {
-  const URL =
-    "mongodb+srv://ivanedynamics:281mab3oxk@cluster0.mhmsj.mongodb.net/ as string";
+  const URL = process.env.MONGO_DB_URL as string;
 
   try {
+    console.log(URL, "URL");
+
     await mongoose.connect(URL, {});
     console.log("MONGO DB CONNECTED");
   } catch (error) {
