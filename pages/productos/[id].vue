@@ -148,7 +148,42 @@ const [colorId] = defineField("colorId");
             {{ product?.descripcion }}
           </p>
         </div>
-
+        <div v-if="product?.colores?.length !== 0">
+          <p class="text-sm">Disponible en:</p>
+          <ul class="flex flex-row gap-2 flex-wrap">
+            <li v-for="item in product?.colores">
+              <div
+                class="rounded-md border"
+                :style="{
+                  width: '25px',
+                  height: '25px',
+                  backgroundColor: item?.code_hex,
+                  border: '1px solid gray',
+                }"
+              ></div>
+            </li>
+          </ul>
+        </div>
+        <div v-if="product?.measures?.length !== 0">
+          <p class="text-sm">Medidas:</p>
+          <ul class="flex flex-row gap-2 flex-wrap">
+            <li v-for="item in product?.measures">
+              <p class="rounded-md border badge p-4">
+                {{ item?.name }}
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div v-if="product?.presentacion?.length !== 0">
+          <p class="text-sm">Presentacion:</p>
+          <ul class="flex flex-row gap-2 flex-wrap">
+            <li v-for="item in product?.presentacion">
+              <p class="rounded-md border badge p-4">
+                {{ item?.value }}
+              </p>
+            </li>
+          </ul>
+        </div>
         <a
           target="_blank"
           :href="`https://wa.me/${
