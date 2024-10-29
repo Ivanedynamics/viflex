@@ -95,18 +95,26 @@ const [colorId] = defineField("colorId");
 
 <template>
   <main class="flex-col pt-5 flex items-center justify-center px-3 mb-20">
-    <div class="w-full max-w-[1240px] grid grid-cols-5 gap-2 grid-rows-1">
-      <section class="col-1 col-span-3 gap-2">
-        <div
-          :class="`sticky top-24 w-full gap-2 grid ${
-            Number(product?.images?.length) > 1
-              ? ' grid-cols-[50px,1fr]'
-              : ' grid-cols-[1fr]'
-          }`"
-        >
+    <div
+      class="w-full max-w-[1240px] grid grid-cols-5 gap-2 grid-rows-1 mobile_s:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-5"
+    >
+      <section class="gap-2 tablet:col-span-1 laptop:col-span-3">
+        <div :class="`sticky top-24 w-full gap-2 flex flex-col`">
+          <figure
+            class="w-full h-[520px] mobile_s:h-[320px] tablet:h-[420px] laptop:h-[460px] bg-gray-200 rounded-md flex items-center justify-center"
+          >
+            <img
+              v-if="viewImage?.image_url"
+              :src="viewImage?.image_url"
+              class="w-full h-full object-contain mix-blend-darken"
+              alt=""
+              srcset=""
+            />
+            <p v-else class="opacity-50">No hay imagenes disponibles</p>
+          </figure>
           <aside
             v-if="Number(product?.images?.length) > 1"
-            class="flex flex-col w-full gap-2"
+            class="flex flex-row w-full gap-2"
           >
             <div
               v-for="img in product?.images"
@@ -128,30 +136,13 @@ const [colorId] = defineField("colorId");
               />
             </div>
           </aside>
-          <figure
-            class="w-full h-[520px] bg-gray-200 rounded-md flex items-center justify-center"
-          >
-            <img
-              v-if="viewImage?.image_url"
-              :src="viewImage?.image_url"
-              class="w-full h-full object-contain mix-blend-darken"
-              alt=""
-              srcset=""
-            />
-            <p v-else class="opacity-50">No hay imagenes disponibles</p>
-          </figure>
         </div>
       </section>
 
-      <section class="col-3 col-span-2 p-2 flex flex-col gap-4">
+      <section
+        class="p-2 flex flex-col gap-4 tablet:col-span-1 laptop:col-span-2"
+      >
         <div class="flex flex-col gap-2">
-          <!-- <p
-            class="text-gray-400 font-bold"
-            v-for="c in product?.clave"
-            :key="`clave-product-${c}`"
-          >
-            #{{ c }}
-          </p> -->
           <p class="font-bold text-2xl">{{ capitalizeText(product?.name) }}</p>
           <p>
             {{ product?.descripcion }}
@@ -180,9 +171,7 @@ const [colorId] = defineField("colorId");
           <p class="font-bold text-black">Consulta por WhatsApp</p>
         </a>
 
-        <section
-          class="card container-box bg-base-100 w-full shadow-xl card-body"
-        >
+        <div class="card container-box bg-base-100 w-full shadow-xl card-body">
           <p class="font-bold text-lg">Agregar al cotizador</p>
           <article class="w-full flex flex-col">
             <div class="label">
@@ -249,7 +238,7 @@ const [colorId] = defineField("colorId");
           <button @click="handleFormSubmit" class="btn btn-neutral mt-5">
             Agregar Producto
           </button>
-        </section>
+        </div>
         <div class="mt-10">
           <p class="font-bold">Sobre este artículo</p>
           <p>
@@ -261,5 +250,4 @@ const [colorId] = defineField("colorId");
   </main>
   <ExploreProducts />
   <AboutUs />
-  <!-- <Contact /> -->
 </template>
