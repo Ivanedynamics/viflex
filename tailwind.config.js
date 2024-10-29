@@ -30,11 +30,21 @@ module.exports = {
       },
     },
     screens: {
-      mobile: "480px", // Para móviles en general
-      tablet: "768px", // Para tablets en posición vertical
-      laptop: "1024px", // Para pantallas de laptop y tablets en horizontal
-      desktop: "1280px", // Para monitores de escritorio estándar
-      wide: "1536px", // Para pantallas anchas y ultra-widescreen
+      mobile_s: "320px",
+      mobile_m: "375px",
+      mobile_l: "425px",
+      // => @media (min-width: 640px) { ... }
+      tablet: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      laptop: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      desktop: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      desktop_l: "1440px",
+      // => @media (min-width: 1536px) { ... }
     },
   },
   plugins: [require("daisyui")],
@@ -51,6 +61,10 @@ module.exports = {
           },
           ".icon-fill": {
             fill: "#111827",
+          },
+          ".footer_page": {
+            "background-color": "#111827",
+            color: "white",
           },
           accent: "#22d3ee",
 
@@ -78,7 +92,10 @@ module.exports = {
           ".icon-fill": {
             fill: "white",
           },
-
+          ".footer_page": {
+            "background-color": "#1f2937",
+            color: "white",
+          },
           accent: "#22d3ee",
 
           neutral: "#374151",

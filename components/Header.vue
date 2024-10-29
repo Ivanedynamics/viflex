@@ -47,12 +47,14 @@ const toggleTheme = () => {
     class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[80px] px-3"
   >
     <div
-      class="w-full max-w-[1240px] flex flex-row items-center justify-between"
+      class="w-full max-w-[1240px] flex flex-row items-center justify-between tablet:px-4"
     >
       <div class="flex flex-row items-center gap-8">
         <LogoLink />
 
-        <ul class="flex flex-row gap-4 items-center justify-center p-0 m-0">
+        <ul
+          class="flex flex-row gap-4 items-center justify-center p-0 m-0 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:hidden laptop:flex"
+        >
           <li v-for="hp in headerOptions">
             <NuxtLink
               :key="`hp-pts-${hp.id}`"
@@ -65,7 +67,10 @@ const toggleTheme = () => {
         </ul>
       </div>
       <div class="flex flex-row items-center gap-4">
-        <form @submit="handleSearch" class="relative flex flex-row gap-4">
+        <form
+          @submit="handleSearch"
+          class="relative flex flex-row gap-4 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:hidden laptop:flex"
+        >
           <label class="input input-bordered flex items-center gap-2 w-full">
             <input
               v-model="inputRef"

@@ -22,7 +22,7 @@ const router = useRouter();
         </p>
       </header>
       <div
-        class="w-full grid grid-cols-4 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
+        class="w-full grid grid-cols-4 tablet:gap-4 tablet:grid-cols-3 laptop:grid-cols-4 laptop:gap-6 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
       >
         <template v-for="p in products?.products">
           <Card

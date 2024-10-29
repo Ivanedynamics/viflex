@@ -504,7 +504,7 @@ const handleFormSubmit = () => {
     </section>
   </main>
   <AboutUs />
-  <Contact />
+  <!-- <Contact /> -->
 </template>
 
 <style scoped>

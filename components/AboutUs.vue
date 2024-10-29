@@ -44,7 +44,7 @@ const aboutus = [
         </p>
       </header>
       <div
-        class="w-full grid grid-cols-4 gap-x-4 gap-y-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
+        class="w-full grid grid-cols-4 tablet:grid-cols-2 laptop:grid-cols-4 gap-x-4 gap-y-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
       >
         <article
           v-for="about in aboutus"

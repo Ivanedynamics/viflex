@@ -2,25 +2,31 @@
 
 <template>
   <section
-    class="h-full flex items-center justify-center flex-col relative mt-32"
+    class="h-full flex items-center justify-center flex-col relative mt-32 px-4 mobile_s:mt-20 laptop:mt-32"
   >
     <div class="w-full h-full flex items-center justify-center">
       <div class="w-full max-w-[1240px]">
         <article class="h-full flex flex-col items-center gap-8 justify-center">
           <div class="flex flex-col gap-6">
-            <h1 class="font-extrabold text-4xl text-center">
+            <h1
+              class="font-extrabold text-4xl text-center mobile_s:text-[1.2rem] mobile_m:text-[1.5rem] mobile_l:text-[1.7rem] tablet:text-[2.3rem] laptop:text-[2.5rem]"
+            >
               Fabricamos los mejores vinilos <br />
               de gran
               <span class="bg-primary text-white px-2"
                 >calidad y durabilidad</span
               >.
             </h1>
-            <p class="text-xl text-center">
+            <p
+              class="text-xl text-center mobile_s:text-sm tablet:text-lg laptop:text-xl"
+            >
               Descubre nuestra amplia gama de productos de alta calidad<br />
               y genera una cotización personalizada a tu medida.
             </p>
           </div>
-          <div class="stats shadow">
+          <div
+            class="stats shadow flex mobile_s:w-full mobile_s:flex-col tablet:flex-row tablet:w-fit"
+          >
             <div class="stat">
               <div class="stat-figure text-secondary">
                 <svg
@@ -90,29 +96,25 @@
         </article>
       </div>
     </div>
-    <div class="w-full max-w-[1240px] grid grid-cols-4 gap-8 mt-8">
+    <div
+      class="w-full max-w-[1240px] grid grid-cols-4 mobile_s:gap-4 mobile_s:grid-cols-1 mobile_l:grid-cols-1 tablet:grid-cols-4 gap-8 mt-8"
+    >
       <img
         src="public/bg2.jpg"
-        class="max-h-[250px] h-full w-full object-cover rounded-lg"
+        class="h-[250px] w-full object-cover rounded-lg"
       />
       <img
         src="public/bg.jpg"
-        class="max-h-[250px] h-full w-full object-cover rounded-lg"
+        class="h-[250px] w-full object-cover rounded-lg"
       />
       <img
         src="public/extra/1-empty-loft-with-steps.jpg"
-        class="max-h-[250px] h-full w-full object-cover rounded-lg"
+        class="h-[250px] w-full object-cover rounded-lg mobile_s:hidden tablet:flex"
       />
       <img
         src="public/extra/product/empaque_de_vinil.png"
-        class="max-h-[250px] h-full w-full object-cover rounded-lg"
+        class="h-[250px] w-full object-cover rounded-lg mobile_s:hidden tablet:flex"
       />
     </div>
   </section>
 </template>
-
-<style>
-.presentation_container {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-</style>

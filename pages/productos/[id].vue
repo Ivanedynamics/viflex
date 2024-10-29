@@ -261,5 +261,5 @@ const [colorId] = defineField("colorId");
   </main>
   <ExploreProducts />
   <AboutUs />
-  <Contact />
+  <!-- <Contact /> -->
 </template>

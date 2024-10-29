@@ -1,5 +1,5 @@
 <template>
   <Products />
   <AboutUs />
-  <Contact />
+  <!-- <Contact /> -->
 </template>
