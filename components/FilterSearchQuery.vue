@@ -52,11 +52,11 @@ watch(
 
 <template>
   <div class="">
-    <header class="sticky top-0 p-4">
+    <header class="top-0 p-2">
       <p class="card-title text-xs">Buscar producto</p>
     </header>
     <div class="bg-slate-600 w-auto h-[0.5px] opacity-15 mx-2"></div>
-    <form action="" method="get" class="p-4" @submit="handleSubmit">
+    <form action="" method="get" class="p-2" @submit="handleSubmit">
       <label class="input input-bordered flex items-center gap-2 w-full">
         <input
           v-model="inputTextG"

@@ -16,12 +16,12 @@ const handleChange = (id: string) => {
 
 <template>
   <div class="">
-    <header class="sticky top-0 p-4">
+    <header class="top-0 p-2">
       <p class="card-title text-xs">Tipo de producto</p>
     </header>
     <div class="bg-slate-600 w-auto h-[0.5px] opacity-15 mx-2"></div>
     <ul
-      class="py-4 list-none flex flex-col max-h-[200px] gap-6 p-4 overflow-x-hidden overflow-y-scroll"
+      class="py-4 list-none flex flex-col max-h-[200px] gap-6 p-2 overflow-x-hidden overflow-y-scroll"
     >
       <li
         v-for="category in data?.categories"
