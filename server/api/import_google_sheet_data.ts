@@ -383,6 +383,6 @@ export default defineEventHandler(async (event) => {
   await createPresentationJSON(event);
   await createImagesJSON(event);
   return {
-    message: "Archivos generados exitosamente",
+    message: "Se actualizo la base de datos exitosamente",
   };
 });

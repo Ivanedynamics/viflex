@@ -4,8 +4,6 @@ export const connectDatabase = async () => {
   const URL = process.env.MONGO_DB_URL as string;
 
   try {
-    console.log(URL, "URL");
-
     await mongoose.connect(URL, {});
     console.log("MONGO DB CONNECTED");
   } catch (error) {
