@@ -21,7 +21,7 @@ export const generateURL = (event: H3Event, sheetRange: string) => {
 };
 
 export const createColorsJSON = async (event: H3Event) => {
-  const url = generateURL(event, "color!A1:Z900");
+  const url = generateURL(event, "colores!A1:Z900");
   const response = await fetch(url);
   const json = await response.json();
 
@@ -99,7 +99,8 @@ export const createProductsJSON = async (event: H3Event) => {
       medida: normalizeField(e?.[6]),
       presentacion_2: e?.[7] ?? "",
       descripcion: e?.[8] ?? "",
-      descripcion_larga: e?.[9] ?? "",
+      featured: e?.[9] ?? "",
+      descripcion_larga: e?.[10] ?? "",
     };
     const newItem = new productsSchema(payload);
     await newItem.save();

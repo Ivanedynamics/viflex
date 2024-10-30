@@ -15,7 +15,11 @@ export default defineEventHandler(async (event) => {
   const searchByCategory = query?.searchByCategory as string;
   const searchByColor = query?.searchByColor as string;
 
-  const products = await productsSchema.find({}).lean();
+  const products = await productsSchema
+    .find({
+      featured: "TRUE",
+    })
+    .lean();
   const getCategories = await categoriesSchema.find({}).lean();
   const getColors = await colorSchema.find({}).lean();
   const getImages = await imagesSchema.find({}).lean();

@@ -8,7 +8,11 @@ import {
 
 export default defineEventHandler(async (event) => {
   await connectDatabase();
-  const products = await productsSchema.find({}).lean();
+  const products = await productsSchema
+    .find({
+      featured: "TRUE",
+    })
+    .lean();
   const getCategories = await categoriesSchema.find({}).lean();
   // const getPresentacion = await presentationSchema.find({});
   const getColors = await colorSchema.find({}).lean();

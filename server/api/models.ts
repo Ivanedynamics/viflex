@@ -53,6 +53,9 @@ const productsNewSchema = new Schema({
   presentacion: {
     type: Array,
   },
+  featured: {
+    type: String,
+  },
   color: {
     type: Array,
   },

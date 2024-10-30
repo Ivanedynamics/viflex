@@ -50,6 +50,7 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     // themes: ["light", "dark"],
+    darkTheme: "dark",
     themes: [
       {
         light: {
@@ -114,7 +115,7 @@ module.exports = {
         },
       },
     ],
-    darkTheme: "light",
+    // darkTheme: "light",
   },
   nitro: {
     storage: {
