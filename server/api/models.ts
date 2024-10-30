@@ -119,6 +119,12 @@ const QuotationsNewSchema = new Schema({
   id: {
     type: String,
   },
+  quoteNumber: {
+    type: String,
+  },
+  createdAt: {
+    type: String,
+  },
   fullName: {
     type: String,
   },
@@ -142,7 +148,6 @@ const QuotationsNewSchema = new Schema({
   },
   products: {
     type: Array,
-    //IProductCart[]
   },
 });
 

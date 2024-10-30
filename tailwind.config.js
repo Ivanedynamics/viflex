@@ -117,6 +117,7 @@ module.exports = {
     ],
     // darkTheme: "light",
   },
+
   nitro: {
     storage: {
       data: { driver: "vercelKV" },

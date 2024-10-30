@@ -94,44 +94,35 @@ const handleFormSubmit = () => {
 
 <template>
   <main class="w-full h-full flex items-center justify-center px-4">
-    <dialog id="successModal" className="modal">
-      <div className="modal-box gap-4 flex flex-col">
-        <p className="font-bold text-lg">
-          🎉 ¡Cotización Creada Exitosamente! 🎉
-        </p>
-        <p>
-          Se ha enviado un correo ✉️ de confirmación con la siguiente
-          informacion proporcionada.
-        </p>
+    <dialog id="successModal" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <div class="flex flex-col w-full justify-between items-start gap-4">
+            <p class="font-bold text-lg">
+              🎉 ¡Cotización Creada Exitosamente! 🎉
+            </p>
+            <p>
+              Se ha enviado un correo ✉️ de confirmación con la siguiente
+              informacion proporcionada.
+            </p>
 
-        <!-- <div role="alert" class="alert alert-success">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 shrink-0 stroke-current"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span>La cotización ha sido generada con éxito</span>
-      </div> -->
-
-        <ul>
-          <li><strong>Número de Cotización</strong>: [Número de Cotización]</li>
-          <li><strong>Nombre Completo</strong>: {{ formValues?.fullName }}</li>
-          <li><strong>Correo electrónico</strong>: {{ formValues?.email }}</li>
-          <li><strong>Fecha de Creación</strong>: [Fecha]</li>
-        </ul>
-        <div className="modal-action">
-          <form method="dialog">
-            <button className="btn">Close</button>
-          </form>
-        </div>
+            <ul>
+              <li><strong>N°</strong>: [Número de Cotización]</li>
+              <li>
+                <strong>Nombre Completo</strong>: {{ formValues?.fullName }}
+              </li>
+              <li>
+                <strong>Correo electrónico</strong>: {{ formValues?.email }}
+              </li>
+              <li><strong>Fecha de Creación</strong>: [Fecha]</li>
+            </ul>
+          </div>
+          <div class="modal-action">
+            <form method="dialog">
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </form>
       </div>
     </dialog>
     <section

@@ -5,12 +5,9 @@ export const CONFIG_EMAIL = {
     template_id: "d-1c10dfc3943644b4936ccd90d2d68a4d",
     SENDERS: [
       {
-        email: "nono.gs09@gmail.com",
-        name: "Arnoldo Garcia",
+        email: "Ilopez@edynamicslog.com",
+        name: "Ivan Garcia",
       },
     ],
-  },
-  CLIENT: {
-    template_id: "d-0f1d255c9e214ffbbc0e557759554204",
   },
 };
