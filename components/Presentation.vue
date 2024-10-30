@@ -27,7 +27,7 @@
           <div
             class="stats shadow flex mobile_s:w-full mobile_s:flex-col tablet:flex-row tablet:w-fit"
           >
-            <div class="stat">
+            <div class="stat container-box">
               <div class="stat-figure text-secondary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@
               <div class="stat-desc">Desde enero hasta octubre</div>
             </div>
 
-            <div class="stat">
+            <div class="stat container-box">
               <div class="stat-figure text-secondary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@
               <div class="stat-desc">↗︎ 400 (22%)</div>
             </div>
 
-            <div class="stat">
+            <div class="stat container-box">
               <div class="stat-figure text-secondary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

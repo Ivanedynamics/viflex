@@ -34,6 +34,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@prisma/client": "^5.5.2",
     "@productdevbook/chatwoot": "^1.3.0",
+    "@sendgrid/mail": "^8.1.4",
     "@types/uuid": "^10.0.0",
     "@vee-validate/nuxt": "^4.14.6",
     "@vercel/kv": "latest",

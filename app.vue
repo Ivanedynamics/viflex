@@ -2,11 +2,6 @@
 import { CONTACT_COFING } from "./mocks/contact";
 import { useCartStore } from "./store/cart";
 import { watch, onMounted } from "vue";
-useHead({
-  bodyAttrs: {
-    class: "m-0 p-0 bg-black-alpha-90 ",
-  },
-});
 
 const store = useCartStore();
 

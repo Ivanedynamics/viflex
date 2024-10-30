@@ -15,17 +15,17 @@ const emit = defineEmits(["add_cart", "buynow"]);
 
 <template>
   <article class="card container-box shadow-xl">
-    <figure class="w-full h-40 object-cover rounded-t-lg bg-gray-100 p-8">
-      <img
-        :src="
-          props?.images?.[0]?.image_url ??
-          'https://cemacogt.vtexassets.com/arquivos/ids/359230-800-800?v=638438976140270000&width=800&height=800&aspect=true'
-        "
-        alt=""
-        class="w-full h-full object-contain mix-blend-darken"
-      />
-    </figure>
-    <section class="card-body flex flex-col justify-between">
+    <section class="p-4 flex flex-col justify-between gap-4">
+      <figure class="w-full h-40 object-cover rounded-t-lg bg-gray-200">
+        <img
+          :src="
+            props?.images?.[0]?.image_url ??
+            'https://cemacogt.vtexassets.com/arquivos/ids/359230-800-800?v=638438976140270000&width=800&height=800&aspect=true'
+          "
+          alt=""
+          class="w-full h-full object-contain mix-blend-darken"
+        />
+      </figure>
       <p class="font-bold text-md text-title h-[50px]">
         {{ capitalizeText(props?.name) }}
       </p>

@@ -1,18 +1,46 @@
-// import { Resend } from "resend";
+import sgMail from "@sendgrid/mail";
 
-// const resend = new Resend(process.env.RESEND_API_KEY);
+export default defineEventHandler(async () => {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  console.log(process.env.SENDGRID_API_KEY);
 
-// export default defineEventHandler(async () => {
-//   try {
-//     const data = await resend.emails.send({
-//       from: "Acme <onboarding@resend.dev>",
-//       to: ["delivered@resend.dev"],
-//       subject: "Hello world",
-//       html: "<strong>It works!</strong>",
-//     });
+  //   const msg = {
+  //     to: "miltonivan117@gmail.com", // Change to your recipient
+  //     from: "Ilopez@edynamicslog.com", // Change to your verified sender
+  //     subject: "Sending with SendGrid is Fun",
+  //     text: "and easy to do anywhere, even with Node.js",
+  //     html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+  //   };
 
-//     return data;
-//   } catch (error) {
-//     return { error };
-//   }
-// });
+  const msg = {
+    from: {
+      email: "Ilopez@edynamicslog.com",
+    },
+    personalizations: [
+      {
+        to: [
+          {
+            email: "miltonivan117@gmail.com",
+            name: "title  learn",
+          },
+        ],
+        dynamic_template_data: {
+          name: "Ivan Garcia",
+        },
+      },
+    ],
+    subject: "prueba test",
+    template_id: "d-1c10dfc3943644b4936ccd90d2d68a4d",
+
+    //  d-1c10dfc3943644b4936ccd90d2d68a4d
+  };
+
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});

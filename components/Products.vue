@@ -28,7 +28,7 @@ const { data: products } = await useAsyncData<{
 );
 
 const handleDialogFilter = () => {
-  document.getElementById("my_modal_1").showModal();
+  document.getElementById("my_modal_1")?.showModal?.();
 };
 </script>
 

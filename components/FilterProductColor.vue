@@ -15,27 +15,25 @@ const handleChange = (id: string) => {
 };
 </script>
 <template>
-  <div class="">
-    <header class="p-2">
-      <p class="card-title text-xs">Colores</p>
-    </header>
-    <div class="bg-slate-600 w-auto h-[0.5px] opacity-15 mx-2"></div>
+  <div>
+    <div class="label">
+      <span class="label-text">Tipos de colores</span>
+    </div>
     <ul
-      class="py-4 list-none flex flex-col max-h-[200px] gap-6 p-2 overflow-x-hidden overflow-y-scroll"
+      class="list-none flex flex-col max-h-[200px] gap-6 p-2 overflow-x-hidden overflow-y-scroll"
     >
       <li
         v-for="color in data?.colors"
         :key="color.id"
-        class="flex flex-row gap-2"
+        class="flex flex-row gap-2 items-start justify-start"
       >
         <label
-          :for="`color-${color.id}`"
-          class="label cursor-pointer gap-2 flex flex-row items-start justify-between w-full"
+          class="label w-full cursor-pointer gap-2 flex flex-row items-start justify-start"
         >
-          <div class="flex flex-row gap-2 w-fit">
+          <div class="flex flex-row gap-2 w-full">
             <input
               type="checkbox"
-              class="checkbox"
+              class="checkbox checkbox-primary"
               :id="`color-${color.id}`"
               @change="() => handleChange(color.id)"
               :checked="selectedColors?.includes(color.id)"
@@ -47,7 +45,7 @@ const handleChange = (id: string) => {
           <div
             class="rounded-md"
             :style="{
-              width: '24px',
+              width: '28px',
               height: '24px',
               backgroundColor: color.code_hex,
               border: '1px solid gray',

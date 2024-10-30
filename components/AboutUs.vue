@@ -50,12 +50,12 @@ const aboutus = [
       >
         <article
           v-for="about in aboutus"
-          class="card container-box bg-base-100 shadow-xl"
+          class="p-4 rounded-lg gap-4 flex flex-col container-box bg-base-100 shadow-xl"
         >
           <img :src="about.image" class="w-full h-40 object-cover rounded-lg" />
-          <div class="card-body flex flex-col items-start justify-end">
-            <p class="card-title">{{ about.title }}</p>
-            <p class="card-">{{ about.description }}</p>
+          <div class="flex flex-col items-start justify-end">
+            <p class="text-lg font-bold">{{ about.title }}</p>
+            <p class="text-sm">{{ about.description }}</p>
           </div>
         </article>
       </div>

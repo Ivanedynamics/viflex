@@ -206,7 +206,9 @@ const [colorId] = defineField("colorId");
           <p class="font-bold text-black">Consulta por WhatsApp</p>
         </a>
 
-        <div class="card container-box bg-base-100 w-full shadow-xl card-body">
+        <div
+          class="p-4 rounded-lg container-box bg-base-100 w-full shadow-xl card-body"
+        >
           <p class="font-bold text-lg">Agregar al cotizador</p>
           <article class="w-full flex flex-col">
             <div class="label">
