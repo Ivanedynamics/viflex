@@ -61,7 +61,7 @@ type Values = {
 
 const createQuotation = async (values: Values) => {
   try {
-    const response = await axios.post("/api/quotation/new", {
+    await axios.post("/api/quotation/new", {
       ...values,
       products: products.value,
     });
@@ -76,7 +76,8 @@ const onSubmit = (values: Values) => {
     return;
   }
   createQuotation(values);
-  // store.handleReset();
+  alert("La cotizacion se ha creado exitosamente.");
+  store.handleReset();
 };
 const handleFormSubmit = () => {
   handleSubmit(onSubmit)();
