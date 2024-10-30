@@ -4,21 +4,19 @@ import { useCartStore } from "~/store/cart";
 import { object, string } from "yup";
 import axios from "axios";
 import { useForm } from "vee-validate";
-import LogoLink from "~/components/LogoLink.vue";
-import { v4 as uuidv4 } from "uuid";
 
 const store = useCartStore();
 const { products } = toRefs(store);
 
 const { errors, handleSubmit, defineField, handleReset } = useForm({
   initialValues: {
-    fullName: "",
-    email: "",
-    phone: "",
-    address: "",
-    state: "",
-    entity: "",
-    comment: "",
+    fullName: "test",
+    email: "test@gmail.com",
+    phone: "1234567890",
+    address: "address test",
+    state: "morelos",
+    entity: "CLIENTE",
+    comment: "comment test",
   },
   validationSchema: object({
     fullName: string().required("El campo 'Nombre Completo' es obligatorio."),
@@ -59,6 +57,8 @@ type Values = {
   comment: string;
 };
 
+const formValues = ref<Values | null>(null);
+
 const createQuotation = async (values: Values) => {
   try {
     await axios.post("/api/quotation/new", {
@@ -68,6 +68,10 @@ const createQuotation = async (values: Values) => {
   } catch (error) {}
 };
 
+const handleClickModalSuccess = () => {
+  document.getElementById("successModal")?.showModal();
+};
+
 const onSubmit = (values: Values) => {
   if (products.value?.length === 0) {
     alert(
@@ -75,9 +79,13 @@ const onSubmit = (values: Values) => {
     );
     return;
   }
-  createQuotation(values);
-  alert("La cotizacion se ha creado exitosamente.");
-  store.handleReset();
+
+  // createQuotation(values);
+  // alert("La cotizacion se ha creado exitosamente.");
+  formValues.value = values;
+  handleClickModalSuccess();
+  // handleReset();
+  // store.handleReset();
 };
 const handleFormSubmit = () => {
   handleSubmit(onSubmit)();
@@ -86,6 +94,46 @@ const handleFormSubmit = () => {
 
 <template>
   <main class="w-full h-full flex items-center justify-center px-4">
+    <dialog id="successModal" className="modal">
+      <div className="modal-box gap-4 flex flex-col">
+        <p className="font-bold text-lg">
+          🎉 ¡Cotización Creada Exitosamente! 🎉
+        </p>
+        <p>
+          Se ha enviado un correo ✉️ de confirmación con la siguiente
+          informacion proporcionada.
+        </p>
+
+        <!-- <div role="alert" class="alert alert-success">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>La cotización ha sido generada con éxito</span>
+      </div> -->
+
+        <ul>
+          <li><strong>Número de Cotización</strong>: [Número de Cotización]</li>
+          <li><strong>Nombre Completo</strong>: {{ formValues?.fullName }}</li>
+          <li><strong>Correo electrónico</strong>: {{ formValues?.email }}</li>
+          <li><strong>Fecha de Creación</strong>: [Fecha]</li>
+        </ul>
+        <div className="modal-action">
+          <form method="dialog">
+            <button className="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
     <section
       class="max-w-[800px] w-full container-box shadow-lg mt-10 mb-10 rounded-lg h-fit"
     >
@@ -396,91 +444,6 @@ const handleFormSubmit = () => {
               />
             </li>
           </ul>
-          <!-- <table v-if="products?.length !== 0">
-            <tr>
-              <th>Productos</th>
-              <th>Presentación</th>
-              <th>Medida</th>
-              <th>Color</th>
-              <th>Cantidad</th>
-              <th>--</th>
-            </tr>
-            <tr v-for="product in products" :key="product?.id">
-              <td>
-                <NuxtLink :to="`/productos/${product?.product?.id}`">
-                  <p class="text-sm">
-                    {{ capitalizeText(product?.product?.name) }}
-                  </p>
-                </NuxtLink>
-              </td>
-              <td
-                v-for="item in [
-                  {
-                    id: 1,
-                    label: 'Presentación',
-                    value: product?.selection?.presentacion?.value,
-                  },
-                  {
-                    id: 2,
-                    label: 'Medida',
-                    value: product?.selection?.medida?.name,
-                  },
-                  {
-                    id: 3,
-                    label: 'Color',
-                    value: product?.selection?.color?.nombre,
-                  },
-                ]"
-              >
-                <p class="text text-sm">
-                  {{ capitalizeText(item?.value) }}
-                </p>
-              </td>
-              <td>
-                <div class="grid grid-cols-3">
-                  <button
-                    type="button"
-                    @click="store.decreaseProduct(product?.id)"
-                    :class="'btn btn-ghost'"
-                  >
-                    -
-                  </button>
-                  <div class="flex items-center justify-center">
-                    <p class="text text-sm">
-                      {{ capitalizeText(`${product?.quantity}`) }}
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    @click="store.incrementProduct(product?.id)"
-                    :class="'btn btn-ghost'"
-                  >
-                    +
-                  </button>
-                </div>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  @click="store.deleteProduct(product?.id)"
-                  :class="'text-sm flex flex-row justify-center items-center gap-2   hover:bg-gray-200 text-black font-semibold  p-2  border border-white hover:border-transparent rounded'"
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 21C6.45 21 5.97933 20.8043 5.588 20.413C5.19667 20.0217 5.00067 19.5507 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8043 20.021 18.413 20.413C18.0217 20.805 17.5507 21.0007 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
-                      fill="red"
-                    />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-          </table> -->
         </section>
         <span
           v-if="products?.length === 0"

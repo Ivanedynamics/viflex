@@ -58,7 +58,7 @@ module.exports = {
 
           secondary: "#9ca3af",
           ".container-box": {
-            "background-color": "white",
+            // "background-color": "white",
           },
           ".icon-fill": {
             fill: "#111827",
@@ -89,7 +89,7 @@ module.exports = {
 
           secondary: "#9ca3af",
           ".container-box": {
-            "background-color": "#1A222E",
+            // "background-color": "#1A222E",
           },
           ".icon-fill": {
             fill: "white",
