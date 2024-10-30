@@ -12,13 +12,13 @@ const { products } = toRefs(store);
 
 const { errors, handleSubmit, defineField, handleReset } = useForm({
   initialValues: {
-    fullName: "Ivan Test",
-    email: "test@gmail.com",
-    phone: "123435665789",
-    address: "address one",
-    state: "chiapas",
-    entity: "CLIENTE",
-    comment: "comentario de prueba",
+    fullName: "",
+    email: "",
+    phone: "",
+    address: "",
+    state: "",
+    entity: "",
+    comment: "",
   },
   validationSchema: object({
     fullName: string().required("El campo 'Nombre Completo' es obligatorio."),
@@ -65,7 +65,6 @@ const createQuotation = async (values: Values) => {
       ...values,
       products: products.value,
     });
-    console.log(response, "response");
   } catch (error) {}
 };
 

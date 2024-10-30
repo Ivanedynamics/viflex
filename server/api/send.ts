@@ -12,26 +12,35 @@ export default defineEventHandler(async () => {
   //     html: "<strong>and easy to do anywhere, even with Node.js</strong>",
   //   };
 
+  // personalizations: [
+  //   {
+  //     to: [
+  //       {
+  //         email: "miltonivan117@gmail.com",
+  //         name: "title  learn",
+  //       },
+  //     ],
+  //     dynamic_template_data: {
+  //       name: "Ivan Garcia",
+  //     },
+  //   },
+  // ],
   const msg = {
     from: {
       email: "Ilopez@edynamicslog.com",
     },
     personalizations: [
       {
+        subject: "YOUR SUBJECT LINE GOES HERE",
         to: [
           {
-            email: "miltonivan117@gmail.com",
-            name: "title  learn",
+            email: "recipient1@example.com",
           },
         ],
-        dynamic_template_data: {
-          name: "Ivan Garcia",
-        },
       },
     ],
     subject: "prueba test",
     template_id: "d-1c10dfc3943644b4936ccd90d2d68a4d",
-
     //  d-1c10dfc3943644b4936ccd90d2d68a4d
   };
 
