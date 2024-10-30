@@ -67,7 +67,9 @@ const handleDialogFilter = () => {
       class="w-full max-w-[1240px] grid grid-cols-4 relative gap-8 mobile_s:flex mobile_s:gap-4 laptop:grid"
     >
       <div class="relative h-full w-full mobile_s:hidden laptop:flex">
-        <FilterProducts />
+        <div class="top-0 sticky">
+          <FilterProducts />
+        </div>
       </div>
 
       <article class="col-span-3">
