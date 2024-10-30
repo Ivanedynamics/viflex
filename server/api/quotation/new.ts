@@ -42,7 +42,7 @@ const SendBusinessEmail = async (body: BodyValues) => {
         dynamicTemplateData: {
           fullName: body?.fullName,
           quoteNumber: body?.quoteNumber,
-          createdAt: body?.createdAt,
+          createdAt: new Date(body?.createdAt)?.toLocaleDateString(),
           email: body?.email,
           phone: body?.phone,
           address: body?.address,
@@ -98,6 +98,7 @@ export default defineEventHandler(async (event) => {
       quoteNumber: uuidv4().slice(0, 4) as string,
       createdAt: new Date().toISOString(),
     };
+
     const quotation = new QuotationSchema(payload);
     await quotation.save();
     // await SendBusinessEmail(payload);
@@ -115,7 +116,8 @@ export default defineEventHandler(async (event) => {
     return {
       status: "error",
       data: {
-        message: "Ocurrio un error inesperado, contacta con soporte.",
+        message:
+          "Ha ocurrido un error inesperado al intentar procesar tu solicitud. Te recomendamos intentar nuevamente más tarde. Si el problema persiste, por favor contacta a nuestro soporte para recibir asistencia. Agradecemos tu comprensión.",
       },
     };
   }

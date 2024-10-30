@@ -56,36 +56,48 @@ type Values = {
   entity: string;
   comment: string;
 };
-
-const formValues = ref<Values | null>(null);
-
-const createQuotation = async (values: Values) => {
-  try {
-    await axios.post("/api/quotation/new", {
-      ...values,
-      products: products.value,
-    });
-  } catch (error) {}
+type DialogState = {
+  status: "error" | "success";
+  data: {
+    [key in string]: string;
+  };
 };
+const dialogState = ref<DialogState | null>(null);
 
 const handleClickModalSuccess = () => {
+  //@ts-ignore
   document.getElementById("successModal")?.showModal();
 };
 
-const onSubmit = (values: Values) => {
+const onSubmit = async (values: Values) => {
   if (products.value?.length === 0) {
-    alert(
-      "Por favor, agrega al menos un producto antes de realizar la cotización."
-    );
+    dialogState.value = {
+      status: "error",
+      data: {
+        message: "Debes agregar un producto para realizar la cotizacion",
+      },
+    };
+    handleClickModalSuccess();
     return;
   }
-
-  // createQuotation(values);
-  // alert("La cotizacion se ha creado exitosamente.");
-  formValues.value = values;
-  handleClickModalSuccess();
-  // handleReset();
-  // store.handleReset();
+  try {
+    const response = await axios.post<DialogState>("/api/quotation/new", {
+      ...values,
+      products: products.value,
+    });
+    dialogState.value = response?.data;
+    handleClickModalSuccess();
+    handleReset();
+    store.handleReset();
+  } catch (error) {
+    dialogState.value = {
+      status: "error",
+      data: {
+        message: "Ha ocurrido un error al crear la cotizacion",
+      },
+    };
+    handleClickModalSuccess();
+  }
 };
 const handleFormSubmit = () => {
   handleSubmit(onSubmit)();
@@ -97,29 +109,53 @@ const handleFormSubmit = () => {
     <dialog id="successModal" class="modal">
       <div class="modal-box">
         <form method="dialog">
-          <div class="flex flex-col w-full justify-between items-start gap-4">
+          <div
+            v-if="dialogState?.status === 'success'"
+            class="flex flex-col w-full justify-between items-start gap-4"
+          >
             <p class="font-bold text-lg">
               🎉 ¡Cotización Creada Exitosamente! 🎉
             </p>
             <p>
               Se ha enviado un correo ✉️ de confirmación con la siguiente
-              informacion proporcionada.
+              información proporcionada:
             </p>
 
             <ul>
-              <li><strong>N°</strong>: [Número de Cotización]</li>
+              <li><strong>N°</strong>: {{ dialogState?.data?.quoteNumber }}</li>
               <li>
-                <strong>Nombre Completo</strong>: {{ formValues?.fullName }}
+                <strong>Nombre Completo</strong>:
+                {{ dialogState?.data?.fullName }}
               </li>
               <li>
-                <strong>Correo electrónico</strong>: {{ formValues?.email }}
+                <strong>Correo electrónico</strong>:
+                {{ dialogState?.data?.email }}
               </li>
-              <li><strong>Fecha de Creación</strong>: [Fecha]</li>
+              <li>
+                <strong>Fecha de Creación</strong>:
+                {{
+                  new Date(dialogState?.data?.createdAt)?.toLocaleDateString()
+                }}
+              </li>
             </ul>
+            <p>
+              <strong>Gracias por elegirnos!</strong> Si tienes alguna pregunta
+              o necesitas más información, no dudes en contactarnos. ¡Estamos
+              aquí para ayudarte!
+            </p>
+          </div>
+          <div
+            v-if="dialogState?.status === 'error'"
+            class="flex flex-col w-full justify-between items-start gap-4"
+          >
+            <p class="font-bold text-lg">❌ Cotización No Realizada</p>
+            <p v-if="dialogState?.data?.message" class="text-base opacity-85">
+              {{ dialogState?.data?.message }}
+            </p>
           </div>
           <div class="modal-action">
             <form method="dialog">
-              <button class="btn">Close</button>
+              <button class="btn">Cerrar</button>
             </form>
           </div>
         </form>
@@ -460,7 +496,6 @@ const handleFormSubmit = () => {
     </section>
   </main>
   <AboutUs />
-  <!-- <Contact /> -->
 </template>
 
 <style scoped>
