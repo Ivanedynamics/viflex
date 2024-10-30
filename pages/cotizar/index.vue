@@ -2,7 +2,7 @@
 import { Entities, statesOfMexico } from "~/assets/mocks/statesMexico";
 import { useCartStore } from "~/store/cart";
 import { object, string } from "yup";
-
+import axios from "axios";
 import { useForm } from "vee-validate";
 import LogoLink from "~/components/LogoLink.vue";
 import { v4 as uuidv4 } from "uuid";
@@ -12,13 +12,13 @@ const { products } = toRefs(store);
 
 const { errors, handleSubmit, defineField, handleReset } = useForm({
   initialValues: {
-    fullName: "",
-    email: "",
-    phone: "",
-    address: "",
-    state: "",
-    entity: "",
-    comment: "",
+    fullName: "Ivan Test",
+    email: "test@gmail.com",
+    phone: "123435665789",
+    address: "address one",
+    state: "chiapas",
+    entity: "CLIENTE",
+    comment: "comentario de prueba",
   },
   validationSchema: object({
     fullName: string().required("El campo 'Nombre Completo' es obligatorio."),
@@ -59,6 +59,16 @@ type Values = {
   comment: string;
 };
 
+const createQuotation = async (values: Values) => {
+  try {
+    const response = await axios.post("/api/quotation/new", {
+      ...values,
+      products: products.value,
+    });
+    console.log(response, "response");
+  } catch (error) {}
+};
+
 const onSubmit = (values: Values) => {
   if (products.value?.length === 0) {
     alert(
@@ -66,8 +76,8 @@ const onSubmit = (values: Values) => {
     );
     return;
   }
-
-  store.handleReset();
+  createQuotation(values);
+  // store.handleReset();
 };
 const handleFormSubmit = () => {
   handleSubmit(onSubmit)();

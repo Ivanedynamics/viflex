@@ -115,6 +115,37 @@ const imagesNewSchema = new Schema({
   },
 });
 
+const QuotationsNewSchema = new Schema({
+  id: {
+    type: String,
+  },
+  fullName: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  phone: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  entity: {
+    type: String,
+  },
+  comment: {
+    type: String,
+  },
+  products: {
+    type: Array,
+    //IProductCart[]
+  },
+});
+
 export const colorSchema =
   mongoose.models?.colors ?? mongoose.model("colors", colorNewSchema);
 
@@ -137,3 +168,7 @@ export const presentationSchema =
 
 export const imagesSchema =
   mongoose?.models?.images ?? mongoose?.model("images", imagesNewSchema);
+
+export const QuotationSchema =
+  mongoose?.models?.quotations ??
+  mongoose?.model("quotations", QuotationsNewSchema);

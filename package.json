@@ -39,6 +39,7 @@
     "@vee-validate/nuxt": "^4.14.6",
     "@vercel/kv": "latest",
     "@vueuse/core": "^10.4.1",
+    "axios": "^1.7.7",
     "daisyui": "^4.12.14",
     "html-pdf-node": "^1.0.8",
     "mongoose": "^8.7.3",
