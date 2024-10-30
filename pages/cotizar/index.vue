@@ -10,13 +10,13 @@ const { products } = toRefs(store);
 
 const { errors, handleSubmit, defineField, handleReset } = useForm({
   initialValues: {
-    fullName: "test",
-    email: "test@gmail.com",
-    phone: "1234567890",
-    address: "address test",
-    state: "morelos",
-    entity: "CLIENTE",
-    comment: "comment test",
+    fullName: "",
+    email: "",
+    phone: "",
+    address: "",
+    state: "",
+    entity: "",
+    comment: "",
   },
   validationSchema: object({
     fullName: string().required("El campo 'Nombre Completo' es obligatorio."),

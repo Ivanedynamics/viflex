@@ -22,8 +22,6 @@ function closeDialog() {
 }
 watch(showCart, (value) => {
   if (value) {
-    console.log("agregandose");
-
     showDialog();
     return;
   }

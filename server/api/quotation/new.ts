@@ -67,9 +67,20 @@ const SendBusinessEmail = async (body: BodyValues) => {
 
   try {
     await sgMail.send(payload);
-    return "EL CORREO SE HA ENVIADO";
+
+    return {
+      status: "success",
+      data: {
+        message: "El Correo se ha enviado.",
+      },
+    };
   } catch (error) {
-    return "OCURRIO UN ERROR AL ENVIAR EL CORREO";
+    return {
+      status: "error",
+      data: {
+        message: "Ha ocurrido un error inesperado al enviar el correo.",
+      },
+    };
   }
 };
 
@@ -101,7 +112,7 @@ export default defineEventHandler(async (event) => {
 
     const quotation = new QuotationSchema(payload);
     await quotation.save();
-    // await SendBusinessEmail(payload);
+    await SendBusinessEmail(payload);
 
     return {
       status: "success",
