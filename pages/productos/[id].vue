@@ -153,7 +153,7 @@ const [colorId] = defineField("colorId");
           <ul class="flex flex-row gap-2 flex-wrap">
             <li v-for="item in product?.colores">
               <div
-                class="rounded-md border"
+                class="rounded-md border container-box"
                 :style="{
                   width: '25px',
                   height: '25px',
@@ -168,7 +168,7 @@ const [colorId] = defineField("colorId");
           <p class="text-sm">Medidas:</p>
           <ul class="flex flex-row gap-2 flex-wrap">
             <li v-for="item in product?.measures">
-              <p class="rounded-md border badge p-4">
+              <p class="rounded-md border badge p-4 container-box">
                 {{ item?.name }}
               </p>
             </li>
@@ -178,7 +178,7 @@ const [colorId] = defineField("colorId");
           <p class="text-sm">Presentacion:</p>
           <ul class="flex flex-row gap-2 flex-wrap">
             <li v-for="item in product?.presentacion">
-              <p class="rounded-md border badge p-4">
+              <p class="rounded-md border badge p-4 container-box">
                 {{ item?.value }}
               </p>
             </li>
