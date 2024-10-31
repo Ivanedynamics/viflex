@@ -58,7 +58,7 @@ const categories = computed(() => {
             <ImagePreviewCard :image_url="item?.image" custom-css="h-[150px]" />
 
             <p class="font-bold">{{ item?.label }}</p>
-            <p class="text-base h-20">
+            <p class="text-sm h-20">
               {{ item?.description }}
             </p>
             <NuxtLink :to="`/productos?q=${item?.q}`" class="btn btn-neutral">
