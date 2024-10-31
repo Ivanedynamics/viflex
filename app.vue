@@ -99,6 +99,9 @@ const message = computed(() => {
 </style>
 
 <style>
+.woot-widget-bubble {
+  z-index: 100 !important;
+}
 .woot-elements--right {
   z-index: 100 !important;
 }
