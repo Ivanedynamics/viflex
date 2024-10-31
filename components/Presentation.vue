@@ -103,25 +103,5 @@
         </article>
       </div>
     </div>
-    <div
-      class="w-full max-w-[1240px] grid grid-cols-4 mobile_s:gap-4 mobile_s:grid-cols-1 mobile_l:grid-cols-1 tablet:grid-cols-4 gap-8 mt-8"
-    >
-      <img
-        src="public/bg2.jpg"
-        class="h-[250px] w-full object-cover rounded-lg"
-      />
-      <img
-        src="public/bg.jpg"
-        class="h-[250px] w-full object-cover rounded-lg"
-      />
-      <img
-        src="public/extra/1-empty-loft-with-steps.jpg"
-        class="h-[250px] w-full object-cover rounded-lg mobile_s:hidden tablet:flex"
-      />
-      <img
-        src="public/extra/product/empaque_de_vinil.png"
-        class="h-[250px] w-full object-cover rounded-lg mobile_s:hidden tablet:flex"
-      />
-    </div>
   </section>
 </template>

@@ -4,7 +4,7 @@ const aboutus = [
     id: 1,
     title: "Experiencia",
     description:
-      "40 años en la fabricacion de productos de vinilo para los sectores industriales y domésticos.",
+      "35 años en la fabricacion de productos de vinilo para los sectores industriales y domésticos.",
     image: "/extra/product/guardapolvo.png",
   },
 
