@@ -35,7 +35,7 @@ const handleDialogFilter = () => {
 <template>
   <section class="flex-col pt-5 flex items-center justify-center px-3">
     <dialog id="my_modal_1" class="modal">
-      <div class="modal-box">
+      <div class="modal-box dark:bg-slate-800 bg-[#fff]">
         <form method="dialog">
           <div class="flex flex-row w-full justify-between items-center">
             <p class="font-bold">Filtrar Por</p>

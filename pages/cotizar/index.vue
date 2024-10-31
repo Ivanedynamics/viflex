@@ -162,7 +162,7 @@ const handleFormSubmit = () => {
       </div>
     </dialog>
     <section
-      class="max-w-[800px] w-full container-box shadow-lg mt-10 mb-10 rounded-lg h-fit"
+      class="max-w-[800px] dark:bg-slate-800 bg-[#fff] w-full shadow-lg mt-10 mb-10 rounded-lg h-fit"
     >
       <div class="justify-start items-start flex-col mt-12">
         <div class="w-full h-full flex flex-col items-center justify-center">

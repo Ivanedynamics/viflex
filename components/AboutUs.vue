@@ -50,7 +50,7 @@ const aboutus = [
       >
         <article
           v-for="about in aboutus"
-          class="p-4 rounded-lg gap-4 flex flex-col container-box bg-base-100 shadow-xl"
+          class="p-4 rounded-lg gap-4 flex flex-col dark:bg-slate-800 bg-[#fff] shadow-xl"
         >
           <img :src="about.image" class="w-full h-40 object-cover rounded-lg" />
           <div class="flex flex-col items-start justify-end">

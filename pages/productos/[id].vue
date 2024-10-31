@@ -168,7 +168,9 @@ const [colorId] = defineField("colorId");
           <p class="text-sm">Medidas:</p>
           <ul class="flex flex-row gap-2 flex-wrap">
             <li v-for="item in product?.measures">
-              <p class="rounded-md border badge p-4 container-box">
+              <p
+                class="rounded-md border badge p-4 dark:bg-slate-800 bg-[#fff] container-box"
+              >
                 {{ item?.name }}
               </p>
             </li>
@@ -178,7 +180,9 @@ const [colorId] = defineField("colorId");
           <p class="text-sm">Presentacion:</p>
           <ul class="flex flex-row gap-2 flex-wrap">
             <li v-for="item in product?.presentacion">
-              <p class="rounded-md border badge p-4 container-box">
+              <p
+                class="rounded-md border dark:bg-slate-800 bg-[#fff] badge p-4 container-box"
+              >
                 {{ item?.value }}
               </p>
             </li>
@@ -207,7 +211,7 @@ const [colorId] = defineField("colorId");
         </a>
 
         <div
-          class="p-4 rounded-lg container-box bg-base-100 w-full shadow-xl card-body"
+          class="p-4 rounded-lg dark:bg-slate-800 bg-[#fff] container-box w-full shadow-xl card-body"
         >
           <p class="font-bold text-lg">Agregar al cotizador</p>
           <article class="w-full flex flex-col">

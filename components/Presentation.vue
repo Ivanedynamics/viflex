@@ -25,7 +25,7 @@
             </p>
           </div>
           <div
-            class="stats shadow flex mobile_s:w-full mobile_s:flex-col tablet:flex-row tablet:w-fit"
+            class="stats dark:bg-slate-800 bg-[#fff] shadow flex mobile_s:w-full mobile_s:flex-col tablet:flex-row tablet:w-fit"
           >
             <div class="stat container-box">
               <div class="stat-figure text-secondary">

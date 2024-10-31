@@ -14,7 +14,7 @@ const emit = defineEmits(["add_cart", "buynow"]);
 </script>
 
 <template>
-  <article class="card container-box shadow-xl">
+  <article class="dark:bg-slate-800 bg-[#fff] rounded-lg shadow-xl">
     <section class="p-4 flex flex-col justify-between gap-4">
       <figure class="w-full h-40 object-cover rounded-t-lg bg-gray-200">
         <img
