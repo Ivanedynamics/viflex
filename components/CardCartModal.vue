@@ -18,16 +18,47 @@ const listAspect = computed(() => {
 </script>
 
 <template>
-  <div class="h-full min-h-[100px] flex flex-row gap-2">
-    <div class="bg-gray-200 rounded-md w-[150px] h-[100px]">
+  <div class="flex flex-col gap-2">
+    <div class="bg-gray-200 rounded-md w-full h-[180px] p-4">
       <img
         v-if="product?.images?.[0]?.image_url"
         :src="product?.images?.[0]?.image_url"
         class="w-full h-full object-contain mix-blend-darken select-none"
       />
+      <div v-else class="flex items-center justify-center w-full h-full">
+        <svg
+          width="45"
+          height="45"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
+            stroke="#292D32"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z"
+            stroke="#292D32"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2.67004 18.9501L7.60004 15.6401C8.39004 15.1101 9.53004 15.1701 10.24 15.7801L10.57 16.0701C11.35 16.7401 12.61 16.7401 13.39 16.0701L17.55 12.5001C18.33 11.8301 19.59 11.8301 20.37 12.5001L22 13.9001"
+            stroke="#292D32"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
     </div>
-    <section class="flex flex-col w-full h-full gap-2">
-      <div class="h-full flex flex-col gap-2">
+    <div class="flex flex-col gap-2 w-full h-full">
+      <section class="h-full flex flex-col gap-2">
         <NuxtLink :to="`/productos/${product?.id}`">
           <p
             class="font-bold text-sm capitalize-text hover:underline text-ellipsis line-clamp-2 h-full max-h-[40px]"
@@ -35,16 +66,18 @@ const listAspect = computed(() => {
             {{ capitalizeText(product?.name) }}
           </p>
         </NuxtLink>
-
+        <p class="text-sm opacity-80">
+          {{ product?.descripcion }}
+        </p>
         <p class="text-sm">
           {{ capitalizeText(listAspect?.join?.(" • ") ?? "") }}
         </p>
-      </div>
-      <div class="flex flex-row w-full justify-between">
+      </section>
+      <section class="flex flex-row w-full justify-between">
         <div class="flex flex-row">
           <button
             @click="emit('decrease', props?.product?.id)"
-            class="w-10 h-10 flex items-center justify-center font-bold border rounded-md"
+            class="w-10 h-10 bg-slate-700 flex items-center justify-center font-bold border rounded-md"
           >
             <svg
               width="20"
@@ -55,8 +88,7 @@ const listAspect = computed(() => {
             >
               <path
                 d="M6 12H18"
-                stroke="#292D32"
-                class="icon-fill"
+                stroke="white"
                 stroke-width="1.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -64,12 +96,12 @@ const listAspect = computed(() => {
             </svg>
           </button>
 
-          <p class="w-10 h-10 flex items-center justify-center font-bold">
+          <p class="w-20 h-10 flex items-center justify-center font-bold">
             {{ quantity }}
           </p>
           <button
             @click="emit('increment', props?.product?.id)"
-            class="w-10 h-10 flex items-center justify-center font-bold border rounded-md"
+            class="w-10 h-10 flex bg-slate-700 items-center justify-center font-bold border rounded-md"
           >
             <svg
               width="20"
@@ -80,27 +112,22 @@ const listAspect = computed(() => {
             >
               <path
                 d="M6 12H18"
-                stroke="#292D32"
+                stroke="white"
                 stroke-width="1.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="icon-fill"
               />
               <path
                 d="M12 18V6"
-                stroke="#292D32"
+                stroke="white"
                 stroke-width="1.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="icon-fill"
               />
             </svg>
           </button>
         </div>
-        <button
-          @click="emit('delete', props?.product?.id)"
-          class="btn btn-ghost"
-        >
+        <button @click="emit('delete', props?.product?.id)" class="w-10 h-10">
           <svg
             width="24"
             height="24"
@@ -145,8 +172,8 @@ const listAspect = computed(() => {
             />
           </svg>
         </button>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 

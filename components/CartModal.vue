@@ -2,6 +2,8 @@
 import { useCartStore } from "~/store/cart";
 import { closeSidebar } from "~/utils/sidebar";
 
+const router = useRouter();
+
 const store = useCartStore();
 const { productCart, showCart } = storeToRefs(store);
 const handleBackgroundClose = () => {
@@ -20,6 +22,11 @@ function closeDialog() {
   document.body.classList.remove("no-scroll");
   // Oculta el diálogo
 }
+
+const handleSearchProducts = () => {
+  router.push("/productos");
+  handleBackgroundClose();
+};
 watch(showCart, (value) => {
   if (value) {
     showDialog();
@@ -50,7 +57,7 @@ watch(showCart, (value) => {
     >
       <section class="flex flex-col h-full pb-5">
         <div
-          class="flex flex-row justify-between items-center min-h-[75px] p-3"
+          class="flex flex-row justify-between items-center min-h-[75px] p-3 px-4"
         >
           <p class="font-bold">Resumen de Cotización</p>
           <button class="p-4" @click="handleBackgroundClose">
@@ -71,7 +78,63 @@ watch(showCart, (value) => {
             </svg>
           </button>
         </div>
-        <ul class="flex flex-col overflow-y-scroll h-full gap-4 p-3">
+        <div
+          v-if="productCart?.length === 0"
+          class="p-4 flex items-center justify-center flex-col gap-3"
+        >
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.5 7.67001V6.70001C7.5 4.45001 9.31 2.24001 11.56 2.03001C14.24 1.77001 16.5 3.88001 16.5 6.51001V7.89001"
+              stroke="#292D32"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-black dark:stroke-white"
+            />
+            <path
+              d="M8.99999 22H15C19.02 22 19.74 20.39 19.95 18.43L20.7 12.43C20.97 9.99 20.27 8 16 8H7.99999C3.72999 8 3.02999 9.99 3.29999 12.43L4.04999 18.43C4.25999 20.39 4.97999 22 8.99999 22Z"
+              stroke="#292D32"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-black dark:stroke-white"
+            />
+            <path
+              d="M15.4955 12H15.5045"
+              stroke="#292D32"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-black dark:stroke-white"
+            />
+            <path
+              d="M8.49451 12H8.50349"
+              stroke="#292D32"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-black dark:stroke-white"
+            />
+          </svg>
+
+          <p><strong>¡Tu cotización está vacía!</strong></p>
+          <p class="text-center">
+            Explora todos los productos disponibles <br />
+            y agrega algunos a tu cotización en la tienda.
+          </p>
+          <button @click="handleSearchProducts" class="btn btn-primary">
+            Buscar productos
+          </button>
+        </div>
+        <ul class="flex flex-col overflow-y-scroll h-full gap-4 p-4">
           <li v-for="p in productCart">
             <CardCartModal
               :key="p?.id"
@@ -84,11 +147,14 @@ watch(showCart, (value) => {
             />
           </li>
         </ul>
-        <section class="flex flex-row gap-4 px-3">
+        <section
+          v-if="productCart?.length > 0"
+          class="flex flex-row gap-4 px-3"
+        >
           <NuxtLink
             @click="handleBackgroundClose"
             to="/cotizar"
-            class="btn btn-neutral w-full"
+            class="btn btn-primary w-full"
           >
             <svg
               width="25"
@@ -100,12 +166,14 @@ watch(showCart, (value) => {
               <path
                 d="M99.0937 81.7917C99.0937 80.5402 98.5966 79.3399 97.7117 78.455C96.8267 77.5701 95.6265 77.0729 94.375 77.0729H56.625C55.3735 77.0729 54.1733 77.5701 53.2883 78.455C52.4034 79.3399 51.9062 80.5402 51.9062 81.7917C51.9062 83.0431 52.4034 84.2434 53.2883 85.1283C54.1733 86.0133 55.3735 86.5104 56.625 86.5104H94.375C95.6265 86.5104 96.8267 86.0133 97.7117 85.1283C98.5966 84.2434 99.0937 83.0431 99.0937 81.7917ZM99.0937 106.958C99.0937 105.707 98.5966 104.507 97.7117 103.622C96.8267 102.737 95.6265 102.24 94.375 102.24H56.625C55.3735 102.24 54.1733 102.737 53.2883 103.622C52.4034 104.507 51.9062 105.707 51.9062 106.958C51.9062 108.21 52.4034 109.41 53.2883 110.295C54.1733 111.18 55.3735 111.677 56.625 111.677H94.375C95.6265 111.677 96.8267 111.18 97.7117 110.295C98.5966 109.41 99.0937 108.21 99.0937 106.958Z"
                 fill="white"
+                class="fill-white dark:fill-white"
               />
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M44.0418 14.1562C39.453 14.1563 35.0522 15.9791 31.8074 19.2239C28.5626 22.4687 26.7397 26.8695 26.7397 31.4583V119.542C26.7397 124.13 28.5626 128.531 31.8074 131.776C35.0522 135.021 39.453 136.844 44.0418 136.844H106.959C111.547 136.844 115.948 135.021 119.193 131.776C122.438 128.531 124.261 124.13 124.261 119.542V50.132C124.261 47.7349 123.48 45.407 122.033 43.4943L103.171 18.529C102.145 17.1707 100.817 16.0689 99.2933 15.3102C97.7693 14.5515 96.0902 14.1565 94.3877 14.1562H44.0418ZM36.1772 31.4583C36.1772 27.1171 39.7006 23.5937 44.0418 23.5937H89.6564V51.2582C89.6564 53.863 91.7704 55.977 94.3752 55.977H114.823V119.542C114.823 123.883 111.3 127.406 106.959 127.406H44.0418C39.7006 127.406 36.1772 123.883 36.1772 119.542V31.4583Z"
                 fill="white"
+                class="fill-white dark:fill-white"
               />
             </svg>
             Ver mi Cotizacion
