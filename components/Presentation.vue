@@ -24,7 +24,7 @@
               y genera una cotización personalizada a tu medida.
             </p>
           </div>
-          <div
+          <!-- <div
             class="stats dark:bg-slate-800 bg-[#fff] shadow flex mobile_s:w-full mobile_s:flex-col tablet:flex-row tablet:w-fit"
           >
             <div class="stat container-box">
@@ -91,10 +91,15 @@
               </div>
               <div class="stat-desc">↗︎ 50 (14%)</div>
             </div>
+          </div> -->
+          <div class="flex flex-row gap-2">
+            <NuxtLink to="/cotizar" class="btn btn-primary">
+              <p class="">Cotizar ahora</p>
+            </NuxtLink>
+            <NuxtLink to="/productos" class="btn btn-neutral">
+              <p class="">Ver Productos</p>
+            </NuxtLink>
           </div>
-          <NuxtLink to="/productos" class="btn btn-neutral">
-            <p class="">Ver Productos</p>
-          </NuxtLink>
         </article>
       </div>
     </div>

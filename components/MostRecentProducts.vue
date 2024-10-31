@@ -14,15 +14,11 @@ const router = useRouter();
   <section
     class="min-h-[320px] flex-col pt-10 flex items-center justify-center px-3 mt-20"
   >
-    <div class="w-full max-w-[1240px] flex flex-col gap-4">
-      <header>
-        <h2 class="font-bold text-2xl mobile_s:text-lg mobile_l:text-2xl">
-          Nuestros productos más recientes
-        </h2>
-        <p class="opacity-70 text-lg mobile_s:text-sm mobile_l:text-[16px]">
-          Encuentre los productos perfectos para sus necesidades.
-        </p>
-      </header>
+    <div class="w-full max-w-[1240px] flex flex-col gap-4 items-center">
+      <p class="font-bold text-2xl mobile_s:text-lg mobile_l:text-2xl">
+        Nuestros productos más recientes
+      </p>
+
       <div
         class="w-full grid grid-cols-4 tablet:gap-4 tablet:grid-cols-3 laptop:grid-cols-4 laptop:gap-6 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
       >
