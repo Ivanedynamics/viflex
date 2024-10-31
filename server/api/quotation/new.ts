@@ -106,7 +106,7 @@ export default defineEventHandler(async (event) => {
 
     const payload: BodyValues = {
       ...body,
-      quoteNumber: uuidv4().slice(0, 4) as string,
+      quoteNumber: uuidv4()?.replace(/-/g, "").substring(0, 8),
       createdAt: new Date().toISOString(),
     };
 
