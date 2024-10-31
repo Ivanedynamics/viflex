@@ -1,69 +1,48 @@
 <script setup lang="ts">
 import { useCartStore } from "~/store/cart";
 import { closeSidebar } from "~/utils/sidebar";
-
+import { handleCloseCart } from "~/composables/drawer";
 const router = useRouter();
 
 const store = useCartStore();
 const { productCart, showCart } = storeToRefs(store);
-const handleBackgroundClose = () => {
-  closeSidebar();
-  setTimeout(() => {
-    store.CloseModalCart();
-  }, 300);
-};
 
-function showDialog() {
-  document.body.classList.add("no-scroll");
-  // Muestra el diálogo
-}
+// function showDialog() {
+//   document.body.classList.add("no-scroll");
+//   // Muestra el diálogo
+// }
 
-function closeDialog() {
-  document.body.classList.remove("no-scroll");
-  // Oculta el diálogo
-}
+// function closeDialog() {
+//   document.body.classList.remove("no-scroll");
+//   // Oculta el diálogo
+// }
 
 const handleSearchProducts = () => {
   router.push("/productos");
-  handleBackgroundClose();
+  handleCloseCart();
 };
-watch(showCart, (value) => {
-  if (value) {
-    showDialog();
-    return;
-  }
-  closeDialog();
-});
 </script>
 <template>
-  <main
-    class="fixed w-dvw h-dvh top-0 left-0 z-[99999999999999999] flex flex-col items-end"
-    :style="{
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      display: showCart ? 'flex' : 'none',
-    }"
-    @click="handleBackgroundClose"
-  >
-    <aside
-      id="sidebar_app"
-      :class="`sidebar card card-compact bg-base-100 rounded-none  shadow-xl max-w-[440px]  w-dvw h-dvh`"
-      @click="
-        (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-        }
-      "
-    >
-      <section class="flex flex-col h-full pb-5">
-        <div
-          class="flex flex-row justify-between items-center min-h-[75px] p-3 px-4"
+  <div class="drawer drawer-end">
+    <input id="my_drawer_app" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-side" style="z-index: 400">
+      <label
+        for="my_drawer_app"
+        aria-label="close sidebar"
+        class="drawer-overlay"
+      ></label>
+      <div
+        class="menu pb-5 bg-white dark:bg-slate-900 z-50 text-base-content min-h-full w-80 p-0 gap-4 flex flex-col"
+      >
+        <!-- Sidebar content here -->
+        <section
+          class="flex flex-row justify-between items-center min-h-[65px] px-3 sticky top-0 dark:bg-slate-800 bg-white z-50"
         >
-          <p class="font-bold">Resumen de Cotización</p>
-          <button class="p-4" @click="handleBackgroundClose">
+          <p class="font-bold text-lg">Resumen de Cotización</p>
+          <button class="btn btn-ghost" @click="handleCloseCart">
             <svg
-              width="25"
-              height="25"
+              width="20"
+              height="20"
               viewBox="0 0 117 117"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -77,8 +56,8 @@ watch(showCart, (value) => {
               />
             </svg>
           </button>
-        </div>
-        <div
+        </section>
+        <section
           v-if="productCart?.length === 0"
           class="p-4 flex items-center justify-center flex-col gap-3"
         >
@@ -133,11 +112,12 @@ watch(showCart, (value) => {
           <button @click="handleSearchProducts" class="btn btn-primary">
             Buscar productos
           </button>
-        </div>
-        <ul class="flex flex-col overflow-y-scroll h-full gap-4 p-4">
-          <li v-for="p in productCart">
+        </section>
+        <section
+          class="flex flex-col h-full gap-4 overflow-hidden overflow-y-hidden px-3"
+        >
+          <template v-for="p in productCart" :key="p?.id">
             <CardCartModal
-              :key="p?.id"
               :product="p?.product"
               :quantity="p?.quantity"
               :selection="p?.selection"
@@ -145,43 +125,92 @@ watch(showCart, (value) => {
               @increment="() => store.incrementProduct(p?.id)"
               @delete="(e) => store.deleteProduct(p?.id)"
             />
-          </li>
-        </ul>
+          </template>
+        </section>
         <section
           v-if="productCart?.length > 0"
           class="flex flex-row gap-4 px-3"
         >
           <NuxtLink
-            @click="handleBackgroundClose"
+            @click="handleCloseCart"
             to="/cotizar"
             class="btn btn-primary w-full"
           >
             <svg
               width="25"
               height="25"
-              viewBox="0 0 151 151"
+              viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M99.0937 81.7917C99.0937 80.5402 98.5966 79.3399 97.7117 78.455C96.8267 77.5701 95.6265 77.0729 94.375 77.0729H56.625C55.3735 77.0729 54.1733 77.5701 53.2883 78.455C52.4034 79.3399 51.9062 80.5402 51.9062 81.7917C51.9062 83.0431 52.4034 84.2434 53.2883 85.1283C54.1733 86.0133 55.3735 86.5104 56.625 86.5104H94.375C95.6265 86.5104 96.8267 86.0133 97.7117 85.1283C98.5966 84.2434 99.0937 83.0431 99.0937 81.7917ZM99.0937 106.958C99.0937 105.707 98.5966 104.507 97.7117 103.622C96.8267 102.737 95.6265 102.24 94.375 102.24H56.625C55.3735 102.24 54.1733 102.737 53.2883 103.622C52.4034 104.507 51.9062 105.707 51.9062 106.958C51.9062 108.21 52.4034 109.41 53.2883 110.295C54.1733 111.18 55.3735 111.677 56.625 111.677H94.375C95.6265 111.677 96.8267 111.18 97.7117 110.295C98.5966 109.41 99.0937 108.21 99.0937 106.958Z"
-                fill="white"
-                class="fill-white dark:fill-white"
+                d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-slate-100"
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M44.0418 14.1562C39.453 14.1563 35.0522 15.9791 31.8074 19.2239C28.5626 22.4687 26.7397 26.8695 26.7397 31.4583V119.542C26.7397 124.13 28.5626 128.531 31.8074 131.776C35.0522 135.021 39.453 136.844 44.0418 136.844H106.959C111.547 136.844 115.948 135.021 119.193 131.776C122.438 128.531 124.261 124.13 124.261 119.542V50.132C124.261 47.7349 123.48 45.407 122.033 43.4943L103.171 18.529C102.145 17.1707 100.817 16.0689 99.2933 15.3102C97.7693 14.5515 96.0902 14.1565 94.3877 14.1562H44.0418ZM36.1772 31.4583C36.1772 27.1171 39.7006 23.5937 44.0418 23.5937H89.6564V51.2582C89.6564 53.863 91.7704 55.977 94.3752 55.977H114.823V119.542C114.823 123.883 111.3 127.406 106.959 127.406H44.0418C39.7006 127.406 36.1772 123.883 36.1772 119.542V31.4583Z"
-                fill="white"
-                class="fill-white dark:fill-white"
+                d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-slate-100"
+              />
+              <path
+                d="M8 13H12"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-slate-100"
+              />
+              <path
+                d="M8 17H16"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-slate-100"
               />
             </svg>
-            Ver mi Cotizacion
+            Cotizar Ahora
           </NuxtLink>
         </section>
+      </div>
+    </div>
+  </div>
+  <!-- <main
+    class="fixed w-dvw h-dvh top-0 left-0 z-[99999999999999999] flex flex-col items-end"
+    :style="{
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      display: showCart ? 'flex' : 'none',
+    }"
+    @click="handleBackgroundClose"
+  >
+    <aside
+      id="sidebar_app"
+      :class="`sidebar card card-compact bg-base-100 rounded-none  shadow-xl max-w-[440px]  w-dvw h-dvh`"
+      @click="
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        }
+      "
+    >
+      <section class="flex flex-col h-full pb-5">
+
+
       </section>
     </aside>
-  </main>
+  </main> -->
 </template>
 
 <style>

@@ -5,6 +5,4 @@
   <AboutUs />
   <Categories />
   <MostRecentProducts />
-  <!-- <ExploreProducts /> -->
-  <!-- <Contact /> -->
 </template>

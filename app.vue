@@ -94,3 +94,9 @@ const message = computed(() => {
   overflow: hidden;
 } */
 </style>
+
+<style>
+.woot-elements--right {
+  z-index: 100 !important;
+}
+</style>

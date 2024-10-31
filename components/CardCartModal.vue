@@ -66,7 +66,7 @@ const listAspect = computed(() => {
             {{ capitalizeText(product?.name) }}
           </p>
         </NuxtLink>
-        <p class="text-sm opacity-80">
+        <p class="text-sm opacity-80 text-ellipsis line-clamp-3">
           {{ product?.descripcion }}
         </p>
         <p class="text-sm">

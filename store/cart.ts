@@ -2,8 +2,7 @@ import { defineStore } from "pinia";
 import type { IColor, IMeasures, IPresentacion } from "~/types/back";
 import type { IFrontProduct } from "~/types/front";
 import { v4 as uuidv4 } from "uuid";
-import { openSidebar } from "~/utils/sidebar";
-
+import { handleOpenCart } from "~/composables/drawer";
 export type IProductCart = {
   quantity: number;
   product: IFrontProduct;
@@ -93,21 +92,21 @@ export const useCartStore = defineStore("cart-store", {
         });
 
         this.showCart = true;
-        openSidebar();
+        handleOpenCart();
         return;
       }
 
       this.products = [
-        ...this.products,
         {
           ...newProduct,
           id: uuidv4(),
           quantity: 1,
         },
+        ...this.products,
       ];
 
       this.showCart = true;
-      openSidebar();
+      handleOpenCart();
       return;
     },
     deleteProduct(id?: string) {

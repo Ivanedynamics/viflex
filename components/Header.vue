@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCartStore } from "~/store/cart";
 import { headerOptions } from "~/assets/mocks/headeroptions";
-import { openSidebar } from "~/utils/sidebar";
+import { handleOpenCart } from "~/composables/drawer";
 const router = useRouter();
 const store = useCartStore();
 const { totalProductsInCart } = storeToRefs(store);
@@ -16,13 +16,45 @@ const handleSearch = (ev: Event) => {
 
 <template>
   <header
-    class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[75px] px-3"
+    class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[65px] px-3"
   >
     <div
       class="w-full max-w-[1240px] flex flex-row items-center justify-between tablet:px-4"
     >
       <div class="flex flex-row items-center gap-8">
-        <LogoLink />
+        <button
+          class="h-full relative text-primary font-semibold p-2 rounded mobile_s:flex tablet:flex laptop:hidden"
+        >
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 7H21"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M3 12H21"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M3 17H21"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <div class="mobile_s:hidden tablet:flex">
+          <LogoLink />
+        </div>
 
         <ul
           class="flex flex-row gap-4 items-center justify-center p-0 m-0 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:hidden laptop:flex"
@@ -38,10 +70,14 @@ const handleSearch = (ev: Event) => {
           </li>
         </ul>
       </div>
+      <div class="mobile_s:flex tablet:hidden">
+        <LogoLink />
+      </div>
+
       <div class="flex flex-row items-center gap-4">
         <form
           @submit="handleSearch"
-          class="relative flex flex-row gap-4 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:hidden laptop:flex"
+          class="relative flex flex-row gap-4 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:flex laptop:flex"
         >
           <label class="input input-bordered flex items-center gap-2 w-full">
             <input
@@ -67,37 +103,59 @@ const handleSearch = (ev: Event) => {
           </label>
         </form>
         <button
-          @click="
-            () => {
-              openSidebar();
-              store?.OpenModalCart();
-            }
-          "
+          @click="handleOpenCart"
           class="relative text-primary font-semibold p-2 rounded"
         >
           <svg
             width="35"
             height="35"
-            viewBox="0 0 151 151"
+            viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M99.0937 81.7917C99.0937 80.5402 98.5966 79.3399 97.7117 78.455C96.8267 77.5701 95.6265 77.0729 94.375 77.0729H56.625C55.3735 77.0729 54.1733 77.5701 53.2883 78.455C52.4034 79.3399 51.9062 80.5402 51.9062 81.7917C51.9062 83.0431 52.4034 84.2434 53.2883 85.1283C54.1733 86.0133 55.3735 86.5104 56.625 86.5104H94.375C95.6265 86.5104 96.8267 86.0133 97.7117 85.1283C98.5966 84.2434 99.0937 83.0431 99.0937 81.7917ZM99.0937 106.958C99.0937 105.707 98.5966 104.507 97.7117 103.622C96.8267 102.737 95.6265 102.24 94.375 102.24H56.625C55.3735 102.24 54.1733 102.737 53.2883 103.622C52.4034 104.507 51.9062 105.707 51.9062 106.958C51.9062 108.21 52.4034 109.41 53.2883 110.295C54.1733 111.18 55.3735 111.677 56.625 111.677H94.375C95.6265 111.677 96.8267 111.18 97.7117 110.295C98.5966 109.41 99.0937 108.21 99.0937 106.958Z"
-              fill="white"
+              d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
+              stroke="#292D32"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-slate-100"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M44.0418 14.1562C39.453 14.1563 35.0522 15.9791 31.8074 19.2239C28.5626 22.4687 26.7397 26.8695 26.7397 31.4583V119.542C26.7397 124.13 28.5626 128.531 31.8074 131.776C35.0522 135.021 39.453 136.844 44.0418 136.844H106.959C111.547 136.844 115.948 135.021 119.193 131.776C122.438 128.531 124.261 124.13 124.261 119.542V50.132C124.261 47.7349 123.48 45.407 122.033 43.4943L103.171 18.529C102.145 17.1707 100.817 16.0689 99.2933 15.3102C97.7693 14.5515 96.0902 14.1565 94.3877 14.1562H44.0418ZM36.1772 31.4583C36.1772 27.1171 39.7006 23.5937 44.0418 23.5937H89.6564V51.2582C89.6564 53.863 91.7704 55.977 94.3752 55.977H114.823V119.542C114.823 123.883 111.3 127.406 106.959 127.406H44.0418C39.7006 127.406 36.1772 123.883 36.1772 119.542V31.4583Z"
-              fill="white"
+              d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
+              stroke="#292D32"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-slate-100"
+            />
+            <path
+              d="M8 13H12"
+              stroke="#292D32"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-slate-100"
+            />
+            <path
+              d="M8 17H16"
+              stroke="#292D32"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-slate-100"
             />
           </svg>
+
           <div
             v-if="totalProductsInCart > 0"
-            class="w-[20px] h-[20px] absolute bg-white rounded-full top-0 right-0 flex justify-center items-center"
+            class="w-[20px] h-[20px] absolute bg-red-500 rounded-full top-0 right-0 flex justify-center items-center"
           >
-            <p class="text-primary font-bold text-xs">
+            <p class="text-white font-bold text-xs">
               {{ totalProductsInCart }}
             </p>
           </div>
