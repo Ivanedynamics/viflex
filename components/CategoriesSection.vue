@@ -43,7 +43,7 @@ const categories = computed(() => {
 </script>
 
 <template>
-  <section class="flex-col pt-10 flex items-center justify-center px-3">
+  <section class="flex-col pt-10 flex items-center justify-center px-3 mt-16">
     <div
       class="w-full max-w-[1240px] items-center justify-center flex flex-col"
     >
