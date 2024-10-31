@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import CartModal from "./components/CartModal.vue";
+import SidebarComponent from "./components/SidebarComponent.vue";
 import { CONTACT_COFING } from "./mocks/contact";
 import { useCartStore } from "./store/cart";
 import { watch, onMounted } from "vue";
@@ -87,6 +89,7 @@ const message = computed(() => {
     </a>
   </main>
   <CartModal />
+  <SidebarComponent />
 </template>
 
 <style>

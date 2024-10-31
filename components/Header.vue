@@ -2,6 +2,7 @@
 import { useCartStore } from "~/store/cart";
 import { headerOptions } from "~/assets/mocks/headeroptions";
 import { handleOpenCart } from "~/composables/drawer";
+import { handleOpenSidebar } from "~/composables/sidebar";
 const router = useRouter();
 const store = useCartStore();
 const { totalProductsInCart } = storeToRefs(store);
@@ -24,6 +25,7 @@ const handleSearch = (ev: Event) => {
       <div class="flex flex-row items-center gap-8">
         <button
           class="h-full relative text-primary font-semibold p-2 rounded mobile_s:flex tablet:flex laptop:hidden"
+          @click="handleOpenSidebar"
         >
           <svg
             width="30"
