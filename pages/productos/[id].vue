@@ -100,18 +100,10 @@ const [colorId] = defineField("colorId");
     >
       <section class="gap-2 tablet:col-span-1 laptop:col-span-3">
         <div :class="`sticky top-24 w-full gap-2 flex flex-col`">
-          <figure
-            class="w-full h-[520px] mobile_s:h-[320px] tablet:h-[420px] laptop:h-[460px] bg-gray-200 rounded-md flex items-center justify-center"
-          >
-            <img
-              v-if="viewImage?.image_url"
-              :src="viewImage?.image_url"
-              class="w-full h-full object-contain mix-blend-darken"
-              alt=""
-              srcset=""
-            />
-            <p v-else class="opacity-50">No hay imagenes disponibles</p>
-          </figure>
+          <ImagePreviewCard
+            :image_url="viewImage?.image_url"
+            custom-css="w-full h-[520px] mobile_s:h-[320px] tablet:h-[420px] laptop:h-[460px]"
+          />
           <aside
             v-if="Number(product?.images?.length) > 1"
             class="flex flex-row w-full gap-2"
