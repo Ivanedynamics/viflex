@@ -25,7 +25,10 @@ const handleSearchProducts = () => {
 <template>
   <div class="drawer drawer-end" style="z-index: 99999999 !important">
     <input id="my_drawer_app" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-side" style="z-index: 99999999 !important">
+    <div
+      class="drawer-side"
+      style="z-index: 99999999 !important; overflow: hidden; overflow-y: hidden"
+    >
       <label
         for="my_drawer_app"
         aria-label="close sidebar"
@@ -33,6 +36,12 @@ const handleSearchProducts = () => {
       ></label>
       <div
         class="menu pb-5 bg-white dark:bg-slate-900 z-50 text-base-content min-h-full max-w-[420px] w-full p-0 gap-4 flex flex-col"
+        style="
+          height: 100dvh;
+          display: grid;
+          align-items: start;
+          grid-template-rows: auto 1fr auto;
+        "
       >
         <!-- Sidebar content here -->
         <section
@@ -117,7 +126,7 @@ const handleSearchProducts = () => {
           </button>
         </section>
         <section
-          class="flex flex-col h-full gap-4 overflow-hidden overflow-y-hidden px-4"
+          class="flex flex-col h-full gap-4 overflow-hidden overflow-y-scroll px-4"
         >
           <template v-for="p in productCart" :key="p?.id">
             <CardCartModal

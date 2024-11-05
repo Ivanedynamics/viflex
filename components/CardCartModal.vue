@@ -21,7 +21,7 @@ const listAspect = computed(() => {
   <div class="flex flex-col gap-2">
     <ImagePreviewCard
       :image_url="product?.images?.[0]?.image_url"
-      custom-css="h-[240px]"
+      custom-css="h-[220px]"
     />
     <div class="flex flex-col gap-4 w-full">
       <section class="flex flex-col gap-2">
