@@ -21,10 +21,10 @@ const listAspect = computed(() => {
   <div class="flex flex-col gap-2">
     <ImagePreviewCard
       :image_url="product?.images?.[0]?.image_url"
-      custom-css="h-[180px]"
+      custom-css="h-[240px]"
     />
-    <div class="flex flex-col gap-2 w-full h-full">
-      <section class="h-full flex flex-col gap-2">
+    <div class="flex flex-col gap-4 w-full">
+      <section class="flex flex-col gap-2">
         <NuxtLink :to="`/productos/${product?.id}`">
           <p
             class="font-bold text-sm capitalize-text hover:underline text-ellipsis line-clamp-2 h-full max-h-[40px]"

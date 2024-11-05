@@ -63,6 +63,7 @@ type DialogState = {
   };
 };
 const dialogState = ref<DialogState | null>(null);
+const loading = ref(false);
 
 const handleClickModalSuccess = () => {
   //@ts-ignore
@@ -81,6 +82,7 @@ const onSubmit = async (values: Values) => {
     return;
   }
   try {
+    loading.value = true;
     const response = await axios.post<DialogState>("/api/quotation/new", {
       ...values,
       products: products.value,
@@ -97,6 +99,8 @@ const onSubmit = async (values: Values) => {
       },
     };
     handleClickModalSuccess();
+  } finally {
+    loading.value = false;
   }
 };
 const handleFormSubmit = () => {
@@ -459,6 +463,13 @@ const handleFormSubmit = () => {
         </section>
         <section class="mt-4">
           <p class="font-bold text-lg py-2">Productos</p>
+          <span
+            v-if="products?.length === 0"
+            class="text-red-600 font-bold text-xs mt-2"
+          >
+            Por favor, agrega al menos un producto antes de realizar la
+            cotización.</span
+          >
           <ul
             class="flex flex-col h-full gap-4 mobile_s:flex mobile_s:flex-col tablet:grid tablet:grid-cols-2"
           >
@@ -475,21 +486,18 @@ const handleFormSubmit = () => {
             </li>
           </ul>
         </section>
-        <span
-          v-if="products?.length === 0"
-          class="text-red-600 font-bold text-xs mt-2"
-        >
-          Por favor, agrega al menos un producto antes de realizar la
-          cotización.</span
-        >
+
         <footer class="flex justify-end mt-4">
           <button
             v-if="products?.length !== 0"
-            :disabled="products?.length === 0"
+            :disabled="products?.length === 0 || loading"
             @click="handleFormSubmit"
-            :class="`btn btn-primary mobile_s:w-full tablet:w-fit`"
+            :class="`btn btn-primary mobile_s:w-full tablet:w-fit text-white`"
           >
+            <span v-if="loading" class="loading loading-spinner"></span>
+
             <svg
+              v-else
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -511,10 +519,52 @@ const handleFormSubmit = () => {
                 stroke-linejoin="round"
               />
             </svg>
-
-            Enviar Cotizacion
+            {{ loading ? "Enviando Cotizacion..." : "Enviar Cotizacion" }}
           </button>
-          <NuxtLink v-else to="/productos" class="btn btn-neutral"
+          <NuxtLink v-else to="/productos" class="btn btn-neutral text-white">
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-slate-100"
+              />
+              <path
+                d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-slate-100"
+              />
+              <path
+                d="M8 13H12"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-slate-100"
+              />
+              <path
+                d="M8 17H16"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-slate-100"
+              /></svg
             >Agregar Productos
           </NuxtLink>
         </footer>

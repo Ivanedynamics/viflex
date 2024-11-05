@@ -56,7 +56,7 @@ const emit = defineEmits(["add_cart", "buynow"]);
           +{{ props?.colors?.slice(5, props?.colors?.length)?.length }}
         </figure>
       </div>
-      <button @click="() => emit('buynow')" class="btn btn-neutral">
+      <button @click="() => emit('buynow')" class="btn btn-neutral text-white">
         Ver Producto
       </button>
     </section>

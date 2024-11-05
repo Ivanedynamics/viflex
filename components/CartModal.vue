@@ -32,7 +32,7 @@ const handleSearchProducts = () => {
         class="drawer-overlay"
       ></label>
       <div
-        class="menu pb-5 bg-white dark:bg-slate-900 z-50 text-base-content min-h-full w-80 p-0 gap-4 flex flex-col"
+        class="menu pb-5 bg-white dark:bg-slate-900 z-50 text-base-content min-h-full max-w-[420px] w-full p-0 gap-4 flex flex-col"
       >
         <!-- Sidebar content here -->
         <section
@@ -109,7 +109,10 @@ const handleSearchProducts = () => {
             Explora todos los productos disponibles <br />
             y agrega algunos a tu cotización en la tienda.
           </p>
-          <button @click="handleSearchProducts" class="btn btn-primary">
+          <button
+            @click="handleSearchProducts"
+            class="btn btn-primary text-white"
+          >
             Buscar productos
           </button>
         </section>
