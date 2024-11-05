@@ -35,7 +35,7 @@ const handleSearchProducts = () => {
         class="drawer-overlay"
       ></label>
       <div
-        class="menu pb-5 bg-white dark:bg-slate-900 z-50 text-base-content min-h-full max-w-[420px] w-full p-0 gap-4 flex flex-col"
+        class="menu laptop:pb-5 mobile_s:pb-10 bg-white dark:bg-slate-900 z-50 text-base-content min-h-full max-w-[420px] w-full p-0 gap-4 flex flex-col"
         style="
           height: 100dvh;
           display: grid;
