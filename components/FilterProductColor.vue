@@ -1,17 +1,17 @@
 <script setup lang="ts">
 const { data } = useFetch<{ colors: IColor[] }>("/api/colors");
 
-import { selectedColors } from "@/composables/filter_product.js";
+import { InputSelectColors } from "@/composables/filter_product.js";
 import type { IColor } from "~/types/back";
 
 const handleChange = (id: string) => {
-  if (selectedColors?.value?.find((e) => id === e)) {
-    const snew = selectedColors.value?.filter((e) => id !== e);
-    selectedColors.value = snew;
+  if (InputSelectColors?.value?.find((e) => id === e)) {
+    const snew = InputSelectColors.value?.filter((e) => id !== e);
+    InputSelectColors.value = snew;
     return;
   }
-  const newv = [...selectedColors.value, id];
-  selectedColors.value = newv;
+  const newv = [...InputSelectColors.value, id];
+  InputSelectColors.value = newv;
 };
 </script>
 <template>
@@ -36,7 +36,7 @@ const handleChange = (id: string) => {
               class="checkbox checkbox-primary"
               :id="`color-${color.id}`"
               @change="() => handleChange(color.id)"
-              :checked="selectedColors?.includes(color.id)"
+              :checked="InputSelectColors?.includes(color.id)"
             />
             <span class="label-text uppercase">
               {{ color.nombre }}

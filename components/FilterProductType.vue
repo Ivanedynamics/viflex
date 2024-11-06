@@ -1,16 +1,16 @@
 <script setup lang="ts">
 const { data } = useFetch<{ categories: ICategory[] }>("/api/categories");
-import { selectedCategories } from "@/composables/filter_product.js";
+import { InputSelectCategories } from "@/composables/filter_product.js";
 import type { ICategory } from "~/types/back";
 
 const handleChange = (id: string) => {
-  if (selectedCategories?.value?.find((e) => id === e)) {
-    const snew = selectedCategories.value?.filter((e) => id !== e);
-    selectedCategories.value = snew;
+  if (InputSelectCategories?.value?.find((e) => id === e)) {
+    const snew = InputSelectCategories.value?.filter((e) => id !== e);
+    InputSelectCategories.value = snew;
     return;
   }
-  const newv = [...selectedCategories.value, id];
-  selectedCategories.value = newv;
+  const newv = [...InputSelectCategories.value, id];
+  InputSelectCategories.value = newv;
 };
 </script>
 
@@ -35,7 +35,7 @@ const handleChange = (id: string) => {
             class="checkbox checkbox-primary"
             :id="`category-${category?.id}`"
             @change="() => handleChange(category.id)"
-            :checked="selectedCategories?.includes(category.id)"
+            :checked="InputSelectCategories?.includes(category.id)"
           />
           <span class="label-text uppercase">{{ category?.nombre }}</span>
         </label>

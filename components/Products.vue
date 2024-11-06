@@ -2,13 +2,14 @@
 import type { IFrontProduct } from "~/types/front";
 const router = useRouter();
 import {
-  inputTextG,
-  selectedCategories,
-  selectedColors,
+  InputSearch,
+  InputSelectCategories,
+  InputSelectColors,
 } from "@/composables/filter_product.js";
 import FilterSearchQuery from "./FilterSearchQuery.vue";
 import FilterProductType from "./FilterProductType.vue";
 import FilterProductColor from "./FilterProductColor.vue";
+
 const { data: products } = await useAsyncData<{
   products: IFrontProduct[];
 }>(
@@ -16,18 +17,20 @@ const { data: products } = await useAsyncData<{
   () =>
     $fetch(`/api/products`, {
       params: {
-        searchByName: inputTextG.value,
-        searchByCategory: selectedCategories?.value?.join(","),
-        searchByColor: selectedColors?.value?.join(","),
+        searchByName: InputSearch.value,
+        searchByCategory: JointParams(InputSelectCategories?.value),
+        searchByColor: JointParams(InputSelectColors?.value),
       },
     }),
   {
-    watch: [inputTextG, selectedCategories, selectedColors],
-    immediate: true,
+    watch: [InputSearch, InputSelectCategories, InputSelectColors],
+    deep: true,
+    lazy: true,
   }
 );
 
 const handleDialogFilter = () => {
+  //@ts-ignore
   document.getElementById("my_modal_1")?.showModal?.();
 };
 </script>
@@ -77,7 +80,10 @@ const handleDialogFilter = () => {
           <p class="font-bold text-2xl py-4 mobile_s:text-lg mobile_l:text-xl">
             Resultados de la búsqueda
           </p>
-          <button class="btn btn-neutral" @click="handleDialogFilter">
+          <button
+            class="btn btn-neutral mobile_s:flex laptop:hidden"
+            @click="handleDialogFilter"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

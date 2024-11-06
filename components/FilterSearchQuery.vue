@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import {
-  inputTextG,
-  selectedCategories,
-  selectedColors,
+  InputSearch,
+  InputSelectCategories,
+  InputSelectColors,
 } from "@/composables/filter_product.js";
+
 const router = useRouter();
 const handleSubmit = (e: Event) => {
   e.preventDefault();
@@ -12,36 +13,23 @@ const handleSubmit = (e: Event) => {
 const route = useRoute();
 
 onMounted(() => {
-  selectedCategories.value =
-    (route?.query?.categorias as string)?.split(",") ?? [];
-  selectedColors.value = (route?.query?.colores as string)?.split(",") ?? [];
-  inputTextG.value = (route.query?.q as string) ?? "";
+  setTimeout(() => {
+    const categories = route?.query?.categorias;
+    const colors = route?.query?.colores;
+    const search = route?.query?.q ?? "";
+    InputSelectCategories.value = splitParam<string[]>(categories);
+    InputSelectColors.value = splitParam<string[]>(colors);
+    InputSearch.value = splitParam<string>(search);
+  }, 100);
 });
 
 watch(
-  () => route.query?.q,
-  () => {
-    router.push({
-      ...route,
-      query: {
-        ...route.query,
-        q: route.query?.q,
-      },
-    });
-    inputTextG.value = (route.query?.q as string) ?? "";
-  },
-  {
-    deep: true,
-  }
-);
-
-watch(
-  [inputTextG, selectedColors, selectedCategories],
-  ([curr, colors, categories]) => {
+  [InputSearch, InputSelectColors, InputSelectCategories],
+  ([search, colors, categories]) => {
+    const toSColors = colors?.join(",");
+    const toSCategories = categories?.join(",");
     router.push(
-      `/productos?q=${curr}&colores=${colors?.join(
-        ","
-      )}&categorias=${categories?.join(",")}`
+      `/productos?q=${search}&colores=${toSColors}&categorias=${toSCategories}`
     );
   },
   {
@@ -61,7 +49,7 @@ watch(
           <input
             type="text"
             class="grow w-full"
-            v-model="inputTextG"
+            v-model="InputSearch"
             placeholder="Search"
           />
           <svg
