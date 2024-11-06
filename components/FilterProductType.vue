@@ -6,24 +6,35 @@ const { data } = useFetch<{
   data: ICategory[];
 }>("/api/categories/withSubCategories");
 
-const handleChange = (id: string) => {
-  if (InputSelectCategories?.value?.find((e) => id === e)) {
-    const item = data?.value?.data?.find((e) => e?.id === id);
-    if (item?.type === "CATEGORIA") {
-      const ids = [item?.id, ...(item?.subCategories?.map((e) => e?.id) ?? [])];
+const handleChange = (categoryId: string, subCategoryId?: string) => {
+  const findCategoryItem = data?.value?.data?.find((e) => e?.id === categoryId);
 
-      const newIds = InputSelectCategories?.value?.filter((e) => {
-        return !ids?.includes(e);
-      });
-      InputSelectCategories.value = newIds;
+  if (subCategoryId) {
+    const existSubCategory = InputSelectCategories?.value?.some(
+      (e) => subCategoryId === e
+    );
+    if (existSubCategory) {
+      InputSelectCategories.value = InputSelectCategories.value?.filter(
+        (e) => e !== subCategoryId
+      );
       return;
     }
-    const snew = InputSelectCategories.value?.filter((e) => id !== e);
-    InputSelectCategories.value = snew;
+    InputSelectCategories.value = [
+      ...InputSelectCategories.value,
+      subCategoryId,
+    ];
     return;
   }
-  const newv = [...InputSelectCategories.value, id];
-  InputSelectCategories.value = newv;
+
+  const existCategory = InputSelectCategories?.value?.find(
+    (e) => categoryId === e
+  );
+  if (existCategory) {
+    InputSelectCategories.value = [];
+    return;
+  }
+  InputSelectCategories.value = [findCategoryItem?.id ?? ""];
+  return;
 };
 </script>
 
@@ -63,7 +74,7 @@ const handleChange = (id: string) => {
                 type="checkbox"
                 class="checkbox checkbox-success"
                 :id="`category-${subCategory?.id}`"
-                @change="() => handleChange(subCategory.id)"
+                @change="() => handleChange(category.id, subCategory.id)"
                 :checked="InputSelectCategories?.includes(subCategory.id)"
               />
               <span class="label-text text-xs uppercase">
