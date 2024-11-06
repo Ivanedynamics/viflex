@@ -1,7 +1,8 @@
 <script setup lang="ts">
-const { data } = useFetch<{ categories: ICategory[] }>("/api/categories");
 import { InputSelectCategories } from "@/composables/filter_product.js";
-import type { ICategory } from "~/types/back";
+import type { ICategory } from "~/server/api/models";
+
+const { data } = useFetch<{ categories: ICategory[] }>("/api/categories");
 
 const handleChange = (id: string) => {
   if (InputSelectCategories?.value?.find((e) => id === e)) {

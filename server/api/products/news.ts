@@ -1,16 +1,17 @@
-import { connectDatabase } from "./connectDB";
+import { connectDatabase } from "../connectDB";
 import {
   categoriesSchema,
   colorSchema,
   imagesSchema,
   productsSchema,
-} from "./models";
+} from "../models";
 
 export default defineEventHandler(async (event) => {
   await connectDatabase();
   const products = await productsSchema
     .find({
       featured: "TRUE",
+      type: "PRODUCTO_NUEVO",
     })
     .lean();
 

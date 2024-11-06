@@ -3,9 +3,9 @@ import { useCartStore } from "~/store/cart";
 import type { IFrontProduct } from "~/types/front";
 
 const { data: products } = await useFetch<{ products: IFrontProduct[] }>(
-  "/api/fiveRecentProducts"
+  "/api/products/news"
 );
-const { setProduct, existThisProductInCart } = useCartStore();
+const { existThisProductInCart } = useCartStore();
 
 const router = useRouter();
 </script>
@@ -15,12 +15,14 @@ const router = useRouter();
     class="min-h-[320px] flex-col pt-10 flex items-center justify-center px-3 mt-20"
   >
     <div class="w-full max-w-[1240px] flex flex-col gap-4 items-center">
-      <p class="font-bold text-2xl mobile_s:text-lg mobile_l:text-2xl">
+      <p
+        class="font-bold text-2xl text-center mobile_s:text-lg tablet:text-xl laptop:text-2xl"
+      >
         Nuestros productos más recientes
       </p>
 
       <div
-        class="w-full grid grid-cols-4 tablet:gap-4 tablet:grid-cols-3 laptop:grid-cols-4 laptop:gap-6 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
+        class="w-full grid grid-cols-4 tablet:gap-4 tablet:grid-cols-2 laptop:grid-cols-4 laptop:gap-6 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
       >
         <template v-for="p in products?.products">
           <Card

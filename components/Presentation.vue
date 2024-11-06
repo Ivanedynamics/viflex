@@ -24,80 +24,42 @@
               y genera una cotización personalizada a tu medida.
             </p>
           </div>
-          <!-- <div
-            class="stats dark:bg-slate-800 bg-[#fff] shadow flex mobile_s:w-full mobile_s:flex-col tablet:flex-row tablet:w-fit"
-          >
-            <div class="stat container-box">
-              <div class="stat-figure text-secondary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  class="inline-block h-8 w-8 stroke-current"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-              </div>
-              <div class="stat-title">Productos</div>
-              <div class="stat-value mobile_s:text-lg laptop:text-2xl">216</div>
-              <div class="stat-desc">Desde enero hasta octubre</div>
-            </div>
 
-            <div class="stat container-box">
-              <div class="stat-figure text-secondary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  class="inline-block h-8 w-8 stroke-current"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                  ></path>
-                </svg>
-              </div>
-              <div class="stat-title">Clientes</div>
-              <div class="stat-value mobile_s:text-lg laptop:text-2xl">2K</div>
-              <div class="stat-desc">↗︎ 400 (22%)</div>
-            </div>
-
-            <div class="stat container-box">
-              <div class="stat-figure text-secondary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  class="inline-block h-8 w-8 stroke-current"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                  ></path>
-                </svg>
-              </div>
-              <div class="stat-title">Cotizaciones</div>
-              <div class="stat-value mobile_s:text-lg laptop:text-2xl">
-                12,500
-              </div>
-              <div class="stat-desc">↗︎ 50 (14%)</div>
-            </div>
-          </div> -->
           <div class="flex flex-row gap-2">
             <NuxtLink to="/cotizar" class="btn btn-primary">
-              <p class="">Cotizar ahora</p>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 7H9M15 11H9M15 15H11M5 3H19V21L17.968 20.116C17.6055 19.8053 17.1439 19.6346 16.6665 19.6346C16.1891 19.6346 15.7275 19.8053 15.365 20.116L14.333 21L13.302 20.116C12.9395 19.8051 12.4776 19.6342 12 19.6342C11.5224 19.6342 11.0605 19.8051 10.698 20.116L9.667 21L8.635 20.116C8.27253 19.8053 7.81088 19.6346 7.3335 19.6346C6.85611 19.6346 6.39447 19.8053 6.032 20.116L5 21V3Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <p class="text-white">Cotizar ahora</p>
             </NuxtLink>
             <NuxtLink to="/productos" class="btn btn-neutral">
-              <p class="">Ver Productos</p>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M22 3H2V9H3V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V9H22V3ZM4 5H20V7H4V5ZM19 20H5V9H19V20ZM9 11H15C15 11.5304 14.7893 12.0391 14.4142 12.4142C14.0391 12.7893 13.5304 13 13 13H11C10.4696 13 9.96086 12.7893 9.58579 12.4142C9.21071 12.0391 9 11.5304 9 11Z"
+                  fill="white"
+                />
+              </svg>
+
+              <p class="text-white">Ver Productos</p>
             </NuxtLink>
           </div>
         </article>

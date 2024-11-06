@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { data } = useFetch<{ colors: IColor[] }>("/api/colors");
-
 import { InputSelectColors } from "@/composables/filter_product.js";
-import type { IColor } from "~/types/back";
+import type { IColor } from "~/server/api/models";
+
+const { data } = useFetch<{ colors: IColor[] }>("/api/colors");
 
 const handleChange = (id: string) => {
   if (InputSelectColors?.value?.find((e) => id === e)) {

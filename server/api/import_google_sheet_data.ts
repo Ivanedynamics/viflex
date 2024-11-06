@@ -103,7 +103,9 @@ const AdapterCategory = (e: string[]) => {
     secondayPicture: e?.[3] ?? "",
     primaryPicture: e?.[4] ?? "",
     descripcion: e?.[5] ?? "",
-    weight: e?.[6] ?? "",
+    display: e?.[6] ?? "",
+    featured: e?.[7] ?? "",
+    weight: e?.[8] ?? "",
   };
   return payload;
 };
@@ -161,8 +163,9 @@ const AdapterProduct = (e: string[]) => {
     medida: normalizeField(e?.[6]),
     presentacion_2: e?.[7] ?? "",
     descripcion: e?.[8] ?? "",
-    featured: e?.[9] ?? "",
-    descripcion_larga: e?.[10] ?? "",
+    type: e?.[9] ?? "",
+    featured: e?.[10] ?? "",
+    descripcion_larga: e?.[11] ?? "",
   };
   return payload;
 };

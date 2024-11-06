@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import type { IColor, IImage } from "~/types/back";
+import type { IColor, IImage } from "~/server/api/models";
 type Props = {
   id: string;
   existThisProductInCart: boolean;

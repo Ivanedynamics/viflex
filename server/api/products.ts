@@ -1,11 +1,10 @@
-// import { kv } from "@vercel/kv";
-// import { ICategory, IColor, IImage, IProduct } from "~/types/back";
 import { connectDatabase } from "./connectDB";
 import {
   categoriesSchema,
   colorSchema,
   imagesSchema,
   productsSchema,
+  type IProduct,
 } from "./models";
 
 export default defineEventHandler(async (event) => {
@@ -15,52 +14,50 @@ export default defineEventHandler(async (event) => {
   const searchByCategory = query?.searchByCategory as string;
   const searchByColor = query?.searchByColor as string;
 
+  // Utility functions to normalize strings and split comma-separated values
+  const normalizeString = (value: string) => value?.toLowerCase().trim();
+  const normalizeSplit = (value: string) => value?.split(",").filter(Boolean);
+
+  // Fetch all required data
   const products = await productsSchema
     .find({
       featured: "TRUE",
     })
-    .lean();
-  const getCategories = await categoriesSchema.find({}).lean();
-  const getColors = await colorSchema.find({}).lean();
-  const getImages = await imagesSchema.find({}).lean();
-
-  const newProducts = products
-    ?.map((e) => {
-      return {
-        ...e,
-        color: getColors?.filter((i) => e?.color?.includes(i.id)),
-        category: getCategories?.filter((g) => e?.category?.includes(g?.id)),
-        images: getImages?.filter((b) => e?.id === b?.product_id),
-      };
-    })
-    ?.filter((p) => {
-      if (searchQuery) {
-        return p?.name
-          ?.toLowerCase()
-          ?.includes(searchQuery?.toLowerCase()?.trim());
-      }
-      return p;
-    })
-    ?.filter((p) => {
+    .lean<IProduct[]>();
+  const categories = await categoriesSchema.find({}).lean();
+  const colors = await colorSchema.find({}).lean();
+  const images = await imagesSchema.find({}).lean();
+  // Map and filter products based on query parameters
+  const filteredProducts = products
+    .map((product) => ({
+      ...product,
+      color: colors.filter((color) => product.color?.includes(color.id)),
+      category: categories.filter(
+        (category) => product.category?.includes(category.id)
+      ),
+      images: images.filter((image) => product.id === image.product_id),
+    }))
+    .filter(
+      (product) =>
+        !searchQuery ||
+        normalizeString(product.name).includes(normalizeString(searchQuery))
+    )
+    .filter((product) => {
       if (searchByCategory) {
-        const arrayCategories = searchByCategory
-          ?.split(",")
-          ?.filter((u) => u !== "" || u !== undefined);
-        return p?.category?.some((e) => arrayCategories?.includes(e?.id));
+        const categoryIds = normalizeSplit(searchByCategory);
+        return product.category.some((category) =>
+          categoryIds.includes(category.id)
+        );
       }
-      return p;
+      return true;
     })
-    ?.filter((p) => {
+    .filter((product) => {
       if (searchByColor) {
-        const arrayColors = searchByColor
-          ?.split(",")
-          ?.filter((u) => u !== "" || u !== undefined);
-        return p?.color?.some((e) => arrayColors?.includes(e?.id));
+        const colorIds = normalizeSplit(searchByColor);
+        return product.color.some((color) => colorIds.includes(color.id));
       }
-      return p;
+      return true;
     });
 
-  return {
-    products: newProducts,
-  };
+  return { products: filteredProducts };
 });

@@ -2,18 +2,18 @@ import type {
   ICategory,
   IColor,
   IImage,
-  IMeasures,
-  IPresentacion,
-} from "./back";
+  IMeasure,
+  IPresentation,
+} from "~/server/api/models";
 
 export type IFrontProduct = {
   id: string;
   name: string;
   category: ICategory;
   clave: string[];
-  presentacion: IPresentacion[];
+  presentacion: IPresentation[];
   color: IColor[];
-  medida: IMeasures[];
+  medida: IMeasure[];
   presentacion_2: string;
   descripcion: string;
   descripcion_larga: string;

@@ -10,7 +10,7 @@ import FilterSearchQuery from "./FilterSearchQuery.vue";
 import FilterProductType from "./FilterProductType.vue";
 import FilterProductColor from "./FilterProductColor.vue";
 
-const { data: products } = await useAsyncData<{
+const { data: products, status } = await useAsyncData<{
   products: IFrontProduct[];
 }>(
   "getproducts",
@@ -62,7 +62,6 @@ const handleDialogFilter = () => {
           <FilterSearchQuery />
           <FilterProductType />
           <FilterProductColor />
-          <!-- if there is a button in form, it will close the modal -->
         </form>
       </div>
     </dialog>
@@ -77,7 +76,7 @@ const handleDialogFilter = () => {
 
       <article class="col-span-3">
         <div class="flex flex-row justify-between items-center">
-          <p class="font-bold text-2xl py-4 mobile_s:text-lg mobile_l:text-xl">
+          <p class="font-bold text-2xl pt-4 mobile_s:text-lg mobile_l:text-xl">
             Resultados de la búsqueda
           </p>
           <button
@@ -111,7 +110,41 @@ const handleDialogFilter = () => {
           </button>
         </div>
         <div
-          class="w-full grid grid-cols-3 gap-8 mobile_s:gap-4 laptop:gap-8 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 max-[700px]:grid-cols-1"
+          v-if="
+            status === 'success' && Number(products?.products?.length) === 0
+          "
+        >
+          <p>No hay resultados de búsqueda para "{{ InputSearch }}"</p>
+        </div>
+        <div v-if="status === 'pending'">
+          <ul
+            class="grid grid-cols-4 w-full mobile_s:gap-4 mobile_s:grid-cols-1 mobile_l:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-2 mt-4"
+          >
+            <template v-for="item in 4">
+              <li
+                class="dark:bg-slate-800 bg-[#fff] rounded-lg shadow-xl w-full"
+              >
+                <div class="p-4 flex flex-col justify-between gap-4 w-full">
+                  <div
+                    class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-40 rounded-lg"
+                  ></div>
+                  <div
+                    class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-5 rounded-lg"
+                  ></div>
+                  <div
+                    class="skeleton bg-gray-200 dark:bg-slate-600 w-24 h-5 rounded-lg"
+                  ></div>
+                  <div
+                    class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-10 rounded-lg"
+                  ></div>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+        <div
+          v-if="status === 'success' && Number(products?.products?.length) > 0"
+          class="grid grid-cols-4 w-full mobile_s:gap-4 mobile_s:grid-cols-1 mobile_l:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-2 mt-4"
         >
           <Card
             v-for="product in products?.products"
