@@ -132,11 +132,11 @@ const [colorId] = defineField("colorId");
       </section>
 
       <section
-        class="p-2 flex flex-col gap-4 tablet:col-span-1 laptop:col-span-2"
+        class="p-2 flex flex-col gap-6 tablet:col-span-1 laptop:col-span-2"
       >
         <div class="flex flex-col gap-2">
           <p class="font-bold text-2xl">{{ capitalizeText(product?.name) }}</p>
-          <p>
+          <p class="text-base">
             {{ product?.descripcion }}
           </p>
         </div>
@@ -205,56 +205,26 @@ const [colorId] = defineField("colorId");
         <div
           class="p-4 rounded-lg dark:bg-slate-800 bg-[#fff] container-box w-full shadow-xl card-body"
         >
-          <div class="flex flex-row gap-2">
+          <section class="flex flex-row gap-2 w-full">
             <svg
               width="25"
               height="25"
-              viewBox="0 0 24 24"
+              viewBox="0 0 45 45"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="stroke-slate-100"
-              />
-              <path
-                d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="stroke-slate-100"
-              />
-              <path
-                d="M8 13H12"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="stroke-slate-100"
-              />
-              <path
-                d="M8 17H16"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="stroke-slate-100"
+                d="M39.375 36.8438V33.75H12.9375L14.625 30.6562L40.5 28.125L45 11.25H10.4063L8.4375 2.8125H0V5.625H6.1875L12.0938 29.25L8.4375 36.5625V40.7812C8.4375 43.0313 10.4062 45 12.6562 45C14.9063 45 16.875 43.0313 16.875 40.7812C16.875 38.5312 14.9063 36.5625 12.6562 36.5625H33.75V40.7812C33.75 43.0313 35.7187 45 37.9688 45C40.2188 45 42.1875 43.0313 42.1875 40.7812C42.1875 38.8125 41.0625 37.4063 39.375 36.8438Z"
+                fill="white"
+                class="fill-slate-800 dark:fill-white"
               />
             </svg>
+
             <p class="font-bold text-lg">Agregar al cotizador</p>
-          </div>
+          </section>
           <article class="w-full flex flex-col">
             <div class="label">
-              <span class="label-text">Presentacion</span>
+              <span class="label-text text-sm">Presentacion</span>
             </div>
             <select
               class="select select-bordered w-full"
@@ -275,7 +245,7 @@ const [colorId] = defineField("colorId");
           </article>
           <div class="w-full flex flex-col">
             <div class="label">
-              <span class="label-text">Medidas</span>
+              <span class="label-text text-sm">Medidas</span>
             </div>
             <select
               id="measure"
@@ -316,29 +286,18 @@ const [colorId] = defineField("colorId");
           </div>
           <button
             @click="handleFormSubmit"
-            class="btn btn-neutral text-white mt-5"
+            class="btn btn-primary text-white mt-5"
           >
             <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              viewBox="0 0 50 50"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M16.5 22.75H7.5C4.2 22.75 3.75 20.95 3.75 19V10.22C3.75 9.80997 4.09 9.46997 4.5 9.46997C4.91 9.46997 5.25 9.80997 5.25 10.22V19C5.25 20.74 5.55 21.25 7.5 21.25H16.5C18.45 21.25 18.75 20.74 18.75 19V10.22C18.75 9.80997 19.09 9.46997 19.5 9.46997C19.91 9.46997 20.25 9.80997 20.25 10.22V19C20.25 20.95 19.8 22.75 16.5 22.75Z"
-                fill="#292D32"
-                class="fill-white"
-              />
-              <path
-                d="M19 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H5Z"
-                fill="#292D32"
-                class="fill-white"
-              />
-              <path
-                d="M13.8197 14.75H10.1797C9.76969 14.75 9.42969 14.41 9.42969 14C9.42969 13.59 9.76969 13.25 10.1797 13.25H13.8197C14.2297 13.25 14.5697 13.59 14.5697 14C14.5697 14.41 14.2297 14.75 13.8197 14.75Z"
-                fill="#292D32"
-                class="fill-white"
+                d="M22.2857 27.7143H6V22.2857H22.2857V6H27.7143V22.2857H44V27.7143H27.7143V44H22.2857V27.7143Z"
+                fill="white"
               />
             </svg>
 
@@ -346,8 +305,8 @@ const [colorId] = defineField("colorId");
           </button>
         </div>
         <div class="mt-10">
-          <p class="font-bold">Sobre este artículo</p>
-          <p>
+          <p class="font-bold text-lg">Sobre este artículo</p>
+          <p class="text-base">
             {{ product?.descripcion_larga }}
           </p>
         </div>

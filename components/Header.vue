@@ -67,7 +67,7 @@ const handleSearch = (ev: Event) => {
               :to="hp.link"
               class="font-medium text-md text-white"
             >
-              <p class="text-sm">{{ hp.label }}</p>
+              <p class="text-base">{{ hp.label }}</p>
             </NuxtLink>
           </li>
         </ul>
@@ -109,47 +109,15 @@ const handleSearch = (ev: Event) => {
           class="relative text-primary font-semibold p-2 rounded"
         >
           <svg
-            width="35"
-            height="35"
-            viewBox="0 0 24 24"
+            width="32"
+            height="32"
+            viewBox="0 0 323 303"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
-              stroke="#292D32"
-              stroke-width="1.5"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="stroke-slate-100"
-            />
-            <path
-              d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
-              stroke="#292D32"
-              stroke-width="1.5"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="stroke-slate-100"
-            />
-            <path
-              d="M8 13H12"
-              stroke="#292D32"
-              stroke-width="1.5"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="stroke-slate-100"
-            />
-            <path
-              d="M8 17H16"
-              stroke="#292D32"
-              stroke-width="1.5"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="stroke-slate-100"
+              d="M282.625 244.456V222.25H92.8625L104.975 200.044L290.7 181.875L323 60.75H74.6937L60.5625 0.1875H0V20.375H44.4125L86.8063 189.95L60.5625 242.438V272.719C60.5625 288.869 74.6938 303 90.8438 303C106.994 303 121.125 288.869 121.125 272.719C121.125 256.569 106.994 242.438 90.8438 242.438H242.25V272.719C242.25 288.869 256.381 303 272.531 303C288.681 303 302.812 288.869 302.812 272.719C302.812 258.588 294.738 248.494 282.625 244.456Z"
+              fill="white"
             />
           </svg>
 

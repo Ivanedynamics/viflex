@@ -113,8 +113,8 @@ const handleSearchProducts = () => {
             />
           </svg>
 
-          <p><strong>¡Tu cotización está vacía!</strong></p>
-          <p class="text-center">
+          <p class="text-lg"><strong>¡Tu cotización está vacía!</strong></p>
+          <p class="text-center text-base">
             Explora todos los productos disponibles <br />
             y agrega algunos a tu cotización en la tienda.
           </p>
@@ -151,48 +151,17 @@ const handleSearchProducts = () => {
             <svg
               width="25"
               height="25"
-              viewBox="0 0 24 24"
+              viewBox="0 0 45 43"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="stroke-slate-100"
-              />
-              <path
-                d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="stroke-slate-100"
-              />
-              <path
-                d="M8 13H12"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="stroke-slate-100"
-              />
-              <path
-                d="M8 17H16"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="stroke-slate-100"
+                d="M39.375 34.8438V31.75H12.9375L14.625 28.6562L40.5 26.125L45 9.25H10.4063L8.4375 0.8125H0V3.625H6.1875L12.0938 27.25L8.4375 34.5625V38.7812C8.4375 41.0313 10.4062 43 12.6562 43C14.9063 43 16.875 41.0313 16.875 38.7812C16.875 36.5312 14.9063 34.5625 12.6562 34.5625H33.75V38.7812C33.75 41.0313 35.7187 43 37.9688 43C40.2188 43 42.1875 41.0313 42.1875 38.7812C42.1875 36.8125 41.0625 35.4063 39.375 34.8438Z"
+                fill="white"
               />
             </svg>
-            Cotizar Ahora
+
+            <p class="text-base font-semibold text-white">Cotizar Ahora</p>
           </NuxtLink>
         </section>
       </div>

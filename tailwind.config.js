@@ -54,7 +54,7 @@ module.exports = {
     themes: [
       {
         light: {
-          primary: "#2563eb",
+          primary: "#204888",
 
           secondary: "#9ca3af",
           ".container-box": {
@@ -85,7 +85,7 @@ module.exports = {
       },
       {
         dark: {
-          primary: "#2563eb",
+          primary: "#204888",
 
           secondary: "#9ca3af",
           ".container-box": {
@@ -101,7 +101,7 @@ module.exports = {
           },
           accent: "#22d3ee",
 
-          neutral: "#374151",
+          neutral: "#4E5C73",
 
           "base-100": "#111827",
 

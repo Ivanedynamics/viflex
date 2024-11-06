@@ -27,7 +27,7 @@ const listAspect = computed(() => {
       <section class="flex flex-col gap-2">
         <NuxtLink :to="`/productos/${product?.id}`">
           <p
-            class="font-bold text-sm capitalize-text hover:underline text-ellipsis line-clamp-2 h-full max-h-[40px]"
+            class="font-bold text-base capitalize-text hover:underline text-ellipsis line-clamp-2 h-full"
           >
             {{ capitalizeText(product?.name) }}
           </p>

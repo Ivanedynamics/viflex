@@ -50,4 +50,9 @@ export const headerOptions = [
     `,
     link: "/cotizar",
   },
+  // {
+  //   id: "3169bcaa-bbbc-40d8-b976-28107aed3b6c",
+  //   label: "+52 81 8326 3470",
+  //   link: `tel:${CONTACT_COFING.phonenumber?.value}`,
+  // },
 ];
