@@ -15,12 +15,12 @@ const handleChange = (id: string) => {
 };
 </script>
 <template>
-  <div>
-    <div class="label">
+  <section class="mt-3">
+    <div class="label py-2">
       <span class="label-text">Tipos de colores</span>
     </div>
     <ul
-      class="list-none flex flex-col max-h-[200px] gap-6 p-2 overflow-x-hidden overflow-y-scroll"
+      class="list-none flex flex-col max-h-[200px] gap-2 p-0 overflow-x-hidden overflow-y-scroll"
     >
       <li
         v-for="color in data?.colors"
@@ -38,7 +38,7 @@ const handleChange = (id: string) => {
               @change="() => handleChange(color.id)"
               :checked="InputSelectColors?.includes(color.id)"
             />
-            <span class="label-text uppercase">
+            <span class="label-text uppercase text-sm font-bold">
               {{ color.nombre }}
             </span>
           </div>
@@ -54,5 +54,5 @@ const handleChange = (id: string) => {
         </label>
       </li>
     </ul>
-  </div>
+  </section>
 </template>

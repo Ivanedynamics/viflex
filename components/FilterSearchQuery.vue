@@ -12,25 +12,31 @@ const handleSubmit = (e: Event) => {
 
 const route = useRoute();
 
+watch(
+  () => route.query.buscar,
+  () => {
+    InputSearch.value = route.query.buscar?.toString() ?? "";
+  }
+);
+
 onMounted(() => {
   setTimeout(() => {
-    const categories = route?.query?.categorias;
-    const colors = route?.query?.colores;
-    const search = route?.query?.q ?? "";
-    InputSelectCategories.value = splitParam<string[]>(categories);
-    InputSelectColors.value = splitParam<string[]>(colors);
-    InputSearch.value = splitParam<string>(search);
+    const filters = parseQueryParams(window.location.href);
+    InputSelectCategories.value = filters?.categorias;
+    InputSelectColors.value = filters?.colores;
+    InputSearch.value = filters?.buscar;
   }, 100);
 });
 
 watch(
   [InputSearch, InputSelectColors, InputSelectCategories],
   ([search, colors, categories]) => {
-    const toSColors = colors?.join(",");
-    const toSCategories = categories?.join(",");
-    router.push(
-      `/productos?q=${search}&colores=${toSColors}&categorias=${toSCategories}`
-    );
+    const params = buildQueryParams({
+      buscar: search,
+      colores: colors,
+      categorias: categories,
+    });
+    router.push(`/productos?${params}`);
   },
   {
     deep: true,

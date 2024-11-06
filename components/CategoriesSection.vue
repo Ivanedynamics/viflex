@@ -2,7 +2,7 @@
 import type { ICategory } from "~/server/api/models";
 
 const { data, status } = useFetch<{ categories: ICategory[] }>(
-  "/api/categories?display=PAGINA_INICIAL"
+  "/api/categories/all?display=PAGINA_INICIAL"
 );
 const router = useRouter();
 </script>

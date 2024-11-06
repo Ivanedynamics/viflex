@@ -1,5 +1,5 @@
-import { categoriesSchema } from "./models";
-import { connectDatabase } from "./connectDB";
+import { connectDatabase } from "../connectDB";
+import { categoriesSchema } from "../models";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);

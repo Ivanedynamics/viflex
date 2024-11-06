@@ -10,6 +10,7 @@ export interface IColor extends Document {
 export interface ICategory extends Document {
   id: string;
   nombre: string;
+  type: string;
   parentCategory?: string;
   secondayPicture?: string;
   primaryPicture?: string;
@@ -17,6 +18,7 @@ export interface ICategory extends Document {
   display?: string;
   featured?: string;
   weight?: string;
+  subCategories?: ICategory[];
 }
 
 export interface IProduct extends Document {
@@ -72,14 +74,15 @@ export interface IQuotation extends Document {
 
 // Esquemas de Mongoose tipados
 const colorNewSchema = new Schema<IColor>({
-  id: { type: String, required: true },
-  nombre: { type: String, required: true },
-  code_hex: { type: String, required: true },
+  id: { type: String },
+  nombre: { type: String },
+  code_hex: { type: String },
 });
 
 const categoriesNewSchema = new Schema<ICategory>({
-  id: { type: String, required: true },
-  nombre: { type: String, required: true },
+  id: { type: String },
+  nombre: { type: String },
+  type: { type: String },
   parentCategory: { type: String },
   secondayPicture: { type: String },
   primaryPicture: { type: String },
@@ -90,14 +93,14 @@ const categoriesNewSchema = new Schema<ICategory>({
 });
 
 const productsNewSchema = new Schema<IProduct>({
-  id: { type: String, required: true },
-  name: { type: String, required: true },
-  category: { type: [String], required: true },
-  clave: { type: [String], required: true },
-  presentacion: { type: [String], required: true },
-  featured: { type: String, required: true },
-  color: { type: [String], required: true },
-  medida: { type: [String], required: true },
+  id: { type: String },
+  name: { type: String },
+  category: { type: [String] },
+  clave: { type: [String] },
+  presentacion: { type: [String] },
+  featured: { type: String },
+  color: { type: [String] },
+  medida: { type: [String] },
   presentacion_2: { type: String },
   type: { type: String },
   descripcion: { type: String },
@@ -105,39 +108,39 @@ const productsNewSchema = new Schema<IProduct>({
 });
 
 const measuresNewSchema = new Schema<IMeasure>({
-  id: { type: String, required: true },
-  name: { type: String, required: true },
+  id: { type: String },
+  name: { type: String },
 });
 
 const widthsNewSchema = new Schema<IWidth>({
-  id: { type: String, required: true },
-  name: { type: String, required: true },
+  id: { type: String },
+  name: { type: String },
 });
 
 const presentationNewSchema = new Schema<IPresentation>({
-  id: { type: String, required: true },
-  value: { type: String, required: true },
+  id: { type: String },
+  value: { type: String },
 });
 
 const imagesNewSchema = new Schema<IImage>({
-  id: { type: String, required: true },
-  product_id: { type: String, required: true },
-  image_url: { type: String, required: true },
-  visible: { type: Boolean, required: true },
+  id: { type: String },
+  product_id: { type: String },
+  image_url: { type: String },
+  visible: { type: Boolean },
 });
 
 const QuotationsNewSchema = new Schema<IQuotation>({
-  id: { type: String, required: true },
-  quoteNumber: { type: String, required: true },
-  createdAt: { type: String, required: true },
-  fullName: { type: String, required: true },
-  email: { type: String, required: true },
-  phone: { type: String, required: true },
-  address: { type: String, required: true },
-  state: { type: String, required: true },
-  entity: { type: String, required: true },
+  id: { type: String },
+  quoteNumber: { type: String },
+  createdAt: { type: String },
+  fullName: { type: String },
+  email: { type: String },
+  phone: { type: String },
+  address: { type: String },
+  state: { type: String },
+  entity: { type: String },
   comment: { type: String },
-  products: { type: [String], required: true },
+  products: { type: [String] },
 });
 
 // Modelos tipados de Mongoose

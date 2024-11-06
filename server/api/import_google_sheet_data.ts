@@ -99,13 +99,14 @@ const AdapterCategory = (e: string[]) => {
   const payload = {
     id: e?.[0] ?? "",
     nombre: e?.[1] ?? "",
-    parentCategory: e?.[2] ?? "",
-    secondayPicture: e?.[3] ?? "",
-    primaryPicture: e?.[4] ?? "",
-    descripcion: e?.[5] ?? "",
-    display: e?.[6] ?? "",
-    featured: e?.[7] ?? "",
-    weight: e?.[8] ?? "",
+    type: e?.[2] ?? "",
+    parentCategory: e?.[3] ?? "",
+    secondayPicture: e?.[4] ?? "",
+    primaryPicture: e?.[5] ?? "",
+    descripcion: e?.[6] ?? "",
+    display: e?.[7] ?? "",
+    featured: e?.[8] ?? "",
+    weight: e?.[9] ?? "",
   };
   return payload;
 };

@@ -4,6 +4,7 @@ import { headerOptions } from "~/assets/mocks/headeroptions";
 import { handleOpenCart } from "~/composables/drawer";
 import { handleOpenSidebar } from "~/composables/sidebar";
 const router = useRouter();
+const parmas = useRoute();
 const store = useCartStore();
 const { totalProductsInCart } = storeToRefs(store);
 
@@ -11,7 +12,13 @@ const inputRef = ref("");
 
 const handleSearch = (ev: Event) => {
   ev?.preventDefault?.();
-  router.push(`/productos?q=${inputRef.value}`);
+  router.push({
+    path: "/productos",
+    query: {
+      ...parmas.query,
+      buscar: inputRef?.value?.trim(),
+    },
+  });
 };
 </script>
 
@@ -20,7 +27,7 @@ const handleSearch = (ev: Event) => {
     class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[65px] px-3"
   >
     <div
-      class="w-full max-w-[1240px] flex flex-row items-center justify-between tablet:px-4"
+      class="w-full max-w-[1240px] grid grid-cols-2 flex-row items-center justify-between tablet:px-4"
     >
       <div class="flex flex-row items-center gap-8">
         <button
@@ -76,10 +83,10 @@ const handleSearch = (ev: Event) => {
         <LogoLink />
       </div>
 
-      <div class="flex flex-row items-center gap-4">
+      <div class="flex flex-row items-center gap-4 w-full">
         <form
           @submit="handleSearch"
-          class="relative flex flex-row gap-4 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:flex laptop:flex"
+          class="relative flex w-full flex-row gap-4 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:flex laptop:flex"
         >
           <label class="input input-bordered flex items-center gap-2 w-full">
             <input
@@ -88,20 +95,22 @@ const handleSearch = (ev: Event) => {
               class="grow w-full"
               placeholder="Busca un producto."
             />
-            <svg
-              width="25"
-              height="25"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              class="opacity-70"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                clip-rule="evenodd"
-              />
-            </svg>
+            <button type="button" @click="handleSearch">
+              <svg
+                width="25"
+                height="25"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                class="opacity-70"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
           </label>
         </form>
         <button
