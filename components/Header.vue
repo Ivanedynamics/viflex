@@ -3,6 +3,7 @@ import { useCartStore } from "~/store/cart";
 import { headerOptions } from "~/assets/mocks/headeroptions";
 import { handleOpenCart } from "~/composables/drawer";
 import { handleOpenSidebar } from "~/composables/sidebar";
+import { CONTACT_COFING } from "~/mocks/contact";
 const router = useRouter();
 const parmas = useRoute();
 const store = useCartStore();
@@ -24,10 +25,19 @@ const handleSearch = (ev: Event) => {
 
 <template>
   <header
-    class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[65px] px-4"
+    class="bg-primary z-10 top-0 sticky flex flex-col items-center justify-center"
   >
     <div
-      class="w-full max-w-[1240px] flex flex-row items-center justify-between"
+      class="w-full bg-info py-2 text-black items-center flex justify-center mobile_s:hidden tablet:flex"
+    >
+      <a :href="`tel:${CONTACT_COFING.phonenumber.value}`">
+        <p class="text-sm font-medium">
+          ¿Necesita ayuda? Llámenos: {{ CONTACT_COFING.phonenumber.label }}
+        </p>
+      </a>
+    </div>
+    <div
+      class="w-full max-w-[1240px] flex flex-row items-center justify-between h-full min-h-[75px] px-4"
     >
       <div class="flex flex-row items-center gap-8">
         <button
