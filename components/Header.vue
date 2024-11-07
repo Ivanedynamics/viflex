@@ -24,10 +24,10 @@ const handleSearch = (ev: Event) => {
 
 <template>
   <header
-    class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[65px] px-3"
+    class="bg-primary z-10 top-0 sticky flex flex-row items-center justify-center h-full min-h-[65px] px-4"
   >
     <div
-      class="w-full max-w-[1240px] grid grid-cols-2 flex-row items-center justify-between tablet:px-4"
+      class="w-full max-w-[1240px] flex flex-row items-center justify-between"
     >
       <div class="flex flex-row items-center gap-8">
         <button
@@ -83,10 +83,10 @@ const handleSearch = (ev: Event) => {
         <LogoLink />
       </div>
 
-      <div class="flex flex-row items-center gap-4 w-full">
+      <div class="flex flex-row items-center gap-4">
         <form
           @submit="handleSearch"
-          class="relative flex w-full flex-row gap-4 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:flex laptop:flex"
+          class="relative flex max-w-sm w-full flex-row gap-4 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:flex laptop:flex"
         >
           <label class="input input-bordered flex items-center gap-2 w-full">
             <input

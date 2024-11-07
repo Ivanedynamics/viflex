@@ -114,7 +114,7 @@ const handleDialogFilter = () => {
             status === 'success' && Number(products?.products?.length) === 0
           "
         >
-          <p>No hay resultados de búsqueda para "{{ InputSearch }}"</p>
+          <p>No encontramos resultados para tu búsqueda.</p>
         </div>
         <div v-if="status === 'pending'">
           <ul
