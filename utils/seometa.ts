@@ -2,6 +2,9 @@ import type { ISeoPage } from "~/server/api/models";
 
 export const CreateSEOMetaPage = (seo: ISeoPage | undefined | null) => {
   return {
+    htmlAttrs: {
+      lang: "es", // Cambia 'es' al código de idioma que desees
+    },
     title: seo?.title || "Título predeterminado",
 
     meta: [
