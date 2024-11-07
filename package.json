@@ -29,7 +29,7 @@
     "wrangler": "^3.10.0"
   },
   "dependencies": {
-    "@nuxt/image": "^0.7.1",
+    "@nuxt/image": "^1.8.1",
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@pinia/nuxt": "^0.5.1",

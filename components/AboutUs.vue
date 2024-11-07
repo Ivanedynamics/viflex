@@ -47,7 +47,8 @@ const aboutus = [
           v-for="about in aboutus"
           class="p-4 rounded-lg gap-4 flex flex-col dark:bg-slate-800 bg-[#fff] shadow-xl"
         >
-          <img
+          <NuxtImg
+            format="webp"
             :src="about.image"
             :alt="`sobre_nosotros_${about?.title}_${about?.id}`"
             class="w-full h-40 object-cover rounded-lg"
