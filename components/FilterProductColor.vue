@@ -17,7 +17,7 @@ const handleChange = (id: string) => {
 <template>
   <section class="mt-3">
     <div class="label py-2">
-      <span class="label-text">Tipos de colores</span>
+      <span class="label-text">Colores ({{ InputSelectColors?.length }})</span>
     </div>
     <ul
       class="list-none flex flex-col max-h-[200px] gap-2 p-0 overflow-x-hidden overflow-y-scroll"

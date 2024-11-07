@@ -41,7 +41,9 @@ const handleChange = (categoryId: string, subCategoryId?: string) => {
 <template>
   <div>
     <div class="label">
-      <span class="label-text">Categorias</span>
+      <span class="label-text"
+        >Categorias ({{ InputSelectCategories?.length }})</span
+      >
     </div>
     <ul
       class="list-none flex flex-col max-h-[230px] gap-3 p-0 overflow-x-hidden overflow-y-scroll"
