@@ -88,7 +88,7 @@ const socialMedia = computed(() => {
         </ul>
       </section>
       <section>
-        <h6 class="footer-title">Servicios</h6>
+        <p class="footer-title">Servicios</p>
 
         <NuxtLink
           v-for="item in headerOptions"
@@ -99,7 +99,7 @@ const socialMedia = computed(() => {
         </NuxtLink>
       </section>
       <section>
-        <h6 class="footer-title">Contacto</h6>
+        <p class="footer-title">Contacto</p>
 
         <a
           class="link link-hover m-0 p-0 flex flex-row gap-2"
