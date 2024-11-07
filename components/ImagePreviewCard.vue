@@ -2,9 +2,10 @@
 const props = defineProps<{
   image_url: string | undefined | null;
   customCss?: string;
+  alt: string;
 }>();
 
-const { image_url, customCss } = toRefs(props);
+const { image_url, customCss, alt } = toRefs(props);
 </script>
 
 <template>
@@ -12,6 +13,7 @@ const { image_url, customCss } = toRefs(props);
     <img
       v-if="image_url"
       :src="image_url"
+      :alt="alt ?? ''"
       class="w-full h-full object-contain mix-blend-darken select-none"
     />
     <div v-else class="flex items-center justify-center w-full h-full">

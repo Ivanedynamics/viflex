@@ -231,8 +231,18 @@ import { CONTACT_COFING } from "~/mocks/contact";
       </section>
       <section>
         <p class="footer-title">Legal</p>
-        <a class="link link-hover">Politicas de privacidad</a>
-        <a class="link link-hover">Terminos de uso</a>
+        <NuxtLink
+          class="link link-hover flex flex-row gap-2 items-center"
+          to="/privacidad"
+        >
+          <p>Politicas de privacidad</p>
+        </NuxtLink>
+        <NuxtLink
+          class="link link-hover flex flex-row gap-2 items-center"
+          to="/terminos"
+        >
+          <p>Terminos de uso</p>
+        </NuxtLink>
       </section>
     </footer>
   </footer>

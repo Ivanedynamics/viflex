@@ -47,7 +47,11 @@ const aboutus = [
           v-for="about in aboutus"
           class="p-4 rounded-lg gap-4 flex flex-col dark:bg-slate-800 bg-[#fff] shadow-xl"
         >
-          <img :src="about.image" class="w-full h-40 object-cover rounded-lg" />
+          <img
+            :src="about.image"
+            :alt="`sobre_nosotros_${about?.title}_${about?.id}`"
+            class="w-full h-40 object-cover rounded-lg"
+          />
           <div class="flex flex-col items-start justify-end">
             <p class="text-lg font-bold">{{ about.title }}</p>
             <p class="text-sm">{{ about.description }}</p>

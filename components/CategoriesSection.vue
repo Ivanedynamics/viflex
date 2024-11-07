@@ -39,6 +39,7 @@ const router = useRouter();
             <ImagePreviewCard
               :image_url="item?.primaryPicture"
               custom-css="h-[180px] bg-white"
+              :alt="'cartegoria_' + item?.nombre?.toLowerCase() + item?.id"
             />
 
             <p class="font-bold text-sm">{{ item?.nombre }}</p>

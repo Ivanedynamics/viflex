@@ -18,6 +18,7 @@ const emit = defineEmits(["add_cart", "buynow"]);
     <section class="p-4 flex flex-col justify-between gap-4">
       <ImagePreviewCard
         :image_url="props?.images?.[0]?.image_url"
+        :alt="`producto_${props?.name}_${props?.id}`"
         custom-css="w-full h-40"
       />
 
