@@ -34,6 +34,8 @@ const handleSearch = (ev: Event) => {
         <button
           class="h-full relative text-primary font-semibold p-2 rounded mobile_s:flex tablet:flex laptop:hidden"
           @click="handleOpenSidebar"
+          id="menu_opciones"
+          aria-label="menu_button"
         >
           <svg
             width="30"
@@ -117,6 +119,7 @@ const handleSearch = (ev: Event) => {
         <button
           @click="handleOpenCart"
           class="relative text-primary font-semibold p-2 rounded"
+          aria-label="carrito_cotizacion"
         >
           <svg
             width="32"

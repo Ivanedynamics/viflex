@@ -1,60 +1,15 @@
 <script setup lang="ts">
 import { headerOptions } from "~/assets/mocks/headeroptions";
 import { CONTACT_COFING } from "~/mocks/contact";
-</script>
-
-<template>
-  <footer class="footer_page flex items-center justify-center mt-16">
-    <footer
-      class="footer footer_page px-4 bg-base-200 text-base-content p-10 max-w-[1240px] w-full"
-    >
-      <section>
-        <svg
-          width="150"
-          height="40"
-          viewBox="0 0 133 33"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M35.8 0.700086C35.3 0.800086 34.5 1.40009 33.9 2.00009C33 3.00009 32.9 3.20009 32.9 4.70009C32.9 7.50009 34.6 9.10009 37.7 9.10009C40.8 9.10009 42.6 7.50009 42.6 4.80009C42.7 1.60009 39.4 -0.299914 35.8 0.700086Z"
-            fill="white"
-          />
-          <path d="M70.4 32.1001H80.2V0.900086H70.4V32.1001Z" fill="white" />
-          <path
-            d="M0.900043 2.30009C0.900043 2.50009 3.70004 9.10009 7.10004 17.0001C10.5 24.9001 13.2 31.5001 13.3 31.7001C13.4 32.0001 14.4 32.1001 16.9 32.1001H20.3L20.7 31.1001C22.6 26.4001 31.8 2.60009 31.8 2.40009C31.8 2.20009 30.9 2.10009 28.5 2.10009H25.2L23.8 5.70009C23 7.70009 21.6 11.7001 20.6 14.6001L18.7 19.9001L18.1 18.0001C17.8 17.0001 16.3 13.0001 14.8 9.10009L12.1 2.10009H6.40004C2.00004 2.00009 0.700043 2.10009 0.900043 2.30009Z"
-            fill="white"
-          />
-          <path
-            d="M46.6 32.0001H57.5V19.3001H66.2V13.6001H57.6V7.40009L67.5 7.20009L67.6 6.00009C67.7 5.30009 67.9 4.10009 68 3.30009L68.1 2.00009H46.6V32.0001Z"
-            fill="white"
-          />
-          <path
-            d="M90.7 10.9001C86.2 12.3001 83.5 15.3001 82.9 19.7001C82.6 21.8001 83 24.8001 83.7 26.5001C85 29.2001 88.2 31.5001 91.8 32.3001C93.9 32.7001 98.4 32.7001 100.5 32.2001C102.2 31.8001 105.4 30.4001 105.7 29.9001C105.8 29.8001 105.6 28.7001 105.3 27.5001L104.7 25.4001L102.7 26.3001C100.3 27.5001 97.1 27.8001 95.6 27.1001C94.3 26.4001 93.5 25.4001 93.3 24.2001L93.1 23.1001L106.5 22.9001V20.1001C106.5 17.4001 106.4 17.1001 105.6 15.4001C104.5 13.3001 103 11.9001 100.8 11.1001C98.6 10.3001 93 10.2001 90.7 10.9001ZM96.9 15.0001C97.4 15.4001 97.6 15.8001 97.7 17.3001L97.8 19.1001H93.2L93.3 17.3001C93.4 15.3001 94.1 14.5001 95.5 14.5001C95.9 14.4001 96.6 14.7001 96.9 15.0001Z"
-            fill="white"
-          />
-          <path
-            d="M32.6 21.4001V32.1001H42.7V10.7001H32.7L32.6 21.4001Z"
-            fill="white"
-          />
-          <path
-            d="M107 10.8001C107 10.9001 108.8 13.4001 110.9 16.5001L114.8 22.1001L114.2 22.9001C113.8 23.4001 112.1 25.6001 110.4 27.8001L107.3 31.9001L110.3 32.0001C111.9 32.0001 113.5 32.0001 113.6 31.9001C113.8 31.8001 114.8 30.6001 115.8 29.2001C116.9 27.8001 117.8 26.6001 117.9 26.6001C118 26.6001 118.9 27.8001 120 29.3001L121.9 32.0001H127.5C131.9 32.0001 133.1 31.9001 132.9 31.6001C132.8 31.4001 131.1 29.0001 129.2 26.3001C127.3 23.5001 125.6 21.1001 125.5 20.9001C125.4 20.7001 126.5 18.9001 128.9 15.8001C130.9 13.2001 132.6 10.9001 132.6 10.8001C132.6 10.6001 131.4 10.5001 129.5 10.5001H126.3L124.4 13.2001C123.3 14.7001 122.4 15.9001 122.2 15.9001C122.1 15.9001 121.1 14.7001 120.1 13.2001L118.2 10.5001H112.6C109.4 10.7001 107 10.7001 107 10.8001Z"
-            fill="white"
-          />
-        </svg>
-
-        <p>
-          Viflex Ltd.
-          <br />
-          {{ CONTACT_COFING?.address }}
-        </p>
-
-        <div class="flex flex-row gap-3">
-          <a
-            target="_blank"
-            :href="`https://wa.me/${CONTACT_COFING.whatsapp?.format}`"
-          >
-            <svg
+import LogoLink from "./LogoLink.vue";
+const socialMedia = computed(() => {
+  return [
+    {
+      id: "48684957-a13b-483c-a9b5-480b0cde4481",
+      href: `https://wa.me/${CONTACT_COFING.whatsapp?.format}`,
+      label: "whatsapp_red_social",
+      icon: `
+      <svg
               width="30"
               height="30"
               viewBox="0 0 60 60"
@@ -66,9 +21,14 @@ import { CONTACT_COFING } from "~/mocks/contact";
                 fill="white"
               />
             </svg>
-          </a>
-          <a target="_blank" :href="CONTACT_COFING?.facebook?.link">
-            <svg
+      `,
+    },
+    {
+      id: "6148de8d-0dd1-4ce7-ab48-74d0d58ce262",
+      href: CONTACT_COFING?.facebook?.link,
+      label: "facebook_red_social",
+      icon: `
+       <svg
               width="30"
               height="30"
               viewBox="0 0 53 53"
@@ -80,9 +40,14 @@ import { CONTACT_COFING } from "~/mocks/contact";
                 fill="white"
               />
             </svg>
-          </a>
-          <a href="https://www.instagram.com/?hl=es">
-            <svg
+      `,
+    },
+    {
+      id: "7dd94289-4384-4700-bf49-d9ebb4865c3b",
+      href: CONTACT_COFING?.instagram?.link,
+      label: "instagram_red_social",
+      icon: `
+              <svg
               width="30"
               height="30"
               viewBox="0 0 20 20"
@@ -94,36 +59,33 @@ import { CONTACT_COFING } from "~/mocks/contact";
                 fill="white"
               />
             </svg>
-          </a>
-          <a href="https://www.tiktok.com/es/">
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.6 5.82C15.9166 5.03953 15.5399 4.0374 15.54 3H12.45V15.4C12.4267 16.0712 12.1436 16.7071 11.6603 17.1735C11.1771 17.6399 10.5316 17.9004 9.86003 17.9C8.44003 17.9 7.26003 16.74 7.26003 15.3C7.26003 13.58 8.92003 12.29 10.63 12.82V9.66C7.18003 9.2 4.16003 11.88 4.16003 15.3C4.16003 18.63 6.92003 21 9.85003 21C12.99 21 15.54 18.45 15.54 15.3V9.01C16.793 9.90985 18.2974 10.3926 19.84 10.39V7.3C19.84 7.3 17.96 7.39 16.6 5.82Z"
-                fill="white"
-              />
-            </svg>
-          </a>
-          <a href="https://www.youtube.com/">
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 15L15.19 12L10 9V15ZM21.56 7.17C21.69 7.64 21.78 8.27 21.84 9.07C21.91 9.87 21.94 10.56 21.94 11.16L22 12C22 14.19 21.84 15.8 21.56 16.83C21.31 17.73 20.73 18.31 19.83 18.56C19.36 18.69 18.5 18.78 17.18 18.84C15.88 18.91 14.69 18.94 13.59 18.94L12 19C7.81 19 5.2 18.84 4.17 18.56C3.27 18.31 2.69 17.73 2.44 16.83C2.31 16.36 2.22 15.73 2.16 14.93C2.09 14.13 2.06 13.44 2.06 12.84L2 12C2 9.81 2.16 8.2 2.44 7.17C2.69 6.27 3.27 5.69 4.17 5.44C4.64 5.31 5.5 5.22 6.82 5.16C8.12 5.09 9.31 5.06 10.41 5.06L12 5C16.19 5 18.8 5.16 19.83 5.44C20.73 5.69 21.31 6.27 21.56 7.17Z"
-                fill="white"
-              />
-            </svg>
-          </a>
-        </div>
+          `,
+    },
+  ];
+});
+</script>
+
+<template>
+  <footer class="footer_page flex items-center justify-center mt-16">
+    <footer
+      class="footer footer_page px-4 bg-base-200 text-base-content p-10 max-w-[1240px] w-full"
+    >
+      <section>
+        <LogoLink />
+
+        <p>
+          Viflex Ltd.
+          <br />
+          {{ CONTACT_COFING?.address }}
+        </p>
+
+        <ul class="flex flex-row gap-3">
+          <li v-for="item in socialMedia" :key="item.id">
+            <a target="_blank" :href="item.href" :aria-label="item.label">
+              <div v-html="item.icon" class="icono"></div>
+            </a>
+          </li>
+        </ul>
       </section>
       <section>
         <h6 class="footer-title">Servicios</h6>

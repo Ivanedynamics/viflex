@@ -64,6 +64,7 @@ const message = computed(() => {
       :href="`https://wa.me/${
         CONTACT_COFING.whatsapp.format
       }?text=${encodeURIComponent(message)}`"
+      aria-label="chatea_en_whatsapp"
       style="
         bottom: 95px;
         right: 20px;

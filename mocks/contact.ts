@@ -6,6 +6,9 @@ export const CONTACT_COFING = {
   facebook: {
     link: "https://www.facebook.com/profile.php?id=100070241688368",
   },
+  instagram: {
+    link: "https://www.instagram.com/viflexvinilosflexibles",
+  },
   email: {
     value: "ventas@vinilosflexibles.com",
     label: "Envíanos un email",

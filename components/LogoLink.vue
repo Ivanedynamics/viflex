@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="n-link-base mr-0 lg:mr-6" to="/">
+  <NuxtLink class="n-link-base mr-0 lg:mr-6" to="/" aria-label="viflex_logo">
     <svg
       width="110"
       height="30"
