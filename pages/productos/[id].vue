@@ -102,6 +102,7 @@ const [colorId] = defineField("colorId");
         <div :class="`sticky top-24 w-full gap-2 flex flex-col`">
           <ImagePreviewCard
             :image_url="viewImage?.image_url"
+            :alt="`image_preview_${viewImage?.product_id}`"
             custom-css="w-full h-[520px] mobile_s:h-[320px] tablet:h-[420px] laptop:h-[460px]"
           />
           <aside

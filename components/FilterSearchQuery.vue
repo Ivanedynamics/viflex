@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import {
   InputSearch,
-  InputSelectCategories,
   InputSelectColors,
-} from "@/composables/filter_product.js";
+  InputSelectCategories,
+  InputSelectMeasures,
+  InputSelectPresentation,
+} from "@/composables/filter_product";
 
 const router = useRouter();
 const handleSubmit = (e: Event) => {
@@ -25,17 +27,28 @@ onMounted(() => {
     InputSelectCategories.value = filters?.categorias;
     InputSelectColors.value = filters?.colores;
     InputSearch.value = filters?.buscar;
+    InputSelectMeasures.value = filters?.medidas;
+    InputSelectPresentation.value = filters?.presentacion;
   }, 100);
 });
 
 watch(
-  [InputSearch, InputSelectColors, InputSelectCategories],
-  ([search, colors, categories]) => {
+  [
+    InputSearch,
+    InputSelectColors,
+    InputSelectCategories,
+    InputSelectMeasures,
+    InputSelectPresentation,
+  ],
+  ([search, colors, categories, measures, presentation]) => {
     const params = buildQueryParams({
       buscar: search,
       colores: colors,
       categorias: categories,
+      medidas: measures,
+      presentacion: presentation,
     });
+
     router.push(`/productos?${params}`);
   },
   {

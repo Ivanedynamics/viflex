@@ -20,6 +20,10 @@ export const parseQueryParams = (url: string) => {
     colores: params?.searchParams.get("colores")?.split(",").map(String) || [],
     categorias:
       params?.searchParams.get("categorias")?.split(",").map(String) || [],
+    medidas: params?.searchParams?.get("medidas")?.split(",").map(String) || [],
+    presentacion:
+      params?.searchParams?.get("presentacion")?.split(",").map(String) || [],
+    anchos: params?.searchParams?.get("anchos")?.split(",").map(String) || [],
   };
   return filters;
 };

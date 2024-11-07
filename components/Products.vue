@@ -3,12 +3,14 @@ import type { IFrontProduct } from "~/types/front";
 const router = useRouter();
 import {
   InputSearch,
-  InputSelectCategories,
   InputSelectColors,
-} from "@/composables/filter_product.js";
+  InputSelectCategories,
+  InputSelectMeasures,
+  InputSelectPresentation,
+} from "@/composables/filter_product";
 import FilterSearchQuery from "./FilterSearchQuery.vue";
-import FilterProductType from "./FilterProductType.vue";
-import FilterProductColor from "./FilterProductColor.vue";
+import FilterProductType from "./FilterCategories.vue";
+import FilterProductColor from "./FilterColors.vue";
 
 const { data: products, status } = await useAsyncData<{
   products: IFrontProduct[];
@@ -20,10 +22,18 @@ const { data: products, status } = await useAsyncData<{
         searchByName: InputSearch.value,
         searchByCategory: JointParams(InputSelectCategories?.value),
         searchByColor: JointParams(InputSelectColors?.value),
+        searchByMeasures: JointParams(InputSelectMeasures?.value),
+        ssearchbyPresentation: JointParams(InputSelectPresentation?.value),
       },
     }),
   {
-    watch: [InputSearch, InputSelectCategories, InputSelectColors],
+    watch: [
+      InputSearch,
+      InputSelectColors,
+      InputSelectCategories,
+      InputSelectMeasures,
+      InputSelectPresentation,
+    ],
     deep: true,
     lazy: true,
   }
@@ -69,9 +79,7 @@ const handleDialogFilter = () => {
       class="w-full max-w-[1240px] grid grid-cols-4 relative gap-8 mobile_s:flex mobile_s:gap-4 laptop:grid"
     >
       <div class="relative h-full w-full mobile_s:hidden laptop:flex">
-        <div class="top-0 sticky">
-          <FilterProducts />
-        </div>
+        <FilterProducts />
       </div>
 
       <article class="col-span-3">

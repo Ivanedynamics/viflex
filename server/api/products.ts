@@ -21,6 +21,8 @@ export default defineEventHandler(async (event) => {
   const querySearch = query?.searchByName as string;
   const queryCategories = query?.searchByCategory as string;
   const queryColors = query?.searchByColor as string;
+  const queryMeasures = query?.searchByMeasures as string;
+  const queryPresentation = query?.ssearchbyPresentation as string;
 
   // Fetch all required data
   const products = await productsSchema
@@ -47,9 +49,8 @@ export default defineEventHandler(async (event) => {
     ),
     images: images.filter((image) => product.id === image.product_id),
   }));
-
-  if (categoriesParams?.length === 0) {
-    const response = productsWithDetails
+  const addMoreFilers = (products: typeof productsWithDetails) => {
+    return products
       .filter(
         (product) =>
           !querySearch ||
@@ -61,8 +62,25 @@ export default defineEventHandler(async (event) => {
           return product.color.some((color) => colorIds.includes(color.id));
         }
         return true;
+      })
+      .filter((product) => {
+        if (queryMeasures) {
+          const measuresIds = normalizeSplit(queryMeasures);
+          return product.medida.some((m) => measuresIds.includes(m));
+        }
+        return true;
+      })
+      .filter((product) => {
+        if (queryPresentation) {
+          const presentationIds = normalizeSplit(queryPresentation);
+          return product.presentacion.some((m) => presentationIds.includes(m));
+        }
+        return true;
       });
-    return { products: response };
+  };
+
+  if (categoriesParams?.length === 0) {
+    return { products: addMoreFilers(productsWithDetails) };
   }
 
   const category_id = categoriesParams[0] ?? "";
@@ -75,26 +93,17 @@ export default defineEventHandler(async (event) => {
 
   const ids =
     categoriesParams?.length === 1
-      ? sub_categories_ids
+      ? [category_id, ...sub_categories_ids]
       : categoriesParams?.slice(1);
+  console.log(ids, "ids");
 
-  const response = productsWithDetails
-    .filter(
-      (product) =>
-        !querySearch ||
-        normalizeString(product.name).includes(normalizeString(querySearch))
-    )
-    .filter((product) => {
+  const productsResult = addMoreFilers(productsWithDetails).filter(
+    (product) => {
       return product.category.some((category) => ids.includes(category.id));
-    })
+    }
+  );
 
-    .filter((product) => {
-      if (queryColors) {
-        const colorIds = normalizeSplit(queryColors);
-        return product.color.some((color) => colorIds.includes(color.id));
-      }
-      return true;
-    });
-
-  return { products: response };
+  return {
+    products: productsResult,
+  };
 });

@@ -46,7 +46,7 @@ const handleChange = (categoryId: string, subCategoryId?: string) => {
       >
     </div>
     <ul
-      class="list-none flex flex-col max-h-[230px] gap-3 p-0 overflow-x-hidden overflow-y-scroll"
+      class="list-none flex max-h-[20rem] flex-col gap-3 p-0 overflow-x-hidden overflow-y-scroll"
     >
       <li
         v-for="category in data?.data"

@@ -20,7 +20,7 @@ const handleChange = (id: string) => {
       <span class="label-text">Colores ({{ InputSelectColors?.length }})</span>
     </div>
     <ul
-      class="list-none flex flex-col max-h-[200px] gap-2 p-0 overflow-x-hidden overflow-y-scroll"
+      class="list-none flex flex-col max-h-[20rem] gap-2 p-0 overflow-x-hidden overflow-y-scroll"
     >
       <li
         v-for="color in data?.colors"
