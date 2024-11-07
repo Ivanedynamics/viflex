@@ -1,18 +1,13 @@
 <script setup>
 import Contact from "~/components/Contact.vue";
+import { useFetch, useHead } from "#imports";
 
-const sections = [
-  {
-    id: 1,
-    label: "Horario",
-    description: "Abierto las 24 horas",
-  },
-  {
-    id: 2,
-    label: "Oficina Central",
-    description: `Soldadores 1703 INT #24 y #25, La Alianza, 64103 Monterrey, N.L., México`,
-  },
-];
+const { data: seoData } = await useFetch("/api/seo/page", {
+  params: { slug: "LOCATION" },
+});
+
+// Configura los metadatos SEO utilizando useHead
+useHead(CreateSEOMetaPage(seoData?.value?.seo?.page));
 </script>
 
 <template>

@@ -5,6 +5,15 @@ import { object, string } from "yup";
 import axios from "axios";
 import { useForm } from "vee-validate";
 
+import { useFetch, useHead } from "#imports";
+
+const { data: seoData } = await useFetch("/api/seo/page", {
+  params: { slug: "QUOTE" },
+});
+
+// Configura los metadatos SEO utilizando useHead
+useHead(CreateSEOMetaPage(seoData?.value?.seo?.page));
+
 const store = useCartStore();
 const { products } = toRefs(store);
 
