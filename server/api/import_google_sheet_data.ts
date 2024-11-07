@@ -398,7 +398,6 @@ export const createPageSEO = async (event: H3Event) => {
 
   const excel_seopages = data?.slice(1);
   const database_seopages = await SeoPagesSchema.find({}).lean();
-  console.log(excel_seopages, "excel_seopages");
 
   if (database_seopages?.length === 0 || database_seopages === null) {
     for await (const e of excel_seopages) {
