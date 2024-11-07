@@ -34,7 +34,7 @@ const router = useRouter();
         <li v-for="item in data?.categories" :key="item.id">
           <NuxtLink
             :to="`/productos?categorias=${item?.id}`"
-            class="dark:bg-slate-800 bg-[#fff] h-full w-full rounded-lg shadow-xl flex flex-col gap-4 p-4"
+            class="dark:bg-slate-800 bg-[#fff] h-full w-full rounded-lg shadow-xl flex flex-col gap-4 p-4 items-center justify-center"
           >
             <ImagePreviewCard
               :image_url="item?.primaryPicture"

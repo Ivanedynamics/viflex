@@ -28,15 +28,6 @@ const handleSearch = (ev: Event) => {
     class="bg-primary z-10 top-0 sticky flex flex-col items-center justify-center"
   >
     <div
-      class="w-full bg-info py-2 text-black items-center flex justify-center mobile_s:hidden tablet:flex"
-    >
-      <a :href="`tel:${CONTACT_COFING.phonenumber.value}`">
-        <p class="text-sm font-medium">
-          ¿Necesita ayuda? Llámenos: {{ CONTACT_COFING.phonenumber.label }}
-        </p>
-      </a>
-    </div>
-    <div
       class="w-full max-w-[1240px] flex flex-row items-center justify-between h-full min-h-[75px] px-4"
     >
       <div class="flex flex-row items-center gap-8">
@@ -150,6 +141,15 @@ const handleSearch = (ev: Event) => {
           </div>
         </button>
       </div>
+    </div>
+    <div
+      class="w-full bg-info py-2 text-black items-center flex justify-center mobile_s:hidden tablet:flex"
+    >
+      <a :href="`tel:${CONTACT_COFING.phonenumber.value}`">
+        <p class="text-sm font-medium">
+          ¿Necesita ayuda? Llámenos: {{ CONTACT_COFING.phonenumber.label }}
+        </p>
+      </a>
     </div>
   </header>
 </template>
