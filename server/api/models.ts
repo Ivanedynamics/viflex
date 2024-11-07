@@ -1,13 +1,13 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 // Definición de tipos para cada esquema
-export interface IColor extends Document {
+export interface IColor {
   id: string;
   nombre: string;
   code_hex: string;
 }
 
-export interface ICategory extends Document {
+export interface ICategory {
   id: string;
   nombre: string;
   type: string;
@@ -21,7 +21,7 @@ export interface ICategory extends Document {
   subCategories?: ICategory[];
 }
 
-export interface IProduct extends Document {
+export interface IProduct {
   id: string;
   name: string;
   category: string[];
@@ -36,29 +36,29 @@ export interface IProduct extends Document {
   descripcion_larga?: string;
 }
 
-export interface IMeasure extends Document {
+export interface IMeasure {
   id: string;
   name: string;
 }
 
-export interface IWidth extends Document {
+export interface IWidth {
   id: string;
   name: string;
 }
 
-export interface IPresentation extends Document {
+export interface IPresentation {
   id: string;
   value: string;
 }
 
-export interface IImage extends Document {
+export interface IImage {
   id: string;
   product_id: string;
   image_url: string;
   visible: boolean;
 }
 
-export interface IQuotation extends Document {
+export interface IQuotation {
   id: string;
   quoteNumber: string;
   createdAt: string;
