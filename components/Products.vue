@@ -77,7 +77,7 @@ const handleDialogFilter = () => {
       <article class="col-span-3">
         <div class="flex flex-row justify-between items-center">
           <p class="font-bold text-2xl pt-4 mobile_s:text-lg mobile_l:text-xl">
-            Resultados de la búsqueda
+            Resultados de la búsqueda ({{ products?.products?.length }})
           </p>
           <button
             class="btn btn-neutral mobile_s:flex laptop:hidden"
