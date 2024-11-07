@@ -7,6 +7,7 @@ import {
   measuresSchema,
   presentationSchema,
   productsSchema,
+  SeoPagesSchema,
   widthsSchema,
 } from "./models";
 export const generateURL = (event: H3Event, sheetRange: string) => {
@@ -377,6 +378,56 @@ export const createImagesJSON = async (event: H3Event) => {
   }
 };
 
+const AdapterSEOPage = (e: string[]) => {
+  return {
+    id: e?.[0] ?? "",
+    title: e?.[1] ?? "",
+    url: e?.[2] ?? "",
+    keywords: e?.[3] ?? "",
+    slug: e?.[4] ?? "",
+    description: e?.[5] ?? "",
+    image: e?.[6] ?? "",
+    author: e?.[7] ?? "",
+  };
+};
+export const createPageSEO = async (event: H3Event) => {
+  const url = generateURL(event, "seo_paginas!A1:Z900");
+  const response = await fetch(url);
+  const json = await response.json();
+  const data = (json?.values as string[][]) ?? [];
+
+  const excel_seopages = data?.slice(1);
+  const database_seopages = await SeoPagesSchema.find({}).lean();
+  console.log(excel_seopages, "excel_seopages");
+
+  if (database_seopages?.length === 0 || database_seopages === null) {
+    for await (const e of excel_seopages) {
+      const payload = AdapterSEOPage(e);
+      const newItem = new SeoPagesSchema(payload);
+      await newItem.save();
+    }
+    return;
+  } else {
+    for await (const e of excel_seopages) {
+      const payload = AdapterSEOPage(e);
+      const seopage_of_database = database_seopages?.find(
+        (color) => color?.id === payload?.id
+      );
+      if (!seopage_of_database) {
+        const newItem = new SeoPagesSchema(payload);
+        await newItem.save();
+        return;
+      }
+
+      if (!deepCompare(seopage_of_database, payload)) {
+        const filter = { id: seopage_of_database?.id };
+        await SeoPagesSchema.findOneAndUpdate(filter, payload);
+      }
+    }
+    return;
+  }
+};
+
 export default defineEventHandler(async (event) => {
   await connectDatabase();
   await createColorsJSON(event);
@@ -386,6 +437,7 @@ export default defineEventHandler(async (event) => {
   await createWidthsJSON(event);
   await createPresentationJSON(event);
   await createImagesJSON(event);
+  await createPageSEO(event);
   return {
     message: "Se actualizo la base de datos exitosamente",
   };

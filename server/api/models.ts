@@ -143,6 +143,44 @@ const QuotationsNewSchema = new Schema<IQuotation>({
   products: { type: [String] },
 });
 
+export type ISeoPage = {
+  id: string;
+  title: string;
+  url: string;
+  keywords: string;
+  description: string;
+  image: string;
+  slug: string;
+  author: string;
+};
+
+const SeoPagesNewSchema = new Schema<ISeoPage>({
+  id: {
+    type: String,
+  },
+  title: {
+    type: String,
+  },
+  url: {
+    type: String,
+  },
+  keywords: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  image: {
+    type: String,
+  },
+  slug: {
+    type: String,
+  },
+  author: {
+    type: String,
+  },
+});
+
 // Modelos tipados de Mongoose
 export const colorSchema =
   mongoose.models.colors || mongoose.model<IColor>("colors", colorNewSchema);
@@ -165,3 +203,7 @@ export const imagesSchema =
 export const QuotationSchema =
   mongoose.models.quotations ||
   mongoose.model<IQuotation>("quotations", QuotationsNewSchema);
+
+export const SeoPagesSchema =
+  mongoose.models.seopages ||
+  mongoose.model<ISeoPage>("seopages", SeoPagesNewSchema);
