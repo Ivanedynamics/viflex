@@ -1,7 +1,9 @@
 <template>
   <section class="flex-col pt-10 flex items-center justify-center px-3">
-    <div class="w-full max-w-[1240px] flex flex-col gap-2">
-      <p class="font-bold text-3xl">Contactanos</p>
+    <div class="w-full max-w-[1240px] flex flex-col gap-4 items-center">
+      <p class="font-bold text-2xl mobile_s:text-lg mobile_l:text-2xl">
+        Ubicaciones
+      </p>
 
       <figure class="h-full w-full pb-2">
         <iframe

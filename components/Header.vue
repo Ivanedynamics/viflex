@@ -116,21 +116,26 @@ const handleSearch = (ev: Event) => {
           @submit="handleSearch"
           class="relative flex w-full flex-row gap-4 mobile_s:hidden mobile_m:hidden mobile_l:hidden tablet:flex laptop:flex"
         >
-          <label class="input input-bordered flex items-center gap-2 w-full">
+          <label
+            class="input input-bordered flex items-center gap-2 w-full p-2"
+          >
             <input
               v-model="inputRef"
               type="text"
               class="grow w-full"
-              placeholder="Busca un producto."
+              placeholder="Buscar producto..."
             />
-            <button type="button" @click="handleSearch">
+            <button
+              type="button"
+              @click="handleSearch"
+              class="bg-secondary p-1 rounded-md"
+            >
               <svg
                 width="25"
                 height="25"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
-                fill="currentColor"
-                class="opacity-70"
+                fill="black"
               >
                 <path
                   fill-rule="evenodd"
