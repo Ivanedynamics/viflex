@@ -9,7 +9,7 @@ import type {
 export type IFrontProduct = {
   id: string;
   name: string;
-  category: ICategory;
+  category: ICategory[];
   clave: string[];
   presentacion: IPresentation[];
   color: IColor[];

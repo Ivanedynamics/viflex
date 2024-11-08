@@ -152,14 +152,29 @@ const [colorId] = defineField("colorId");
       <section
         class="p-2 flex flex-col gap-6 tablet:col-span-1 laptop:col-span-2"
       >
+        <!-- <pre>
+          {{ product }}
+        </pre> -->
         <div class="flex flex-col gap-2">
           <p class="font-bold text-2xl">{{ capitalizeText(product?.name) }}</p>
           <p class="text-base">
             {{ product?.descripcion }}
           </p>
         </div>
+        <div v-if="product?.categoria?.length !== 0">
+          <p class="text-sm">Categorias:</p>
+          <ul class="flex flex-row gap-2 flex-wrap">
+            <li v-for="item in product?.categoria">
+              <p
+                class="rounded-md border badge p-4 dark:bg-slate-800 bg-[#fff] container-box"
+              >
+                {{ item?.nombre }}
+              </p>
+            </li>
+          </ul>
+        </div>
         <div v-if="product?.colores?.length !== 0">
-          <p class="text-sm">Disponible en:</p>
+          <p class="text-sm">Colores:</p>
           <ul class="flex flex-row gap-2 flex-wrap">
             <li v-for="item in product?.colores">
               <div
