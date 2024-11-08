@@ -126,7 +126,7 @@ const handleSearchProducts = () => {
           </button>
         </section>
         <section
-          class="flex flex-col h-full gap-4 overflow-hidden overflow-y-scroll px-4"
+          class="flex flex-col h-full gap-8 overflow-hidden overflow-y-scroll px-4"
         >
           <template v-for="p in productCart" :key="p?.id">
             <CardCartModal
