@@ -128,14 +128,14 @@ const handleSearch = (ev: Event) => {
             <button
               type="button"
               @click="handleSearch"
-              class="bg-secondary p-1 rounded-md"
+              class="bg-success p-1 rounded-md"
             >
               <svg
                 width="25"
                 height="25"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
-                fill="black"
+                fill="white"
               >
                 <path
                   fill-rule="evenodd"
