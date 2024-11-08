@@ -137,13 +137,6 @@ export default defineEventHandler(async (event) => {
       };
     }
 
-    // const payload: BodyValues = {
-    //   ...body,
-    //   quoteNumber: uuidv4()?.replace(/-/g, "").substring(0, 8),
-    //   createdAt: new Date().toISOString(),
-    // };
-    console.log("COMENZANDO CON MATCH PRODUCTS");
-
     const products = (await Promise.all(
       body?.products?.map(async (e) => {
         // Buscar el producto principal por su ID
@@ -233,8 +226,6 @@ export default defineEventHandler(async (event) => {
       },
     };
   } catch (error) {
-    console.log(error, "error");
-
     throw createError({
       statusCode: 400,
       statusMessage: "Something bad happened on the server",
