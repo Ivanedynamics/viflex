@@ -330,6 +330,7 @@ const [colorId] = defineField("colorId");
       </section>
     </div>
   </main>
-  <ExploreProducts />
+  <CategoriesSection />
   <AboutUs />
+  <MostRecentProducts />
 </template>
