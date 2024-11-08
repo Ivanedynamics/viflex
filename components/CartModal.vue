@@ -45,7 +45,7 @@ const handleSearchProducts = () => {
       >
         <!-- Sidebar content here -->
         <section
-          class="flex flex-row justify-between items-center min-h-[75px] px-4 sticky top-0 dark:bg-slate-800 bg-white z-50"
+          class="flex flex-row justify-between items-center min-h-[75px] px-4 sticky top-0 dark:bg-slate-800 bg-gray-100 z-50"
         >
           <p class="font-bold text-lg">Resumen de Cotización</p>
           <button class="btn btn-ghost" @click="handleCloseCart">

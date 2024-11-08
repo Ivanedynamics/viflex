@@ -2,9 +2,6 @@
   <section class="flex-col pt-10 flex items-center justify-center px-3">
     <div class="w-full max-w-[1240px] flex flex-col gap-2">
       <p class="font-bold text-3xl">Contactanos</p>
-      <p class="opacity-70 text-lg">
-        Póngase en contacto con nuestro equipo para cualquier consulta o ayuda.
-      </p>
 
       <figure class="h-full w-full pb-2">
         <iframe

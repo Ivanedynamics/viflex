@@ -12,7 +12,4 @@ useHead(CreateSEOMetaPage(seoData?.value?.seo?.page));
 
 <template>
   <Contact />
-  <main
-    class="flex-col pt-5 flex items-center justify-center px-3 mb-20"
-  ></main>
 </template>
