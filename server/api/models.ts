@@ -56,6 +56,7 @@ export interface IImage {
   product_id: string;
   image_url: string;
   visible: boolean;
+  display: string;
 }
 
 export interface IQuotation {
@@ -127,6 +128,9 @@ const imagesNewSchema = new Schema<IImage>({
   product_id: { type: String },
   image_url: { type: String },
   visible: { type: Boolean },
+  display: {
+    type: String,
+  },
 });
 
 const QuotationsNewSchema = new Schema<IQuotation>({

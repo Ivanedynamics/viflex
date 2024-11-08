@@ -337,6 +337,7 @@ const AdapterImage = (e: string[]) => {
     product_id: e?.[1] ?? "",
     image_url: e?.[2] ?? "",
     visible: Boolean(parseInt(e?.[3], 10)) ?? false,
+    display: e?.[4] ?? "",
   };
   return payload;
 };
