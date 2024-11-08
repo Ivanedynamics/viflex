@@ -5,7 +5,7 @@ import { useCartStore } from "~/store/cart";
 import type { IFrontProduct } from "~/types/front";
 import { capitalizeText } from "~/utils/capitalize";
 import { object, string } from "yup";
-
+import { useFetch, useHead } from "#imports";
 const route = useRoute();
 const response = await useFetch<{ product: IFrontProduct }>(
   `/api/getProductById?productById=${route?.params?.id}`
@@ -26,10 +26,26 @@ const product = computed(() => {
   };
 });
 const viewImage = ref(product.value?.images?.[0] ?? null);
+const url = useRequestURL();
+
+// Configura los metadatos SEO utilizando useHead
+useHead(
+  CreateSEOMetaPage({
+    id: "8896a83f-14d5-4be1-bfd8-464b3b2ca9c2",
+    title: `Vinilos Flexibles | ${product?.value?.name ?? ""}`,
+    url: url.toString(),
+    image:
+      product?.value?.images?.[0]?.image_url ??
+      "https://res.cloudinary.com/dl0wyyubu/image/upload/v1730997969/viflex/images/yga0podlxqbhmwb75rhr.png",
+    slug: data?.product?.id ?? "",
+    description:
+      product?.value?.descripcion ?? product?.value?.descripcion_larga ?? "",
+    author: "",
+    keywords: "",
+  })
+);
 
 const { setProduct } = useCartStore();
-
-const url = useRequestURL();
 
 const message = computed(() => {
   return `¡Hola! Me gustaría obtener más información sobre este producto: ${url}. ¿Podrías ayudarme, por favor?`;
