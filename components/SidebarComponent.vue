@@ -43,7 +43,7 @@ import { CONTACT_COFING } from "~/mocks/contact";
           <li v-for="item in headerOptions" :key="item?.id">
             <NuxtLink :to="item?.link" @click="handleCloseSidebar">
               <div v-html="item.icon" class="icono"></div>
-              <p class="text-lg">{{ item?.label }}</p>
+              <p class="uppercase text-sm">{{ item?.label }}</p>
             </NuxtLink>
           </li>
         </ul>

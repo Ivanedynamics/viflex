@@ -77,7 +77,7 @@ const handleSearch = (ev: Event) => {
               :to="hp.link"
               class="font-medium text-md text-white"
             >
-              <p class="text-base">{{ hp.label }}</p>
+              <p class="uppercase text-sm">{{ hp.label }}</p>
             </NuxtLink>
           </li>
         </ul>
