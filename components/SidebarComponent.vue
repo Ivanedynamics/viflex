@@ -16,7 +16,7 @@ import { sidebarId, handleCloseSidebar } from "~/composables/sidebar";
         class="menu pb-5 bg-white dark:bg-slate-900 z-50 text-base-content min-h-full w-80 p-0 gap-4 flex flex-col"
       >
         <section
-          class="flex flex-row justify-start items-center min-h-[65px] px-3 sticky top-0 dark:bg-slate-800 bg-white z-50"
+          class="flex flex-row justify-start items-center min-h-[75px] px-3 sticky top-0 dark:bg-slate-800 bg-white z-50"
         >
           <button class="btn btn-ghost" @click="handleCloseSidebar">
             <svg
