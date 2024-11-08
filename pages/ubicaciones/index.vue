@@ -1,6 +1,6 @@
-<script setup>
-import Contact from "~/components/Contact.vue";
+<script setup lang="ts">
 import { useFetch, useHead } from "#imports";
+import ContactSection from "~/components/ContactSection.vue";
 
 const { data: seoData } = await useFetch("/api/seo/page", {
   params: { slug: "LOCATION" },
@@ -11,5 +11,5 @@ useHead(CreateSEOMetaPage(seoData?.value?.seo?.page));
 </script>
 
 <template>
-  <Contact />
+  <ContactSection />
 </template>

@@ -17,5 +17,5 @@ useHead(CreateSEOMetaPage(seoData?.value?.seo?.page));
   <CategoriesSection />
   <MostRecentProducts />
   <AboutUs />
-  <Contact />
+  <ContactSection />
 </template>

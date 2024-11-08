@@ -57,7 +57,7 @@ const message = computed(() => {
 <template>
   <main class="m-0 p-0 gap-4">
     <Header />
-    <NuxtPage class="bg-slate-100" />
+    <NuxtPage />
     <Footer />
     <a
       class="items-center justify-center right-[20px] bottom-[95px] no-underline cursor-pointer transition-colors transition-duration-150 hover:shadow-7 fixed text-white bg-green-500 flex align-items-center justify-content-center"
