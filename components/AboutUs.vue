@@ -36,8 +36,12 @@ const aboutus = [
   <section
     class="min-h-[320px] flex-col pt-10 flex items-center justify-center px-3 mt-20"
   >
-    <div class="w-full max-w-[1240px] flex flex-col gap-4 items-center">
-      <p class="font-bold text-2xl mobile_s:text-lg mobile_l:text-2xl">
+    <div
+      class="w-full max-w-[1240px] items-center justify-center flex flex-col"
+    >
+      <p
+        class="font-bold text-2xl text-center mobile_s:text-lg tablet:text-xl laptop:text-2xl"
+      >
         Nuestro Compromiso con la Calidad y la Sostenibilidad
       </p>
       <div

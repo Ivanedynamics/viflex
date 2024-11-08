@@ -63,7 +63,7 @@ const listAspect = computed(() => {
         </button>
 
         <p
-          class="w-10 h-10 flex bg-gray-100 items-center justify-center font-bold border"
+          class="w-10 h-10 flex bg-gray-100 items-center justify-center font-bold border text-black"
         >
           {{ quantity }}
         </p>
