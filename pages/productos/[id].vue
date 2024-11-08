@@ -6,6 +6,7 @@ import type { IFrontProduct } from "~/types/front";
 import { capitalizeText } from "~/utils/capitalize";
 import { object, string } from "yup";
 import { useFetch, useHead } from "#imports";
+import { CreateSEOMetaPage } from "~/utils/seometa";
 const route = useRoute();
 const response = await useFetch<{ product: IFrontProduct }>(
   `/api/getProductById?productById=${route?.params?.id}`
