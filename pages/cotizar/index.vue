@@ -427,7 +427,7 @@ const handleFormSubmit = () => {
                   Selecciona una opcion
                 </option>
                 <option v-for="state in statesOfMexico" :value="state?.slug">
-                  <p>{{ state?.name }}</p>
+                  {{ state?.name }}
                 </option>
               </select>
             </label>
@@ -446,7 +446,7 @@ const handleFormSubmit = () => {
                   Selecciona una opcion
                 </option>
                 <option v-for="state in Entities" :value="state">
-                  <p>{{ state }}</p>
+                  {{ state }}
                 </option>
               </select>
             </label>
