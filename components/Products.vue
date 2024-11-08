@@ -9,8 +9,10 @@ import {
   InputSelectPresentation,
 } from "@/composables/filter_product";
 import FilterSearchQuery from "./FilterSearchQuery.vue";
-import FilterProductType from "./FilterCategories.vue";
-import FilterProductColor from "./FilterColors.vue";
+import FilterCategories from "./FilterCategories.vue";
+import FilterColors from "./FilterColors.vue";
+import FilterMeasures from "./FilterMeasures.vue";
+import FilterPresentation from "./FilterPresentation.vue";
 
 const { data: products, status } = await useAsyncData<{
   products: IFrontProduct[];
@@ -70,8 +72,10 @@ const handleDialogFilter = () => {
           </div>
 
           <FilterSearchQuery />
-          <FilterProductType />
-          <FilterProductColor />
+          <FilterCategories />
+          <FilterColors />
+          <FilterMeasures />
+          <FilterPresentation />
         </form>
       </div>
     </dialog>
@@ -82,9 +86,11 @@ const handleDialogFilter = () => {
         <FilterProducts />
       </div>
 
-      <article class="col-span-3">
-        <div class="flex flex-row justify-between items-center">
-          <p class="font-bold text-2xl pt-4 mobile_s:text-lg mobile_l:text-xl">
+      <article class="col-span-3 w-full">
+        <div class="flex flex-row justify-between items-center w-full">
+          <p
+            class="font-bold mobile_s:pt-0 mobile_s:text-base tablet:text-lg laptop:pt-4"
+          >
             Resultados de la búsqueda ({{ products?.products?.length }})
           </p>
           <button
@@ -124,49 +130,46 @@ const handleDialogFilter = () => {
         >
           <p>No encontramos resultados para tu búsqueda.</p>
         </div>
-        <div v-if="status === 'pending'">
-          <ul
-            class="grid grid-cols-4 w-full mobile_s:gap-4 mobile_s:grid-cols-1 mobile_l:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-2 mt-4"
-          >
-            <template v-for="item in 4">
-              <li
-                class="dark:bg-slate-800 bg-[#fff] rounded-lg shadow-xl w-full"
-              >
-                <div class="p-4 flex flex-col justify-between gap-4 w-full">
-                  <div
-                    class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-40 rounded-lg"
-                  ></div>
-                  <div
-                    class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-5 rounded-lg"
-                  ></div>
-                  <div
-                    class="skeleton bg-gray-200 dark:bg-slate-600 w-24 h-5 rounded-lg"
-                  ></div>
-                  <div
-                    class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-10 rounded-lg"
-                  ></div>
-                </div>
-              </li>
-            </template>
-          </ul>
-        </div>
-        <div
+        <ul
+          v-if="status === 'pending'"
+          class="grid grid-cols-4 w-full mobile_s:gap-4 mobile_s:grid-cols-1 mobile_l:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-2 mt-4"
+        >
+          <template v-for="item in 4">
+            <li class="dark:bg-slate-800 bg-[#fff] rounded-lg shadow-xl w-full">
+              <div class="p-4 flex flex-col justify-between gap-4 w-full">
+                <div
+                  class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-40 rounded-lg"
+                ></div>
+                <div
+                  class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-5 rounded-lg"
+                ></div>
+                <div
+                  class="skeleton bg-gray-200 dark:bg-slate-600 w-24 h-5 rounded-lg"
+                ></div>
+                <div
+                  class="skeleton bg-gray-200 dark:bg-slate-600 w-full h-10 rounded-lg"
+                ></div>
+              </div>
+            </li>
+          </template>
+        </ul>
+        <ul
           v-if="status === 'success' && Number(products?.products?.length) > 0"
           class="grid grid-cols-4 w-full mobile_s:gap-4 mobile_s:grid-cols-1 mobile_l:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-2 mt-4"
         >
-          <Card
-            v-for="product in products?.products"
-            :key="product?.id"
-            :id="`${product?.id}`"
-            :name="`${product?.name}`"
-            :description="product?.descripcion"
-            :images="product?.images ?? []"
-            :colors="product?.color"
-            :exist-this-product-in-cart="false"
-            @add_cart="() => {}"
-            @buynow="() => router.push(`/productos/${product?.id}`)"
-          />
-        </div>
+          <li v-for="product in products?.products" :key="product?.id">
+            <Card
+              :id="`${product?.id}`"
+              :name="`${product?.name}`"
+              :description="product?.descripcion"
+              :images="product?.images ?? []"
+              :colors="product?.color"
+              :exist-this-product-in-cart="false"
+              @add_cart="() => {}"
+              @buynow="() => router.push(`/productos/${product?.id}`)"
+            />
+          </li>
+        </ul>
       </article>
     </div>
   </section>
