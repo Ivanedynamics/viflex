@@ -1,9 +1,25 @@
 <script setup lang="ts">
 import type { IImage } from "~/server/api/models";
 
+type Props = {
+  display?: string;
+  title?: string;
+  remarked_title?: string;
+  no_remarked_left_title?: string;
+};
+
+const props = withDefaults(defineProps<Props>(), {
+  display: "FONDO_INICIO",
+  title: "Fabricamos los mejores vinilos",
+  remarked_title: "calidad y durabilidad.",
+  no_remarked_left_title: "de gran",
+});
+const { display, remarked_title, title, no_remarked_left_title } =
+  toRefs(props);
+
 const { data, status } = useFetch<{ image: IImage }>("/api/images/byOne", {
   params: {
-    display: "FONDO_INICIO",
+    display: display.value,
   },
 });
 </script>
@@ -31,10 +47,10 @@ const { data, status } = useFetch<{ image: IImage }>("/api/images/byOne", {
               <h1
                 class="text-white font-extrabold text-4xl text-center mobile_s:text-[1.2rem] mobile_m:text-[1.5rem] mobile_l:text-[1.7rem] tablet:text-[2.3rem] laptop:text-[2.5rem]"
               >
-                Fabricamos los mejores vinilos <br />
-                de gran
+                {{ title }} <br />
+                {{ no_remarked_left_title }}
                 <span class="bg-primary text-white px-2">
-                  calidad y durabilidad.
+                  {{ remarked_title }}
                 </span>
               </h1>
               <p

@@ -11,5 +11,14 @@ useHead(CreateSEOMetaPage(seoData?.value?.seo?.page));
 </script>
 
 <template>
+  <Presentation
+    display="FONDO_UBICACIONES"
+    title="Encuentra Nuestra"
+    no_remarked_left_title=""
+    remarked_title="Ubicación Exacta"
+  />
+
   <ContactSection />
+  <MostRecentProducts />
+  <AboutUs />
 </template>
