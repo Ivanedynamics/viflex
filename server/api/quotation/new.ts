@@ -1,9 +1,21 @@
 import { CONFIG_EMAIL } from "~/config/email";
 import { connectDatabase } from "../connectDB";
-import { QuotationSchema } from "../models";
-import { v4 as uuidv4 } from "uuid";
+import {
+  categoriesSchema,
+  colorSchema,
+  measuresSchema,
+  presentationSchema,
+  productsSchema,
+  QuotationSchema,
+  type ICategory,
+  type IColor,
+  type IMeasure,
+  type IPresentation,
+  type IProduct,
+} from "../models";
 import sgMail from "@sendgrid/mail";
 import type { IProductCart } from "~/store/cart";
+import { v4 as uuidv4 } from "uuid";
 
 type BodyValues = {
   fullName: string;
@@ -18,7 +30,27 @@ type BodyValues = {
   createdAt: string;
 };
 
-const SendBusinessEmail = async (body: BodyValues) => {
+export type IProductFormated = {
+  quantity: number;
+  product: IProduct & {
+    category: ICategory[];
+    presentacion: IPresentation[];
+    color: IColor[];
+    medida: IMeasure[];
+  };
+  id?: string;
+  selection: {
+    presentacion: IPresentation;
+    medida: IMeasure;
+    color: IColor;
+  };
+};
+
+const SendBusinessEmail = async (
+  body: Omit<BodyValues, "products"> & {
+    products: IProductFormated[];
+  }
+) => {
   sgMail.setApiKey(CONFIG_EMAIL.SENDGRID_API_KEY);
 
   const payload: sgMail.MailDataRequired = {
@@ -75,12 +107,13 @@ const SendBusinessEmail = async (body: BodyValues) => {
       },
     };
   } catch (error) {
-    return {
-      status: "error",
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Something bad happened on the server",
       data: {
         message: "Ha ocurrido un error inesperado al enviar el correo.",
       },
-    };
+    });
   }
 };
 
@@ -93,7 +126,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     await connectDatabase();
-    const body = await readBody(event);
+    const body = await readBody<BodyValues>(event);
 
     if (!body) {
       return {
@@ -104,8 +137,84 @@ export default defineEventHandler(async (event) => {
       };
     }
 
-    const payload: BodyValues = {
+    // const payload: BodyValues = {
+    //   ...body,
+    //   quoteNumber: uuidv4()?.replace(/-/g, "").substring(0, 8),
+    //   createdAt: new Date().toISOString(),
+    // };
+    console.log("COMENZANDO CON MATCH PRODUCTS");
+
+    const products = (await Promise.all(
+      body?.products?.map(async (e) => {
+        // Buscar el producto principal por su ID
+        const product = await productsSchema
+          ?.findOne({
+            id: e?.product?.id, // Cambiado para usar `id` directamente
+          })
+          .lean<IProduct>();
+
+        if (!product) {
+          return null; // Maneja el caso donde el producto no se encuentra
+        }
+
+        // Buscar categorías, presentaciones, colores y medidas en paralelo
+        const [category, presentacion, color, medida] = await Promise.all([
+          categoriesSchema
+            .find({
+              id: { $in: product?.category || [] }, // Maneja arrays vacíos o nulos
+            })
+            .lean<ICategory[]>(),
+          presentationSchema
+            .find({
+              id: { $in: product?.presentacion || [] },
+            })
+            .lean<IPresentation[]>(),
+          colorSchema
+            .find({
+              id: { $in: product?.color || [] },
+            })
+            .lean<IColor[]>(),
+          measuresSchema
+            ?.find({
+              id: { $in: product?.medida || [] },
+            })
+            .lean<IMeasure[]>(),
+        ]);
+
+        // Retornar el producto con toda la información agregada
+        return {
+          ...e,
+          product: {
+            ...product,
+            category,
+            presentacion,
+            color,
+            medida,
+          },
+          selection: {
+            color: await colorSchema
+              .findOne({
+                id: e?.selection?.color?.id,
+              })
+              ?.lean<IColor>(),
+            medida: await measuresSchema
+              ?.findOne({
+                id: e?.selection?.medida?.id,
+              })
+              ?.lean<IMeasure>(),
+            presentacion: await presentationSchema
+              ?.findOne({
+                id: e?.selection?.presentacion?.id,
+              })
+              ?.lean<IPresentation>(),
+          },
+        };
+      })
+    )) as IProductFormated[];
+
+    const payload = {
       ...body,
+      products,
       quoteNumber: uuidv4()?.replace(/-/g, "").substring(0, 8),
       createdAt: new Date().toISOString(),
     };
@@ -124,12 +233,15 @@ export default defineEventHandler(async (event) => {
       },
     };
   } catch (error) {
-    return {
-      status: "error",
+    console.log(error, "error");
+
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Something bad happened on the server",
       data: {
         message:
           "Ha ocurrido un error inesperado al intentar procesar tu solicitud. Te recomendamos intentar nuevamente más tarde. Si el problema persiste, por favor contacta a nuestro soporte para recibir asistencia. Agradecemos tu comprensión.",
       },
-    };
+    });
   }
 });

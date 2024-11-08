@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import type { IFrontProduct } from "~/types/front";
 import { v4 as uuidv4 } from "uuid";
 import { handleOpenCart } from "~/composables/drawer";
 import type { IColor, IMeasure, IPresentation } from "~/server/api/models";
+import type { IFrontProduct } from "~/types/front";
 export type IProductCart = {
   quantity: number;
   product: IFrontProduct;

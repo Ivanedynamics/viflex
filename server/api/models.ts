@@ -70,7 +70,7 @@ export interface IQuotation {
   state: string;
   entity: string;
   comment?: string;
-  products: string[];
+  products: Array<any>[];
 }
 
 // Esquemas de Mongoose tipados
@@ -144,7 +144,7 @@ const QuotationsNewSchema = new Schema<IQuotation>({
   state: { type: String },
   entity: { type: String },
   comment: { type: String },
-  products: { type: [String] },
+  products: [mongoose.Schema.Types.Mixed],
 });
 
 export type ISeoPage = {
